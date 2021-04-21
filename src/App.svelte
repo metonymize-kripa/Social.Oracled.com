@@ -76,8 +76,31 @@ function calculateKelly() {
             {
                 friend_kelly = [api_output.Rating];
             }
+            
         });
 
+
+
+}
+
+function getMyRating(user_email){
+    var my_url = 'https://www.insuremystock.com/stocks/getuserratings/'+ticker+'/?secret_key=Fat Neo&user_email='+user_email;
+    console.log(my_url);
+    fetch(my_url)
+        .then(d => d.text())
+        .then(d =>
+        {
+            api_output = JSON.parse(d);
+            console.log(api_output);
+            if ('error' in api_output)
+                my_kelly="error";
+            else
+            {
+                show_kelly = [(api_output.Rating)];
+                my_kelly = (api_output.Rating);
+            }
+            
+        });
 }
 function updateClipboard(newClip) {
     submitRatings(ticker,show_kelly[0])
@@ -89,11 +112,9 @@ function updateClipboard(newClip) {
 }
 
 function submitRatings(my_ticker,my_ratings) {
-    console.log($userInfo["email"]);
-    console.log(my_ticker);
-    console.log(my_ratings);
-    let put_url = 'https://www.insuremystock.com/stocks/setratings/'+my_ticker+'/?user='+$userInfo["email"]+'&ratings='+my_ratings;
-    console.log(put_url);
+
+    let put_url = 'https://www.insuremystock.com/stocks/setratings/'+my_ticker+'/?secret_key=Fat Neo&user='+$userInfo["email"]+'&ratings='+my_ratings;
+
     fetch(put_url,
     {
         method:"PUT",
@@ -129,7 +150,9 @@ font-size:4rem !important;
   <Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
     {#if !$isAuthenticated}
         <Auth0LoginButton class="button text-center error is-full-width is-big" >Login to get Oracled</Auth0LoginButton>
-     {/if}
+    {:else}
+        {getMyRating($userInfo["email"]) || ""}
+    {/if}
   </Auth0Context>
 	
 <h1> 💎Oracle: Trade sizing given Options & Social implied odds</h1>
@@ -173,12 +196,16 @@ font-size:4rem !important;
 </div>
 	
 <div class="row card">
-<iframe width="100%" height=420 src="https://public.com/stocks/{ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
+    <div class="col-1"></div>
+    <div class="col-10">
+        <iframe width="100%" height=420 src="https://public.com/stocks/{ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
+        </div>
+    <div class="col-1"></div>
 	<table>
 		<tr>
-		    <td width="20%"><a style="color:#168ed7;font-size:2rem;" href="https://twitter.com/share?url={post_url}{ticker}&text={post_title}{ticker}&hashtags={ticker}" class="button fa fa-twitter pull-left"></a></td>
+		    <td width="25%"><a style="color:#168ed7;font-size:2rem;" href="https://twitter.com/share?url={post_url}{ticker}&text={post_title}{ticker}&hashtags={ticker}" class="button fa fa-twitter pull-left"></a></td>
 		    <td width="50%" class="text-center" style="font-size:4rem;color:blue;font-weight:bolder;">Cash allocation: {Math.round(show_kelly)}%</td>
-		    <td width="30%"><button class="text-white bg-dark pull-right" on:click={updateClipboard(show_kelly)}>Copy-Trade</button></td>
+		    <td width="25%"><button class="text-white bg-dark pull-right" on:click={updateClipboard(show_kelly)}>Copy-Trade</button></td>
 		</tr>
 	</table>
 {#if $isAuthenticated}
