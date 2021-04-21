@@ -175,9 +175,8 @@ font-size:4rem !important;
 <div class="row card">
 	<table>
 		<tr>
-			<td width="100%"><p align="center"><iframe width="80%" height=420 src="https://public.com/stocks/{ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
-			</p> 
-			</td>
+		<p align="center"><iframe width="80%" height=420 src="https://public.com/stocks/{ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
+		</p> 
 		</tr>
 		<tr>
 		    <td width="20%"><a style="color:#168ed7;font-size:2rem;" href="https://twitter.com/share?url={post_url}{ticker}&text={post_title}{ticker}&hashtags={ticker}" class="button fa fa-twitter pull-left"></a></td>
