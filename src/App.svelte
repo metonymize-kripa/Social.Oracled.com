@@ -130,7 +130,7 @@ font-size:4rem !important;
     {#if !$isAuthenticated}
         <Auth0LoginButton class="button text-center error is-full-width is-big" >Login to get Oracled</Auth0LoginButton>
     {:else}
-        <Auth0LogoutButton class="button primary">Logout</Auth0LogoutButton>
+        <Auth0LogoutButton class="button text-center error is-full-width is-big" >Logout, for now</Auth0LogoutButton>
      {/if}
   </Auth0Context>
 
@@ -142,14 +142,14 @@ font-size:4rem !important;
     <div class="col-1"></div>
 </div>
 
-    <h1> 💎Oracle Rating Engine: Options Implied 1 Week Gain Odds </h1>
+    <h1> 💎Oracle: Options & Social Outlook </h1>
 
 <div class="row card">
 <table>
 <thead>
   <tr>
     <th width="20%" ></th>
-    <th width="50%" class="text-center">How much to allocate tactically</th>
+    <th width="50%" class="text-center">Cash alloc. now Vs later</th>
     <th width="30%" class="text-center is-large">1Wk Gain Odds</th>
   </tr>
 </thead>
@@ -186,7 +186,7 @@ font-size:4rem !important;
     <div class="col-4">
     <a style="color:#168ed7;font-size:2rem;" href="https://twitter.com/share?url={post_url}{ticker}&text={post_title}{ticker}&hashtags={ticker}" class="button fa fa-twitter pull-left"></a>
     </div>
-    <div class="col-4"></div>
+    <div class="col-4"><td width="30%" class="text-center" style="font-size:4rem;color:blue;">Cash alloc: {Math.round(show_kelly)}%</td></div>
     <div class="col-4">
     <button class="text-white bg-dark pull-right" on:click={updateClipboard(show_kelly)}>Copy-Trade</button>
     </div>
