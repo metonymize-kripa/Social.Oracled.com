@@ -128,9 +128,11 @@ font-size:4rem !important;
 
   <Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
     {#if !$isAuthenticated}
-        <Auth0LoginButton class="button text-center error is-full-width is-big" >Login to get personal with the Oracled</Auth0LoginButton>
+        <Auth0LoginButton class="button text-center error is-full-width is-big" >Login to get Oracled</Auth0LoginButton>
      {/if}
   </Auth0Context>
+	
+<h1> 💎Oracle: Trade sizing given Options & Social implied odds</h1>
 
 <div class="row card">
   <div class="col-1"></div>
@@ -140,7 +142,6 @@ font-size:4rem !important;
     <div class="col-1"></div>
 </div>
 
-    <h1> 💎Oracle: Cash allocation given Options & Social outlook</h1>
 
 <div class="row card">
 <table>
@@ -185,7 +186,7 @@ font-size:4rem !important;
 	<table>
 		<tr>
 		    <td width="20%"><a style="color:#168ed7;font-size:2rem;" href="https://twitter.com/share?url={post_url}{ticker}&text={post_title}{ticker}&hashtags={ticker}" class="button fa fa-twitter pull-left"></a></td>
-		    <td width="50%" class="text-center" style="font-size:5rem;color:blue;font-weight:bolder;">Cash allocation: {Math.round(show_kelly)}%</td>
+		    <td width="50%" class="text-center" style="font-size:4rem;color:blue;font-weight:bolder;">Cash allocation: {Math.round(show_kelly)}%</td>
 		    <td width="30%"><button class="text-white bg-dark pull-right" on:click={updateClipboard(show_kelly)}>Copy-Trade</button></td>
 		</tr>
 	</table>
