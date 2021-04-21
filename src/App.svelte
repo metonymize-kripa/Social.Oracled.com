@@ -8,7 +8,7 @@
   import RangeSlider from "svelte-range-slider-pips";
   let api_output ={};
 
-  const moods = ["Strong Sell","😫","😫","😫","😥","Sell","😥","😐","😐","😐","Hold","😐","😀","😀","😀","Buy","😀","😁","😁","😁","Strong Buy"];
+  const moods = ["Sell","😫","😫","😫","😥","Weak","😥","😐","😐","😐","Hold","😐","😀","😀","😀","Meh","😀","😁","😁","😁","Buy"];
 
   onMount(async () => {
     const res = await fetch("/api/date");
