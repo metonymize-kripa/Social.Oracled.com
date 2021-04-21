@@ -183,11 +183,11 @@ font-size:4rem !important;
 </div>
 
 <div class="row card">
-    <div width="20%">
+    <div class="col-2">
     <a style="color:#168ed7;font-size:2rem;" href="https://twitter.com/share?url={post_url}{ticker}&text={post_title}{ticker}&hashtags={ticker}" class="button fa fa-twitter pull-left"></a>
     </div>
-    <div width="50%"><td class="text-center" style="font-size:4rem;color:blue;font-weight:bolder;">Cash alloc: {Math.round(show_kelly)}%</td></div>
-    <div width="30%">
+    <div class="col-8"><td class="text-center" style="font-size:4rem;color:blue;font-weight:bolder;">Cash alloc: {Math.round(show_kelly)}%</td></div>
+    <div class="col-2">
     <button class="text-white bg-dark pull-right" on:click={updateClipboard(show_kelly)}>Copy-Trade</button>
     </div>
 </div>
