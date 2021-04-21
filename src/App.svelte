@@ -196,11 +196,12 @@ font-size:4rem !important;
 </div>
 	
 <div class="row card">
-    <div class="col-1"></div>
-    <div class="col-10">
+    <div class="col-2"></div>
+    <div class="col-8">
         <iframe width="100%" height=420 src="https://public.com/stocks/{ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
         </div>
-    <div class="col-1"></div>
+    <div class="col-2"></div>
+	<h1>Balancing FOMO odds and keeping "dry powder" for deals to come ...</h1>
 	<table>
 		<tr>
 		    <td width="25%"><a style="color:#168ed7;font-size:2rem;" href="https://twitter.com/share?url={post_url}{ticker}&text={post_title}{ticker}&hashtags={ticker}" class="button fa fa-twitter pull-left"></a></td>
