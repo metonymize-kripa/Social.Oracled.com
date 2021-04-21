@@ -73,6 +73,18 @@ function updateClipboard(newClip) {
   });
 }
 
+function submitRatings() {
+    fetch('https://www.insuremystock.com/stocks/setvotes/'+ticker+'/?user=anon@anon.com&ratings=1',
+    {
+        method:"PUT",
+        headers: {
+            'Content-Type': 'application/json',
+          },
+        
+    }).then(d => console.log(d.text()));
+	count += 1;
+}
+
 let post_url = encodeURIComponent("https://social.oracled.com/?symbol=");
 let post_title =  encodeURIComponent("Social and options data made into actionable trade timing/size picks for ");
 </script>
