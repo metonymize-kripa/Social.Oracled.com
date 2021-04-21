@@ -177,7 +177,7 @@ font-size:4rem !important;
 	<table>
 		<tr>
 		    <td width="20%"><a style="color:#168ed7;font-size:2rem;" href="https://twitter.com/share?url={post_url}{ticker}&text={post_title}{ticker}&hashtags={ticker}" class="button fa fa-twitter pull-left"></a></td>
-		    <td width="50%" class="text-center" style="font-size:4rem;color:blue;font-weight:bolder;">Cash allocation: {Math.round(show_kelly)}%</td>
+		    <td width="50%" class="text-center" style="font-size:4rem;color:blue;font-weight:bolder;">Allocate {Math.round(show_kelly)}% of cash now</td>
 		    <td width="30%"><button class="text-white bg-dark pull-right" on:click={updateClipboard(show_kelly)}>Copy-Trade</button></td>
 		</tr>
 	</table>
