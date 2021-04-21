@@ -203,11 +203,11 @@ font-size:4rem !important;
 		</div>
 	    <div class="col-2"></div>
 	</div>
-	<h2> Considering odds of a future price move, keep some "dry powder"</h1>
+	<h2> Given odds of future price moves, keep some "dry powder"</h2>
 	<table>
 		<tr>
 		    <td width="25%"><a style="color:#168ed7;font-size:2rem;" href="https://twitter.com/share?url={post_url}{ticker}&text={post_title}{ticker}&hashtags={ticker}" class="button fa fa-twitter pull-left"></a></td>
-		    <td width="50%" class="text-center" style="font-size:4rem;color:blue;font-weight:bolder;">Allocate {Math.round(show_kelly)}% for {ticker}</td>
+		    <td width="50%" class="text-center" style="font-size:4rem;color:blue;font-weight:bolder;">Use {Math.round(show_kelly)}% of cash for {ticker}</td>
 		    <td width="25%"><button class="text-white bg-dark pull-right" on:click={updateClipboard(show_kelly)}>Copy-Trade</button></td>
 		</tr>
 	</table>
