@@ -196,7 +196,7 @@ font-size:4rem !important;
 </div>
 	
 <div class="row card">
-	<h2> Given odds of future price moves, keep your "powder dry" on this trade</h2>
+	<h2> Given price odds, keep some "powder dry" </h2>
 	<table>
 		<tr>
 		    <td width="25%"><a style="color:#168ed7;font-size:2rem;" href="https://twitter.com/share?url={post_url}{ticker}&text={post_title}{ticker}&hashtags={ticker}" class="button fa fa-twitter pull-left"></a></td>
