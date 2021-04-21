@@ -151,7 +151,7 @@ font-size:4rem !important;
     {#if !$isAuthenticated}
         <Auth0LoginButton class="button text-center error is-full-width is-big" >Login to get Oracled</Auth0LoginButton>
     {:else}
-        {getMyRating($userInfo["email"]) || ""}
+        <!-- {getMyRating($userInfo["email"]) || ""} -->
     {/if}
   </Auth0Context>
 	
