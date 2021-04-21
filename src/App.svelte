@@ -204,16 +204,12 @@ font-size:4rem !important;
 		    <td width="25%"><button class="text-white bg-dark pull-right" on:click={updateClipboard(show_kelly)}>Copy-Trade</button></td>
 		</tr>
 	</table>
-	<div class="col-2"></div>
-	<div class="col-8">
 		<iframe width="100%" height=420 src="https://public.com/stocks/{ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
-	</div>
-	<div class="col-2"></div>
-{#if $isAuthenticated}
-	<Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
-	        <Auth0LogoutButton class="button text-center is-full-width is-big" >Logout if your work here is done</Auth0LogoutButton>
-	</Auth0Context>
-{/if}
+	{#if $isAuthenticated}
+		<Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
+			<Auth0LogoutButton class="button text-center is-full-width is-big" >Logout if your work here is done</Auth0LogoutButton>
+		</Auth0Context>
+	{/if}
 </div>
 	
 
