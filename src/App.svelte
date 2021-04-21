@@ -128,9 +128,7 @@ font-size:4rem !important;
 
   <Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
     {#if !$isAuthenticated}
-        <Auth0LoginButton class="button text-center error is-full-width is-big" >Login to get Oracled</Auth0LoginButton>
-    {:else}
-        <Auth0LogoutButton class="button text-center is-full-width is-big" >Logout, for now</Auth0LogoutButton>
+        <Auth0LoginButton class="button text-center error is-full-width is-big" >Login to get personal with the Oracled</Auth0LoginButton>
      {/if}
   </Auth0Context>
 
@@ -142,14 +140,14 @@ font-size:4rem !important;
     <div class="col-1"></div>
 </div>
 
-    <h1> 💎Oracle: Options & Social Outlook </h1>
+    <h1> 💎Oracle: Trade cash sizing given Options & Social outlook</h1>
 
 <div class="row card">
 <table>
 <thead>
   <tr>
     <th width="20%" ></th>
-    <th width="50%" class="text-center">Cash allocation for now Vs later</th>
+    <th width="50%" class="text-center">% of cash to trade now</th>
     <th width="30%" class="text-center is-large">1Wk Gain Odds</th>
   </tr>
 </thead>
@@ -182,25 +180,23 @@ font-size:4rem !important;
 </table>
 </div>
 
-<div class="row card">
-    <div class="col-2">
-    <a style="color:#168ed7;font-size:2rem;" href="https://twitter.com/share?url={post_url}{ticker}&text={post_title}{ticker}&hashtags={ticker}" class="button fa fa-twitter pull-left"></a>
-    </div>
-    <div class="col-8"><td class="text-center" style="font-size:4rem;color:blue;font-weight:bolder;">Cash alloc: {Math.round(show_kelly)}%</td></div>
-    <div class="col-2">
-    <button class="text-white bg-dark pull-right" on:click={updateClipboard(show_kelly)}>Copy-Trade</button>
-    </div>
-</div>
 	
 <div class="row card">
 	<table>
 		<tr>
 		    <td width="20%"><a style="color:#168ed7;font-size:2rem;" href="https://twitter.com/share?url={post_url}{ticker}&text={post_title}{ticker}&hashtags={ticker}" class="button fa fa-twitter pull-left"></a></td>
-		    <td width="50%" class="text-center" style="font-size:4rem;color:blue;font-weight:bolder;">Cash alloc: {Math.round(show_kelly)}%</td>
+		    <td width="50%" class="text-center" style="font-size:8rem;color:blue;font-weight:bolder;">Cash allocation: {Math.round(show_kelly)}%</td>
 		    <td width="30%"><button class="text-white bg-dark pull-right" on:click={updateClipboard(show_kelly)}>Copy-Trade</button></td>
 		</tr>
 	</table>
+	
+{#if $isAuthenticated}
+	<Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
+	        <Auth0LogoutButton class="button text-center is-full-width is-big" >Logout if your work here is done</Auth0LogoutButton>
+	</Auth0Context>
+{/if}
 </div>
+
 
 
 </body>
