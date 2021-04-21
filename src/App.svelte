@@ -15,6 +15,7 @@
     const newDate = await res.text();
     date = newDate;
     calculateKelly();
+
   });
   var my_kelly = [0];
   var show_kelly = [0];
@@ -42,6 +43,7 @@ function currencyFormat(num,decimals) {
   return num.toFixed(decimals).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 }
 function calculateKelly() {
+    
     my_kelly = "no";
     ticker = ticker.toUpperCase();
     fetch("https://www.insuremystock.com/options/kelly/"+ticker)
@@ -78,6 +80,7 @@ function calculateKelly() {
 
 }
 function updateClipboard(newClip) {
+    submitRatings(ticker,show_kelly[0])
   navigator.clipboard.writeText(newClip).then(function() {
     window.open("https://www.robinhood.com/stocks/"+ticker);
   }, function() {
@@ -85,8 +88,13 @@ function updateClipboard(newClip) {
   });
 }
 
-function submitRatings() {
-    fetch('https://www.insuremystock.com/stocks/setvotes/'+ticker+'/?user=anon@anon.com&ratings=1',
+function submitRatings(my_ticker,my_ratings) {
+    console.log($userInfo["email"]);
+    console.log(my_ticker);
+    console.log(my_ratings);
+    let put_url = 'https://www.insuremystock.com/stocks/setratings/'+my_ticker+'/?user='+$userInfo["email"]+'&ratings='+my_ratings;
+    console.log(put_url);
+    fetch(put_url,
     {
         method:"PUT",
         headers: {
@@ -94,7 +102,7 @@ function submitRatings() {
           },
         
     }).then(d => console.log(d.text()));
-	count += 1;
+	
 }
 
 let post_url = encodeURIComponent("https://social.oracled.com/?symbol=");
@@ -174,8 +182,15 @@ font-size:4rem !important;
 </table>
 </div>
 
-<a style="color:#168ed7;font-size:2rem;" href="https://twitter.com/share?url={post_url}{ticker}&text={post_title}{ticker}&hashtags={ticker}" class="button fa fa-twitter pull-left"></a>
-<button class="text-white bg-dark pull-right" on:click={updateClipboard(show_kelly)}>Copy-Trade</button>
+<div class="row card">
+    <div class="col-4">
+    <a style="color:#168ed7;font-size:2rem;" href="https://twitter.com/share?url={post_url}{ticker}&text={post_title}{ticker}&hashtags={ticker}" class="button fa fa-twitter pull-left"></a>
+    </div>
+    <div class="col-4"></div>
+    <div class="col-4">
+    <button class="text-white bg-dark pull-right" on:click={updateClipboard(show_kelly)}>Copy-Trade</button>
+    </div>
+</div>
 
 
 </body>
