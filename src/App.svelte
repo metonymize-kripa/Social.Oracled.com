@@ -173,10 +173,8 @@ font-size:4rem !important;
 </div>
 	
 <div class="row card">
+			<iframe width="100%" height=400 src="https://public.com/stocks/{ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
 	<table>
-		<tr>
-		<iframe width="100%" height=400 src="https://public.com/stocks/{ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
-		</tr>
 		<tr>
 		    <td width="20%"><a style="color:#168ed7;font-size:2rem;" href="https://twitter.com/share?url={post_url}{ticker}&text={post_title}{ticker}&hashtags={ticker}" class="button fa fa-twitter pull-left"></a></td>
 		    <td width="50%" class="text-center" style="font-size:4rem;color:blue;font-weight:bolder;">Cash allocation: {Math.round(show_kelly)}%</td>
