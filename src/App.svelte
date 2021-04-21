@@ -156,7 +156,7 @@ margin:1rem auto;
 </table>
 </div>
 
-<a style="color:#168ed7;font-size:2rem;" href="https://twitter.com/share?url={post_url}{ticker}&text={post_title}{ticker}&hashtags=fomo,oracled.com" class="button fa fa-twitter pull-left"></a>
+<a style="color:#168ed7;font-size:2rem;" href="https://twitter.com/share?url={post_url}{ticker}&text={post_title}{ticker}&hashtags={ticker}, fomo, public, robinhood" class="button fa fa-twitter pull-left"></a>
 <button class="text-white bg-dark pull-right" on:click={updateClipboard(show_kelly)}>Copy-Trade</button>
 
 
