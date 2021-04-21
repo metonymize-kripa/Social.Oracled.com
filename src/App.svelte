@@ -196,7 +196,7 @@ font-size:4rem !important;
 </div>
 	
 <div class="row card">
-	<h2> Given odds of future price moves, keep some "dry powder"</h2>
+	<h2> Given odds of future price moves, keep your "powder dry"</h2>
 	<table>
 		<tr>
 		    <td width="25%"><a style="color:#168ed7;font-size:2rem;" href="https://twitter.com/share?url={post_url}{ticker}&text={post_title}{ticker}&hashtags={ticker}" class="button fa fa-twitter pull-left"></a></td>
@@ -205,11 +205,11 @@ font-size:4rem !important;
 		</tr>
 	</table>
 		<iframe width="100%" height=420 src="https://public.com/stocks/{ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
-	{#if $isAuthenticated}
+
 		<Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
 			<Auth0LogoutButton class="button text-center is-full-width is-big" >Logout if your work here is done</Auth0LogoutButton>
 		</Auth0Context>
-	{/if}
+
 </div>
 	
 
