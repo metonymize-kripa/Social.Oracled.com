@@ -140,7 +140,7 @@ font-size:4rem !important;
     <div class="col-1"></div>
 </div>
 
-    <h1> 💎Oracle: Trade cash sizing given Options & Social outlook</h1>
+    <h1> 💎Oracle: Cash allocation given Options & Social outlook</h1>
 
 <div class="row card">
 <table>
@@ -185,7 +185,7 @@ font-size:4rem !important;
 	<table>
 		<tr>
 		    <td width="20%"><a style="color:#168ed7;font-size:2rem;" href="https://twitter.com/share?url={post_url}{ticker}&text={post_title}{ticker}&hashtags={ticker}" class="button fa fa-twitter pull-left"></a></td>
-		    <td width="50%" class="text-center" style="font-size:8rem;color:blue;font-weight:bolder;">Cash allocation: {Math.round(show_kelly)}%</td>
+		    <td width="50%" class="text-center" style="font-size:5rem;color:blue;font-weight:bolder;">Cash allocation: {Math.round(show_kelly)}%</td>
 		    <td width="30%"><button class="text-white bg-dark pull-right" on:click={updateClipboard(show_kelly)}>Copy-Trade</button></td>
 		</tr>
 	</table>
