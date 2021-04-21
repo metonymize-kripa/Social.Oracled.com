@@ -74,7 +74,7 @@ function updateClipboard(newClip) {
 }
 
 let post_url = encodeURIComponent("https://social.oracled.com/?symbol=");
-let post_title =  encodeURIComponent("Check it out: I just FOMO optimized ");
+let post_title =  encodeURIComponent("Social and options data made into actionable trade timing/size picks for ");
 </script>
 <style>
 body {
