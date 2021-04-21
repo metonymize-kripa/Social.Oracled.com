@@ -135,7 +135,7 @@ font-size:4rem !important;
 <h1> 💎Oracle: Trade sizing given Options & Social implied odds</h1>
 
 <div class="row card">
-    <iframe width="100%"  src="https://public.com/stocks/{ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
+    <iframe width="100%"  height=420 src="https://public.com/stocks/{ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
 </div>
 
 <div class="row card">
@@ -193,13 +193,6 @@ font-size:4rem !important;
 {/if}
 </div>
 	
-	<div class="row card">
-  <div class="col-1"></div>
-  <div class="col-10">
-    <iframe width="100%"  src="https://public.com/stocks/{ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
-  </div>
-    <div class="col-1"></div>
-</div>
-	
+
 
 </body>
