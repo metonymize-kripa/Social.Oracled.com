@@ -151,7 +151,7 @@ font-size:4rem !important;
     {#if !$isAuthenticated}
         <Auth0LoginButton class="button text-center error is-full-width is-big" >Login to get Oracled</Auth0LoginButton>
     {:else}
-        <!-- {getMyRating($userInfo["email"]) || ""} -->
+	{getMyRating($userInfo["email"]) || ""}
     {/if}
   </Auth0Context>
 	
@@ -207,11 +207,9 @@ font-size:4rem !important;
 		<iframe width="100%" height=420 src="https://public.com/stocks/{ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
 
 		<Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
-			<Auth0LogoutButton class="button text-center is-full-width is-big" >Logout if your work here is done</Auth0LogoutButton>
+			<Auth0LogoutButton class="button text-center is-full-width is-big" >Logout once your work here is done</Auth0LogoutButton>
 		</Auth0Context>
 
 </div>
 	
-
-
 </body>
