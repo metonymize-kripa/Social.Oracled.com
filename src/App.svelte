@@ -24,6 +24,7 @@
   let gain_chance=0;
   let ticker = 'TSLA';
   let varx = 0;
+  let new_ticker= 'TSLA';
 
 import {
   Auth0Context,
@@ -78,14 +79,22 @@ function calculateKelly() {
             }
             
         });
+    getMyRating($userInfo["email"]);
 
 
+
+}
+function changeTicker(){
+    ticker = new_ticker;
+    calculateKelly();
+    if ($isAuthenticated)
+	    getMyRating($userInfo["email"]);
 
 }
 
 function getMyRating(user_email){
     var my_url = 'https://www.insuremystock.com/stocks/getuserratings/'+ticker+'/?secret_key=Fat Neo&user_email='+user_email;
-    console.log(my_url);
+    console.log($userInfo);
     fetch(my_url)
         .then(d => d.text())
         .then(d =>
@@ -99,7 +108,6 @@ function getMyRating(user_email){
                 show_kelly = [(api_output.Rating)];
                 my_kelly = (api_output.Rating);
             }
-            
         });
 }
 function updateClipboard(newClip) {
@@ -136,11 +144,30 @@ body {
     padding:2rem;
 }
 .card{
-margin:1rem auto;
+    margin:1rem auto;
 }
-.button.primary{
-font-size:4rem !important;
+
+:global(.rangeSlider){
+
+    background-color:#e909ec !important;
 }
+
+:global(.rangeSlider.disabled){
+
+    background-color:#fe92ff !important;
+}
+
+
+:global(.rangeSlider.disabled .rangeNub ){
+     background-color:#6500c1 !important;
+}
+
+:global(.rangeSlider .rangeNub ){
+     background-color:#68328a !important;
+}
+
+
+
 </style>
 
 
@@ -148,14 +175,27 @@ font-size:4rem !important;
 
 
   <Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
+    <div class="row">
+        <div class="grouped col-7">
+            <div class="col-7 text-uppercase"> <input class="text-uppercase" bind:value={new_ticker} autofocus/></div>
+            <div class="col-5"><button class="button primary" on:click={changeTicker}> GO </button></div>
+        </div>
+
     {#if !$isAuthenticated}
-        <Auth0LoginButton class="button text-center error is-full-width is-big" >Login to get Oracled</Auth0LoginButton>
+        <div class="col-5">
+            <Auth0LoginButton class="button text-center error is-full-width is-big" >Login to get Oracled</Auth0LoginButton>
+        </div>        
     {:else}
+    <div class="col-2"></div>
+    <div class="col-3">
+         <span class="tag is-large">Welcome {$userInfo["nickname"]}</span>
+     </div>  
 	{getMyRating($userInfo["email"]) || ""}
     {/if}
+    </div>
   </Auth0Context>
 	
-<h1> 💎Oracle: Size {ticker} trade for Options & Social implied odds</h1>
+<h2> 💎Oracle: Size {ticker} trade for Options & Social implied odds</h2>
 
 <div class="row card">
 <table>
@@ -181,7 +221,7 @@ font-size:4rem !important;
      </tr>
    {#if $isAuthenticated}
      <tr>
-        <td width="20%"> <img src={$userInfo["picture"]} width="50" /> <br> {$userInfo["name"]}</td>
+        <td width="20%"> <img src={$userInfo["picture"]} width="50" /> <br> {$userInfo["nickname"]}</td>
         <td width="50%"><RangeSlider float pips all='label'  bind:values={show_kelly}  pipstep={10} min={-10} max={10} formatter={ v => moods[v+10] }/></td>
         <td width="30%" class="text-center" style="font-size:4rem;color:purple;">{Math.round(((3*show_kelly/100)+varx)*100/(1+varx))}%</td>
      </tr>
