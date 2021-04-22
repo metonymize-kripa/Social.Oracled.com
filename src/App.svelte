@@ -6,6 +6,7 @@
 
 <script>
   import { onMount } from "svelte";
+  import Router from "svelte-spa-router";
   import Avatar from "svelte-avatar";
   export let date;
   import RangeSlider from "svelte-range-slider-pips";	
