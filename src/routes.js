@@ -1,5 +1,5 @@
 // Import the wrap method
-import {wrap} from 'svelte-spa-router/wrap'
+import {wrap} from 'svelte-spa-router'
 
 // Components
 import Home from './routes/Home.svelte'
