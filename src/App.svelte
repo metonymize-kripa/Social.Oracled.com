@@ -7,9 +7,7 @@
 <script>
   import { onMount } from "svelte";
   import Avatar from "svelte-avatar";
-  import { Router, Link, Route } from "svelte-routing";
   export let date;
-  export let url = "";
   import RangeSlider from "svelte-range-slider-pips";	
   import {
 	  Auth0Context,
@@ -200,21 +198,17 @@ let post_title =  encodeURIComponent("Social and options data made into actionab
 {#if show_entry_card}
     <div class="card col-12 bg-light" >
       <header>
-        <h4>My favorites</h4>
+        <h3>Check Favorites</h3>
         {#each ticker_array_wsb as tx}
-            <button class="secondary button"  style="font:1.5rem;padding:1rem 0.8rem" on:click={e => new_ticker=tx}>{tx}</button>
-        {/each}
-        {#each ticker_array_gvip as tx}
             <button class="secondary button"  style="font:1.5rem;padding:1rem 0.8rem" on:click={e => new_ticker=tx}>{tx}</button>
         {/each}
       </header>
       <div class="row">
-	   <iframe width="90%" style="margin-left:5%" height=420 src="https://public.com/stocks/{new_ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
+	   <iframe width="100%" style="margin-left:5%" height=420 src="https://public.com/stocks/{new_ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
       </div>
       <div class="row">
-	  <div class="col-3">Trade to size:</div>
-          <div class="col-3 text-uppercase"> <input bind:value={new_ticker} autofocus/></div>
-	  <div class="col-3"><button class="button primary" on:click={changeTicker}> GO </button></div>
+          <div class="col-3 text-uppercase"> <input bind:value={new_ticker} /></div>
+	  <div class="col-3"><button class="button primary" on:click={changeTicker}> CLICK TO SIZE </button></div>
          <!--  <div class="col-6"> <input bind:value={portfolio_size}/></div> -->
       </div>
 
