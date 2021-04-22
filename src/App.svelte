@@ -155,7 +155,7 @@ font-size:4rem !important;
     {/if}
   </Auth0Context>
 	
-<h1> 💎Oracle: Trade sizing given Options & Social implied odds</h1>
+<h1> 💎Oracle: Size {ticker} trade for Options & Social implied odds</h1>
 
 <div class="row card">
 <table>
