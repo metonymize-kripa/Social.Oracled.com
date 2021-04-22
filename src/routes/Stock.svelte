@@ -30,6 +30,7 @@
     const res = await fetch("/api/date");
     const newDate = await res.text();
     date = newDate;
+    ticker = params.symbol;
     calculateKelly();
   });
   var my_kelly = [0];
@@ -45,7 +46,6 @@ function currencyFormat(num,decimals) {
 }
 	
 function calculateKelly() {
-    changeTicker(params.symbol)
     my_kelly = "no";
     ticker = ticker.toUpperCase();
     fetch("https://www.insuremystock.com/options/kelly/"+ticker)
@@ -82,9 +82,6 @@ function calculateKelly() {
    getMyRating($userInfo["email"]);
 }
 	
-function changeTicker(new_ticker){
-    ticker = new_ticker;
-}
 function getMyRating(user_email){
     var my_url = 'https://www.insuremystock.com/stocks/getuserratings/'+ticker+'/?secret_key=Fat Neo&user_email='+user_email;
     console.log($userInfo);
