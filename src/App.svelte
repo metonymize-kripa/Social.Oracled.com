@@ -7,6 +7,7 @@
 <script>
   import { onMount } from "svelte";
   import Router from "svelte-spa-router";
+  import {push, pop, replace} from 'svelte-spa-router'
   import routes from './routes'
   import Avatar from "svelte-avatar";
   export let date;
