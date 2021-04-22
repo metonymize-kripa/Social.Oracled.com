@@ -18,19 +18,20 @@ onMount(async () => {
     calculateKelly();
   });
 	
-function calculateKelly() {
-    ticker = params.symbol;
+function calculateKelly() { 
     ticker = ticker.toUpperCase();
     fetch("https://www.insuremystock.com/options/kelly/"+ticker)
         .then(d => d.text())
         .then(d =>
         {
-            api_output = JSON.parse(d);
-            console.log(api_output);
-            fat_kelly = (api_output.kelly_k*100);
-            gain_chance = Math.round(api_output.prob_up*100);
-            varx = api_output.prob_down_n/api_output.prob_up_n;
-            }
+            	api_output = JSON.parse(d);
+            	console.log(api_output);
+                show_kelly = [(api_output.kelly_k*100)];
+                my_kelly = (api_output.kelly_k);
+                friend_kelly = [(api_output.kelly_k*100-2)];
+                fat_kelly = [(api_output.kelly_k*100)];
+                gain_chance = Math.round(api_output.prob_up*100);
+                varx = api_output.prob_down_n/api_output.prob_up_n;
         });
 }
 
