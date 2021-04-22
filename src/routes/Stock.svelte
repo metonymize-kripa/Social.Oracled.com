@@ -32,7 +32,7 @@
     const res = await fetch("/api/date");
     const newDate = await res.text();
     date = newDate;
-    ticker = params.symbol
+    ticker = params.symbol;
     calculateKelly();
   });
   var my_kelly = [0];
