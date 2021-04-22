@@ -213,7 +213,7 @@ body {
   </tr>
 </thead>
   <tr>
-    <td width="20%" ><img src='https://avataaars.io/?avatarStyle=Circle&topType=ShortHairTheCaesarSidePart&accessoriesType=Kurt&hairColor=Brown&facialHairType=BeardMajestic&facialHairColor=BrownDark&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Angry&mouthType=Serious&skinColor=Pale'
+    <td width="20%" ><img src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairTheCaesarSidePart&accessoriesType=Kurt&hairColor=Brown&facialHairType=BeardMajestic&facialHairColor=BrownDark&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Angry&mouthType=Serious&skinColor=Pale'
                             width="50" /> <br> Fat Tony </td>
     <td width="50%"><RangeSlider float pips all='label' disabled={true} bind:values={fat_kelly}  pipstep={10} min={-10} max={10} formatter={ v => moods[v+10] }/></td>
     <td width="30%" class="text-center" style="font-size:4rem;color:purple;">{gain_chance}%</td>
@@ -224,13 +224,17 @@ body {
 <td width="20%" ><img src='https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraightStrand&accessoriesType=Round&hairColor=Platinum&facialHairType=Blank&clotheType=ShirtVNeck&clotheColor=Pink&eyeType=EyeRoll&eyebrowType=UnibrowNatural&mouthType=Twinkle&skinColor=Tanned'
                                 width="50" /><br> Friends </td>
 -->
-	<td width="20%" ><Avatar src='pals.png' width="50" height="50" /><br> Friends </td>
+	<td width="20%" ><img src='pals.png' width="50"/><br> Friends </td>
         <td width="50%"><RangeSlider float pips all='label' disabled={true}  bind:values={friend_kelly}  pipstep={10} min={-10} max={10} formatter={ v => moods[v+10] }/></td>
         <td width="30%" class="text-center" style="font-size:4rem;color:purple;">{Math.round(((3*friend_kelly[0]/100)+varx)*100/(1+varx))}%</td>
      </tr>
    {#if $isAuthenticated}
      <tr>
+	<td width="20%" ><img src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Prescription02&hairColor=BrownDark&facialHairType=Blank&clotheType=GraphicShirt&clotheColor=Red&graphicType=Diamond&eyeType=Surprised&eyebrowType=RaisedExcited&mouthType=Twinkle&skinColor=Light'
+                                width="50" /><br> {$userInfo["nickname"]} </td>
+<!--
         <td width="20%"> <img src={$userInfo["picture"]} width="50" /> <br> {$userInfo["nickname"]}</td>
+-->
         <td width="50%"><RangeSlider float pips all='label'  bind:values={show_kelly}  pipstep={10} min={-10} max={10} formatter={ v => moods[v+10] }/></td>
         <td width="30%" class="text-center" style="font-size:4rem;color:purple;">{Math.round(((3*show_kelly/100)+varx)*100/(1+varx))}%</td>
      </tr>
