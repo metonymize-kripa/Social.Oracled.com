@@ -15,9 +15,9 @@
 
 onMount(async () => {
     ticker = params.symbol;
-    calculateKelly();
+    //calculateKelly();
   });
-	
+/*	
 function calculateKelly() {
     my_kelly = "no";
     ticker = params.symbol;
@@ -37,6 +37,11 @@ function calculateKelly() {
                 varx = api_output.prob_down_n/api_output.prob_up_n;
             }
         });
+}
+*/
+function calculateKelly() {
+	ticker = "FORCED TICKER";
+	fat_kelly = 42;
 }
 	
 </script>
