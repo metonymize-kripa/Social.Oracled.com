@@ -47,6 +47,7 @@ function currencyFormat(num,decimals) {
 	
 function calculateKelly() {
     my_kelly = "no";
+    ticker = params.symbol;
     ticker = ticker.toUpperCase();
     fetch("https://www.insuremystock.com/options/kelly/"+ticker)
         .then(d => d.text())
@@ -83,6 +84,7 @@ function calculateKelly() {
 }
 	
 function getMyRating(user_email){
+    ticker = params.symbol;
     var my_url = 'https://www.insuremystock.com/stocks/getuserratings/'+ticker+'/?secret_key=Fat Neo&user_email='+user_email;
     console.log($userInfo);
     fetch(my_url)
@@ -102,7 +104,8 @@ function getMyRating(user_email){
 }
 	
 function updateClipboard(newClip) {
-    submitRatings(ticker,show_kelly[0])
+  ticker = params.symbol;
+  submitRatings(ticker,show_kelly[0])
   navigator.clipboard.writeText(newClip).then(function() {
     window.open("https://www.robinhood.com/stocks/"+ticker);
   }, function() {
@@ -110,6 +113,7 @@ function updateClipboard(newClip) {
   });
 }
 function shareWith() {
+    ticker = params.symbol;
     submitRatings(ticker,show_kelly[0]);
     window.open("https://twitter.com/share?url="+post_url+ticker+"&text="+post_title+ticker+"&hashtags="+ticker);
 }
