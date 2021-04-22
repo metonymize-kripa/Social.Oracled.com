@@ -180,6 +180,8 @@ let post_title =  encodeURIComponent("Social and options data made into actionab
     Your route is:
     <b>{params.symbol}</b>
     <b>{#if params.cmd}{params.cmd}{/if}</b>
+	
+	<b>ticker:{ticker}, fatkelly:{fat_kelly}</b>
 </p>
     
 	<div class="row card">
