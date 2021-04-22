@@ -119,6 +119,11 @@ function updateClipboard(newClip) {
   });
 }
 
+function shareWith() {
+    submitRatings(ticker,show_kelly[0])
+    window.open("https://twitter.com/share?url="+post_url+ticker+"&text="+post_title+ticker+"&hashtags="+ticker);
+}
+
 function submitRatings(my_ticker,my_ratings) {
 
     let put_url = 'https://www.insuremystock.com/stocks/setratings/'+my_ticker+'/?secret_key=Fat Neo&user='+$userInfo["email"]+'&ratings='+my_ratings;
@@ -236,15 +241,15 @@ body {
 </div>
 	
 <div class="row card">
-	<h2> Given {ticker} pricing odds, keep some tradeable cash for later</h2>
+	<h3 > Given {ticker} pricing odds, keep some tradeable cash for later</h3>
 	<table>
 		<tr>
-		    <td width="25%"><a style="color:#168ed7;font-size:2rem;" href="https://twitter.com/share?url={post_url}{ticker}&text={post_title}{ticker}&hashtags={ticker}" class="button fa fa-twitter pull-left"></a></td>
+		    <td width="25%"><button class="fa is-full-width  fa-twitter pull-left bg-dark text-white "> &nbsp;&nbsp; Share</td>
 		    <td width="50%" class="text-center" style="font-size:4rem;color:blue;font-weight:bolder;">Use {Math.round(show_kelly)}% now</td>
-		    <td width="25%"><button class="text-white bg-dark pull-right" on:click={updateClipboard(show_kelly)}>Copy-Trade</button></td>
+		    <td width="25%"><button class="text-white is-full-width  bg-dark pull-right" on:click={updateClipboard(show_kelly)}>Copy-Trade</button></td>
 		</tr>
 	</table>
-		<iframe width="100%" height=420 src="https://public.com/stocks/{ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
+		<iframe width="90%" style="margin-left:5%" height=420 src="https://public.com/stocks/{ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
 
 		<Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
 			<Auth0LogoutButton class="button text-center is-full-width is-big" >Logout once your work here is done</Auth0LogoutButton>
