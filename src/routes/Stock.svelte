@@ -26,13 +26,12 @@
   let api_output ={};
 	
   let show_entry_card = false;
-  let ticker = 'TSLA';
+  let ticker_array = ['GME ','AMC ','SPY ','PLTR', 'MELI','TWTR','IAC ','TSLA']
   const moods = ["Sell","😫","😫","😫","😥","Weak","😥","😐","😐","😐","Hold","😐","😀","😀","😀","Meh","😀","😁","😁","😁","Buy"];
   onMount(async () => {
     const res = await fetch("/api/date");
     const newDate = await res.text();
     date = newDate;
-    ticker = params.symbol;
     calculateKelly();
   });
   var my_kelly = [0];
@@ -40,8 +39,9 @@
   var fat_kelly = [0];
   var friend_kelly = [0];
   let gain_chance=0;
-
+  let ticker = 'TSLA';
   let varx = 0;
+  let new_ticker= 'TSLA';
 function currencyFormat(num,decimals) {
   return num.toFixed(decimals).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 }
@@ -84,6 +84,13 @@ function calculateKelly() {
     getMyRating($userInfo["email"]);
 }
 	
+function changeTicker(){
+    ticker = new_ticker;
+    calculateKelly();
+    if ($isAuthenticated)
+	    getMyRating($userInfo["email"]);
+    show_entry_card = false;
+}
 function getMyRating(user_email){
     var my_url = 'https://www.insuremystock.com/stocks/getuserratings/'+ticker+'/?secret_key=Fat Neo&user_email='+user_email;
     console.log($userInfo);
