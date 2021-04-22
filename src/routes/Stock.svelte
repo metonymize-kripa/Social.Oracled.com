@@ -84,12 +84,8 @@ function calculateKelly() {
     getMyRating($userInfo["email"]);
 }
 	
-function changeTicker(){
+function changeTicker(new_ticker){
     ticker = new_ticker;
-    calculateKelly();
-    if ($isAuthenticated)
-	    getMyRating($userInfo["email"]);
-    show_entry_card = false;
 }
 function getMyRating(user_email){
     var my_url = 'https://www.insuremystock.com/stocks/getuserratings/'+ticker+'/?secret_key=Fat Neo&user_email='+user_email;
@@ -108,6 +104,7 @@ function getMyRating(user_email){
                 my_kelly = (api_output.Rating);
             }
         });
+	changeTicker(params.symbol)
 }
 	
 function updateClipboard(newClip) {
