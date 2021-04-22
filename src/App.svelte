@@ -95,7 +95,7 @@ function changeTicker(){
     calculateKelly();
     if ($isAuthenticated)
 	    getMyRating($userInfo["email"]);
-
+    show_entry_card = false;
 }
 
 function getMyRating(user_email){
@@ -181,6 +181,23 @@ body {
 
 
 <body>
+
+<h1>💎Oracle, How much should I buy?</h1>
+  <Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
+    <div class="row">
+    {#if !$isAuthenticated}
+        <div class="col-5">
+            <Auth0LoginButton class="button text-center error is-full-width is-big" >Login to get Oracled</Auth0LoginButton>
+        </div>        
+    {:else}
+    <div class="col-2"></div>
+    <div class="col-3 hide-xs">
+         <span class="tag is-large">Welcome {$userInfo["nickname"]}</span>
+     </div>  
+	{getMyRating($userInfo["email"]) || ""}
+    {/if}
+    </div>
+  </Auth0Context>
 	
 {#if show_entry_card}
     <div class="card col-8 bg-light" >
@@ -204,24 +221,7 @@ body {
          <!--  <div class="col-6"> <input bind:value={portfolio_size}/></div> -->
       </div>
     </div>
-{/if}
-
-  <Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
-    <div class="row">
-    {#if !$isAuthenticated}
-	    <h1>💎Oracle, How much should I buy?</h1>
-        <div class="col-5">
-            <Auth0LoginButton class="button text-center error is-full-width is-big" >Login to get Oracled</Auth0LoginButton>
-        </div>        
-    {:else}
-    <div class="col-2"><h1>💎Oracle, How much should I buy?</h1></div>
-    <div class="col-3 hide-xs">
-         <span class="tag is-large">Welcome {$userInfo["nickname"]}</span>
-     </div>  
-	{getMyRating($userInfo["email"]) || ""}
-    {/if}
-    </div>
-  </Auth0Context>
+{:else}
 	
 <h3> Size {ticker} trade for Options & Social implied odds</h3>
 
@@ -286,5 +286,6 @@ body {
 		</Auth0Context>
 
 </div>
+{/if}
 	
 </body>
