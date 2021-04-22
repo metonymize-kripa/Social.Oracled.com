@@ -9,7 +9,9 @@ export default {
     '/': Home,
 
     // Using named parameters, with last being optional
-    '/stock/:symbol/:cmd?': Stock,
+    '/stock/:symbol/:cmd?': wrap({
+        asyncComponent: () => import('./routes/Stock.svelte')
+    }),
 
     // Catch-all, must be last
     '*': NotFound,
