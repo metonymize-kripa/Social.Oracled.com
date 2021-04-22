@@ -219,8 +219,11 @@ body {
   </tr>
   
      <tr>
-        <td width="20%" ><img src='https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraightStrand&accessoriesType=Round&hairColor=Platinum&facialHairType=Blank&clotheType=ShirtVNeck&clotheColor=Pink&eyeType=EyeRoll&eyebrowType=UnibrowNatural&mouthType=Twinkle&skinColor=Tanned'
+ <!--
+<td width="20%" ><img src='https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraightStrand&accessoriesType=Round&hairColor=Platinum&facialHairType=Blank&clotheType=ShirtVNeck&clotheColor=Pink&eyeType=EyeRoll&eyebrowType=UnibrowNatural&mouthType=Twinkle&skinColor=Tanned'
                                 width="50" /><br> Friends </td>
+-->
+	<td width="20%" ><img src='pals.png', width="50" /><br> Friends </td>
         <td width="50%"><RangeSlider float pips all='label' disabled={true}  bind:values={friend_kelly}  pipstep={10} min={-10} max={10} formatter={ v => moods[v+10] }/></td>
         <td width="30%" class="text-center" style="font-size:4rem;color:purple;">{Math.round(((3*friend_kelly[0]/100)+varx)*100/(1+varx))}%</td>
      </tr>
