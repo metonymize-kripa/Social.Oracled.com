@@ -44,7 +44,8 @@ function currencyFormat(num,decimals) {
   return num.toFixed(decimals).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 }
 	
-function calculateKelly() { 
+function calculateKelly() {
+    changeTicker(params.symbol)
     my_kelly = "no";
     ticker = ticker.toUpperCase();
     fetch("https://www.insuremystock.com/options/kelly/"+ticker)
@@ -77,9 +78,8 @@ function calculateKelly() {
             {
                 friend_kelly = [api_output.Rating];
             }
-            
         });
-    getMyRating($userInfo["email"]);
+   getMyRating($userInfo["email"]);
 }
 	
 function changeTicker(new_ticker){
@@ -102,7 +102,6 @@ function getMyRating(user_email){
                 my_kelly = (api_output.Rating);
             }
         });
-	changeTicker(params.symbol)
 }
 	
 function updateClipboard(newClip) {
