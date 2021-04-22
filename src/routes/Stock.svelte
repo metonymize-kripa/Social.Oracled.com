@@ -25,8 +25,6 @@
   let api_output ={};
   export let params = {}
 	
-  let show_entry_card = false;
-  let ticker_array = ['GME ','AMC ','SPY ','PLTR', 'MELI','TWTR','IAC ','TSLA']
   const moods = ["Sell","😫","😫","😫","😥","Weak","😥","😐","😐","😐","Hold","😐","😀","😀","😀","Meh","😀","😁","😁","😁","Buy"];
 	
   onMount(async () => {
@@ -95,13 +93,6 @@ function calculateKelly() {
     getMyRating($userInfo["email"]);
 }
 	
-function changeTicker(){
-    ticker = new_ticker;
-    calculateKelly();
-    if ($isAuthenticated)
-	    getMyRating($userInfo["email"]);
-    show_entry_card = false;
-}
 function getMyRating(user_email){
     var my_url = 'https://www.insuremystock.com/stocks/getuserratings/'+ticker+'/?secret_key=Fat Neo&user_email='+user_email;
     console.log($userInfo);
@@ -202,27 +193,6 @@ let post_title =  encodeURIComponent("Social and options data made into actionab
 </p>
 	
 <button on:click={() => calculateKelly()}>Force calculate kelly</button>
-	
-{#if show_entry_card}
-    <div class="card col-12 bg-light" >
-      <header>
-        <h3>Check Favorites</h3>
-        {#each ticker_array as tx}
-            <button class="secondary button"  style="font:1.5rem;padding:1rem 0.8rem" on:click={e => new_ticker=tx}>{tx}</button>
-        {/each}
-      </header>
-      <div class="row">
-	   <iframe width="80%" style="margin-left:5%" height=420 src="https://public.com/stocks/{new_ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
-      </div>
-      <div class="row">
-          <div class="col-3 text-uppercase"> <input bind:value={new_ticker} /></div>
-	  <div class="col-3"><button class="button primary" on:click={changeTicker}> CLICK TO SIZE </button></div>
-         <!--  <div class="col-6"> <input bind:value={portfolio_size}/></div> -->
-      </div>
-
-    </div>
-
-{:else}
 
 	<div class="row card">
 	<h3> Sizing {ticker} trade using Options & Social data implied odds</h3>
@@ -278,9 +248,7 @@ let post_title =  encodeURIComponent("Social and options data made into actionab
 				<Auth0LogoutButton class="button text-center is-full-width is-big" >Logout once your work here is done</Auth0LogoutButton>
 			</Auth0Context>
 	</div>
-	
-{/if}
-	
+
 </body>
 
 
