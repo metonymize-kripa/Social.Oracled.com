@@ -216,6 +216,9 @@ let post_title =  encodeURIComponent("Social and options data made into actionab
 	  <div class="col-5"><button class="button primary" on:click={changeTicker}> GO </button></div>
          <!--  <div class="col-6"> <input bind:value={portfolio_size}/></div> -->
       </div>
+      <div class="row">
+	   <iframe width="90%" style="margin-left:5%" height=420 src="https://public.com/stocks/{ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
+      </div>
     </div>
 
 {:else}
@@ -270,7 +273,6 @@ let post_title =  encodeURIComponent("Social and options data made into actionab
 			    <td width="15%"><button class="text-white  bg-dark pull-right" on:click={shareWith}>Copy-Trade</button></td>
 			</tr>
 		</table>
-			<iframe width="90%" style="margin-left:5%" height=420 src="https://public.com/stocks/{ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
 			<Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
 				<Auth0LogoutButton class="button text-center is-full-width is-big" >Logout once your work here is done</Auth0LogoutButton>
 			</Auth0Context>
