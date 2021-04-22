@@ -15,7 +15,7 @@
 
 onMount(async () => {
     ticker = params.symbol;
-    //calculateKelly();
+    calculateKelly();
   });
 /*	
 function calculateKelly() {
