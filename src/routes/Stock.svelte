@@ -17,7 +17,7 @@ onMount(async () => {
     ticker = params.symbol;
     calculateKelly();
   });
-/*	
+	
 function calculateKelly() {
     my_kelly = "no";
     ticker = params.symbol;
@@ -38,11 +38,13 @@ function calculateKelly() {
             }
         });
 }
-*/
+
+/*
 function calculateKelly() {
 	ticker = "FORCED TICKER";
 	fat_kelly = 42;
 }
+*/
 	
 </script>
 
@@ -57,7 +59,7 @@ function calculateKelly() {
     <b>{#if params.cmd}{params.cmd}{/if}</b>
 	<br>
 	
-	<b>stored ticker is :{ticker}, calculated fatkelly is:{fat_kelly}</b>
+	<b>stored ticker is :{ticker}, calculated fatkelly is:{fat_kelly}, apioutput:{api_output}</b>
 </p>
 	
 <button on:click={() => calculateKelly()}>Force calculate kelly</button>
