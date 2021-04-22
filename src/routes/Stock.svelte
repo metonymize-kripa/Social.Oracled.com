@@ -25,8 +25,6 @@
   export let params = {}
   let api_output ={};
 	
-  let show_entry_card = false;
-  let ticker_array = ['GME ','AMC ','SPY ','PLTR', 'MELI','TWTR','IAC ','TSLA']
   const moods = ["Sell","😫","😫","😫","😥","Weak","😥","😐","😐","😐","Hold","😐","😀","😀","😀","Meh","😀","😁","😁","😁","Buy"];
   onMount(async () => {
     const res = await fetch("/api/date");
@@ -41,7 +39,7 @@
   let gain_chance=0;
   let ticker = 'TSLA';
   let varx = 0;
-  let new_ticker= 'TSLA';
+	
 function currencyFormat(num,decimals) {
   return num.toFixed(decimals).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 }
@@ -184,27 +182,6 @@ let post_title =  encodeURIComponent("Social and options data made into actionab
     <b>{#if params.cmd}{params.cmd}{/if}</b>
 </p>
     
-{#if show_entry_card}
-    <div class="card col-12 bg-light" >
-      <header>
-        <h3>Check Favorites</h3>
-        {#each ticker_array as tx}
-            <button class="secondary button"  style="font:1.5rem;padding:1rem 0.8rem" on:click={e => new_ticker=tx}>{tx}</button>
-        {/each}
-      </header>
-      <div class="row">
-	   <iframe width="80%" style="margin-left:5%" height=420 src="https://public.com/stocks/{new_ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
-      </div>
-      <div class="row">
-          <div class="col-3 text-uppercase"> <input bind:value={new_ticker} /></div>
-	  <div class="col-3"><button class="button primary" on:click={changeTicker}> CLICK TO SIZE </button></div>
-         <!--  <div class="col-6"> <input bind:value={portfolio_size}/></div> -->
-      </div>
-
-    </div>
-
-{:else}
-
 	<div class="row card">
 	<h3> Sizing {ticker} trade using Options & Social data implied odds</h3>
 	<table>
@@ -260,6 +237,5 @@ let post_title =  encodeURIComponent("Social and options data made into actionab
 			</Auth0Context>
 	</div>
 	
-{/if}
 	
 </body>
