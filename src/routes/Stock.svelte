@@ -26,9 +26,6 @@ function calculateKelly() {
         {
             	api_output = JSON.parse(d);
             	console.log(api_output);
-                show_kelly = [(api_output.kelly_k*100)];
-                my_kelly = (api_output.kelly_k);
-                friend_kelly = [(api_output.kelly_k*100-2)];
                 fat_kelly = [(api_output.kelly_k*100)];
                 gain_chance = Math.round(api_output.prob_up*100);
                 varx = api_output.prob_down_n/api_output.prob_up_n;
