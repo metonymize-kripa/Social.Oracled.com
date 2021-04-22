@@ -7,6 +7,7 @@
 <script>
   import { onMount } from "svelte";
   import Avatar from "svelte-avatar";
+  import { Router, Link, Route } from "svelte-routing";
   export let date;
   import RangeSlider from "svelte-range-slider-pips";	
   import {
@@ -217,7 +218,7 @@ let post_title =  encodeURIComponent("Social and options data made into actionab
          <!--  <div class="col-6"> <input bind:value={portfolio_size}/></div> -->
       </div>
       <div class="row">
-	   <iframe width="90%" style="margin-left:5%" height=420 src="https://public.com/stocks/{ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
+	   <iframe width="90%" style="margin-left:5%" height=420 src="https://public.com/stocks/{new_ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
       </div>
     </div>
 
