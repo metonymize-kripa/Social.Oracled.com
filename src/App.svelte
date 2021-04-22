@@ -1,4 +1,5 @@
 <svelte:head>
+	<title>Social traders, Level up</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://unpkg.com/chota@latest">
 </svelte:head>
@@ -8,6 +9,10 @@
   export let date;
   import RangeSlider from "svelte-range-slider-pips";
   let api_output ={};
+	
+  let show_entry_card = true;
+  let ticker_array_wsb = ['GME ','AMC ','SPY ','PLTR']
+  let ticker_array_gvip = ['MELI','TWTR','IAC ','TSLA']
 
   const moods = ["Sell","😫","😫","😫","😥","Weak","😥","😐","😐","😐","Hold","😐","😀","😀","😀","Meh","😀","😁","😁","😁","Buy"];
 
@@ -172,13 +177,35 @@ body {
      background-color:#68328a !important;
 }
 
-
-
 </style>
 
 
 <body>
 
+<h1>💎Oracle, How much should I buy?</h1>
+	
+{#if show_entry_card}
+    <div class="card col-8 bg-light" >
+      <header>
+        <h4>Select from popular stock</h4>
+        {#each ticker_array_wsb as tx}
+            <button class="secondary button"  style="font:1.5rem;padding:1rem 0.8rem" on:click={e => new_ticker=tx}>{tx}</button>
+        {/each}
+        <br>
+        {#each ticker_array_gvip as tx}
+            <button class="secondary button"  style="font:1.5rem;padding:1rem 0.8rem" on:click={e => new_ticker=tx}>{tx}</button>
+        {/each}
+      </header>
+      <div class="row">
+          <div class="col-6"> Or enter symbol:</div>
+         <!-- <div class="col-6"> Your portfolio size:</div> -->
+      </div>
+      <div class="row">
+          <div class="col-6"> <input bind:value={new_ticker}/></div>
+         <!--  <div class="col-6"> <input bind:value={portfolio_size}/></div> -->
+      </div>
+    </div>
+{/if}
 
   <Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
     <div class="row">
@@ -201,7 +228,7 @@ body {
     </div>
   </Auth0Context>
 	
-<h3> 💎Oracle: Size {ticker} trade for Options & Social implied odds</h3>
+<h3> Size {ticker} trade for Options & Social implied odds</h3>
 
 <div class="row card">
 <table>
