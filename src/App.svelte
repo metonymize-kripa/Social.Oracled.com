@@ -9,6 +9,7 @@
   import Avatar from "svelte-avatar";
   import { Router, Link, Route } from "svelte-routing";
   export let date;
+  export let url = "";
   import RangeSlider from "svelte-range-slider-pips";	
   import {
 	  Auth0Context,
@@ -203,23 +204,19 @@ let post_title =  encodeURIComponent("Social and options data made into actionab
         {#each ticker_array_wsb as tx}
             <button class="secondary button"  style="font:1.5rem;padding:1rem 0.8rem" on:click={e => new_ticker=tx}>{tx}</button>
         {/each}
-        <br>
         {#each ticker_array_gvip as tx}
             <button class="secondary button"  style="font:1.5rem;padding:1rem 0.8rem" on:click={e => new_ticker=tx}>{tx}</button>
         {/each}
       </header>
       <div class="row">
-          <div class="col-6"> Or enter symbol:</div>
-         <!-- <div class="col-6"> Your portfolio size:</div> -->
-      </div>
-      <div class="row">
-          <div class="col-7 text-uppercase"> <input bind:value={new_ticker} autofocus/></div>
-	  <div class="col-5"><button class="button primary" on:click={changeTicker}> GO </button></div>
-         <!--  <div class="col-6"> <input bind:value={portfolio_size}/></div> -->
-      </div>
-      <div class="row">
 	   <iframe width="90%" style="margin-left:5%" height=420 src="https://public.com/stocks/{new_ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
       </div>
+      <div class="row">
+          <div class="col-3 text-uppercase"> <input bind:value={new_ticker} autofocus/></div>
+	  <div class="col-3"><button class="button primary" on:click={changeTicker}> GO </button></div>
+         <!--  <div class="col-6"> <input bind:value={portfolio_size}/></div> -->
+      </div>
+
     </div>
 
 {:else}
