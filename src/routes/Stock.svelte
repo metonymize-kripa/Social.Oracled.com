@@ -33,7 +33,6 @@
     const res = await fetch("/api/date");
     const newDate = await res.text();
     date = newDate;
-    ticker = params.symbol;
     calculateKelly();
   });
 	
@@ -58,6 +57,7 @@ function currencyFormat(num,decimals) {
 }
 	
 function calculateKelly() { 
+    ticker = params.symbol;
     my_kelly = "no";
     ticker = ticker.toUpperCase();
     fetch("https://www.insuremystock.com/options/kelly/"+ticker)
