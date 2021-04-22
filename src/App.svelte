@@ -194,6 +194,8 @@ let post_title =  encodeURIComponent("Social and options data made into actionab
 	    {/if}
     </div>
   </Auth0Context>
+
+<Router {routes}/>
 	
 {#if show_entry_card}
     <div class="card col-12 bg-light" >
