@@ -55,4 +55,6 @@ function calculateKelly() {
 	<b>stored ticker is :{ticker}, calculated fatkelly is:{fat_kelly}</b>
 </p>
 	
+<button on:click={() => calculateKelly()}>Force calculate kelly</button>
+	
 </body>
