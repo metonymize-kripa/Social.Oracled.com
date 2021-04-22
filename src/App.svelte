@@ -26,8 +26,7 @@
   let api_output ={};
 	
   let show_entry_card = true;
-  let ticker_array_wsb = ['GME ','AMC ','SPY ','PLTR']
-  let ticker_array_gvip = ['MELI','TWTR','IAC ','TSLA']
+  let ticker_array = ['GME ','AMC ','SPY ','PLTR', 'MELI','TWTR','IAC ','TSLA']
 
   const moods = ["Sell","😫","😫","😫","😥","Weak","😥","😐","😐","😐","Hold","😐","😀","😀","😀","Meh","😀","😁","😁","😁","Buy"];
 
@@ -199,12 +198,12 @@ let post_title =  encodeURIComponent("Social and options data made into actionab
     <div class="card col-12 bg-light" >
       <header>
         <h3>Check Favorites</h3>
-        {#each ticker_array_wsb as tx}
+        {#each ticker_array as tx}
             <button class="secondary button"  style="font:1.5rem;padding:1rem 0.8rem" on:click={e => new_ticker=tx}>{tx}</button>
         {/each}
       </header>
       <div class="row">
-	   <iframe width="100%" style="margin-left:5%" height=420 src="https://public.com/stocks/{new_ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
+	   <iframe width="80%" style="margin-left:5%" height=420 src="https://public.com/stocks/{new_ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
       </div>
       <div class="row">
           <div class="col-3 text-uppercase"> <input bind:value={new_ticker} /></div>
