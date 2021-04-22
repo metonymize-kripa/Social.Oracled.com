@@ -169,7 +169,6 @@ let post_title =  encodeURIComponent("Social and options data made into actionab
 		    <div class="col-3 hide-xs">
 			 <span class="tag is-large">Welcome {$userInfo["nickname"]}</span>
 		     </div>  
-			{getMyRating($userInfo["email"]) || ""}
 	    {/if}
     </div>
   </Auth0Context>
