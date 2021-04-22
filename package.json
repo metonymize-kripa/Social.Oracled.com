@@ -17,7 +17,7 @@
     "svelte": "^3.0.0",
     "svelte-range-slider-pips": "^1.7.0",
     "svelte-avatar": "^1.1.1",
-    "svelte-routing": "^1.6.0"
+    "svelte-spa-router": "^3.1.0"
   },
   "dependencies": {
     "chota": "^0.8.0",
