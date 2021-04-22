@@ -200,7 +200,7 @@ let post_title =  encodeURIComponent("Social and options data made into actionab
 {#if show_entry_card}
     <div class="card col-12 bg-light" >
       <header>
-        <h4>Select from popular stock</h4>
+        <h4>My favorites</h4>
         {#each ticker_array_wsb as tx}
             <button class="secondary button"  style="font:1.5rem;padding:1rem 0.8rem" on:click={e => new_ticker=tx}>{tx}</button>
         {/each}
@@ -212,6 +212,7 @@ let post_title =  encodeURIComponent("Social and options data made into actionab
 	   <iframe width="90%" style="margin-left:5%" height=420 src="https://public.com/stocks/{new_ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
       </div>
       <div class="row">
+	  <div class="col-3">Trade to size:</div>
           <div class="col-3 text-uppercase"> <input bind:value={new_ticker} autofocus/></div>
 	  <div class="col-3"><button class="button primary" on:click={changeTicker}> GO </button></div>
          <!--  <div class="col-6"> <input bind:value={portfolio_size}/></div> -->
