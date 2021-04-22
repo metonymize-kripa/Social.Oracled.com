@@ -181,8 +181,6 @@ body {
 
 
 <body>
-
-<h1>💎Oracle, How much should I buy?</h1>
 	
 {#if show_entry_card}
     <div class="card col-8 bg-light" >
@@ -201,7 +199,8 @@ body {
          <!-- <div class="col-6"> Your portfolio size:</div> -->
       </div>
       <div class="row">
-          <div class="col-6"> <input bind:value={new_ticker}/></div>
+          <div class="col-7 text-uppercase"> <input bind:value={new_ticker} autofocus/></div>
+	  <div class="col-5"><button class="button primary" on:click={changeTicker}> GO </button></div>
          <!--  <div class="col-6"> <input bind:value={portfolio_size}/></div> -->
       </div>
     </div>
@@ -209,17 +208,13 @@ body {
 
   <Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
     <div class="row">
-        <div class="grouped col-7">
-            <div class="col-7 text-uppercase"> <input class="text-uppercase" bind:value={new_ticker} autofocus/></div>
-            <div class="col-5"><button class="button primary" on:click={changeTicker}> GO </button></div>
-        </div>
-
     {#if !$isAuthenticated}
+	    <h1>💎Oracle, How much should I buy?</h1>
         <div class="col-5">
             <Auth0LoginButton class="button text-center error is-full-width is-big" >Login to get Oracled</Auth0LoginButton>
         </div>        
     {:else}
-    <div class="col-2"></div>
+    <div class="col-2"><h1>💎Oracle, How much should I buy?</h1></div>
     <div class="col-3 hide-xs">
          <span class="tag is-large">Welcome {$userInfo["nickname"]}</span>
      </div>  
