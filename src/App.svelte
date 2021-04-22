@@ -120,7 +120,7 @@ function updateClipboard(newClip) {
 }
 
 function shareWith() {
-    submitRatings(ticker,show_kelly[0])
+    submitRatings(ticker,show_kelly[0]);
     window.open("https://twitter.com/share?url="+post_url+ticker+"&text="+post_title+ticker+"&hashtags="+ticker);
 }
 
@@ -246,7 +246,7 @@ body {
 		<tr>
 		    <td width="25%"><button class="fa is-full-width  fa-twitter pull-left bg-dark text-white" on:click={updateClipboard(show_kelly)}> &nbsp;&nbsp; Share</td>
 		    <td width="50%" class="text-center" style="font-size:4rem;color:blue;font-weight:bolder;">Use {Math.round(show_kelly)}% now</td>
-		    <td width="25%"><button class="text-white is-full-width  bg-dark pull-right" on:click={shareWith()}>Copy-Trade</button></td>
+		    <td width="25%"><button class="text-white is-full-width  bg-dark pull-right" on:click={shareWith}>Copy-Trade</button></td>
 		</tr>
 	</table>
 		<iframe width="90%" style="margin-left:5%" height=420 src="https://public.com/stocks/{ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
