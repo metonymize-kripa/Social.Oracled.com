@@ -125,6 +125,7 @@ function updateClipboard(newClip) {
   });
 }
 function shareWith() {
+    console.log(ticker);
     submitRatings(ticker,my_kelly[0]);
     window.open("https://twitter.com/share?url="+post_url+ticker+"&text="+post_title+ticker+"&hashtags="+ticker);
 }

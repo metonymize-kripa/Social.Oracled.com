@@ -26,7 +26,7 @@
   let friend_output={};
 
   let show_entry_card = true;
-  let ticker_array = ['GME ','AMC ','SPY ','PLTR', 'MELI','TWTR','IAC ','TSLA']
+  let ticker_array = ['GME','AMC','SPY','PLTR', 'MELI','TWTR','IAC','TSLA']
   const moods = ["Sell","😫","😫","😫","😥","Weak","😥","😐","😐","😐","Hold","😐","😀","😀","😀","Meh","😀","😁","😁","😁","Buy"];
   onMount(async () => {
     //const res = await fetch("/api/date");
@@ -114,7 +114,7 @@ show_entry_card = true;
 }
 
 function getMyRating(user_email){
-    var my_url = 'https://www.insuremystock.com/stocks/getuserratings/'+ticker+'/?secret_key=Fat Neo&user_email='+user_email;
+    var my_url = 'https://www.insuremystock.com/stocks/getuserratings/'+tickerreplace(/\s/g, '')+'/?secret_key=Fat Neo&user_email='+user_email;
     my_kelly = [0];
 
     fetch(my_url)
@@ -154,7 +154,8 @@ function calculateGains(kelly,varx)
 
 function submitRatings(my_ticker,my_ratings) {
 
-    let put_url = 'https://www.insuremystock.com/stocks/setratings/'+my_ticker+'/?secret_key=Fat Neo&user='+$userInfo["email"]+'&ratings='+my_ratings;
+    let put_url = "https://www.insuremystock.com/stocks/setratings/"+my_ticker+"/?secret_key=Fat Neo&user="+$userInfo["email"]+"&ratings="+my_ratings;
+    console.log(put_url);
 
     fetch(put_url,
     {
