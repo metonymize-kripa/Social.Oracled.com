@@ -217,7 +217,7 @@ let post_title =  encodeURIComponent("Social and options data made into actionab
         <div class="col-8 " >
             <h3>Check Favorites</h3>
             {#each ticker_array as tx}
-                <button class="secondary button"  style="font:1rem;padding:0.8rem; margin:0.2rem;" on:click={e => new_ticker=tx}>{tx}</button>
+                <button class="button"  style="font:1rem;padding:0.8rem; margin:0.2rem; background:#351eb5;color:white;" on:click={e => new_ticker=tx}>{tx}</button>
             {/each}
         </div>
         <div class="col-4" >
@@ -226,7 +226,7 @@ let post_title =  encodeURIComponent("Social and options data made into actionab
         </div>
 
       </div>
-      <button class="button error is-center" style="width:70%; margin:2rem auto;"  on:click={changeTicker}> CLICK TO SIZE </button>
+      <button class="button is-center" style="width:50%; margin:2rem auto;color:white;background:#c10aa9;padding:1.5rem;font-size:2rem;font-weight:700;"  on:click={changeTicker}> CLICK TO SIZE </button>
       <div class="row">
 	   <iframe width="90%" style="margin-left:5%" height=420 src="https://public.com/stocks/{new_ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
       </div>
@@ -284,7 +284,7 @@ let post_title =  encodeURIComponent("Social and options data made into actionab
 		<h3 > Given {ticker} pricing odds, keep some tradeable cash for later</h3>
 		<table>
 			<tr>
-			    <td width="20%"><button class="fa  fa-twitter pull-left bg-dark text-white" on:click={shareWith}> &nbsp;&nbsp; Share</td>
+			    <td width="20%"><button class="fa fa-twitter pull-left bg-dark text-white" on:click={shareWith}> &nbsp;&nbsp; Share</td>
 			    <td width="60%" class="text-center" style="font-size:3rem;color:blue;font-weight:bolder;">Use {Math.round(my_kelly[0])}% now</td>
 			    <td width="20%"><button class="text-white  bg-dark pull-right" on:click={updateClipboard(my_kelly[0])}>Copy-Trade</button></td>
 			</tr>
