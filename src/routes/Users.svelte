@@ -42,7 +42,7 @@ function changeUser(new_user){
         <div class="col-8 " >
             <h3>Check Favorites</h3>
             {#each user_array as tx}
-                <button class="button"  style="font:1rem;padding:0.8rem; margin:0.2rem; background:#351eb5;color:white;" on:click={changeUser(tx)}>{tx}</button>
+                <button class="button"  style="font:1rem;padding:0.8rem; margin:0.2rem; background:#351eb5;color:white;" on:click={() => changeUser(tx)}>{tx}</button>
             {/each}
         </div>
       </div>
