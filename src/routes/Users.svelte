@@ -22,7 +22,6 @@
 	} from '@dopry/svelte-auth0';
 
   let user_array = ['GME','AMC','SPY','PLTR', 'MELI','TWTR','IAC','TSLA']
-  let user = 'TSLA';
   let new_user= 'TSLA';
 	
   export let params = {}
