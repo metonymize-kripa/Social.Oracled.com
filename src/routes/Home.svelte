@@ -114,7 +114,7 @@ show_entry_card = true;
 }
 
 function getMyRating(user_email){
-    var my_url = 'https://www.insuremystock.com/stocks/getuserratings/'+tickerreplace(/\s/g, '')+'/?secret_key=Fat Neo&user_email='+user_email;
+    var my_url = 'https://www.insuremystock.com/stocks/getuserratings/'+ticker.replace(/\s/g, '') +'/?secret_key=Fat Neo&user_email='+user_email;
     my_kelly = [0];
 
     fetch(my_url)
