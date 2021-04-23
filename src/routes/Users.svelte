@@ -7,6 +7,8 @@
 <script>
   import { onMount } from "svelte";
   import Avatar from "svelte-avatar";
+  import {push, pop, replace} from 'svelte-spa-router'
+	
   let user_array = ['FatTony','Pappe','Kripa','Pani', 'Harsha','Brad','Sunil','Deba']
   let new_user= 'FatTony';
 	
