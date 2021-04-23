@@ -24,6 +24,10 @@
   let user_array = ['GME','AMC','SPY','PLTR', 'MELI','TWTR','IAC','TSLA']
   let user = 'TSLA';
   let new_user= 'TSLA';
+	
+  export let params = {}
+  let user = params.user;
+  $: params.user;
 
 function changeUser(){
     user = new_user;
