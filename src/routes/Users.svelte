@@ -13,8 +13,9 @@
   let new_user= 'FatTony';
 	
   export let params = {}
-  let user = params.user;
+  
   $: params.user;
+  let user = params.user;
 
 function changeUser(new_user){
     push('/user/'+new_user);
@@ -36,7 +37,7 @@ function changeUser(new_user){
 
 <body>
 
-    <h2> Welcome {user} ! </h2>
+    <h2> Welcome {user}! </h2>
     <div class="card" >
     <div class="row">
         <div class="col-8 " >
