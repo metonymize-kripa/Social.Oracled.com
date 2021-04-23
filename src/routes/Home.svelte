@@ -163,7 +163,7 @@ function submitRatings(my_ticker,my_ratings) {
 
 }
 
-let post_url = encodeURIComponent("https://social.oracled.com/?symbol=");
+let post_url = encodeURIComponent("https://social.oracled.com/#/stock/")
 let post_title =  encodeURIComponent("Social and options data made into actionable trade timing/size picks for ");
 </script>
 
@@ -211,20 +211,28 @@ let post_title =  encodeURIComponent("Social and options data made into actionab
   </Auth0Context>
 
 {#if show_entry_card}
-    <div class="card col-12 bg-light" >
-      <header>
-        <h3>Check Favorites</h3>
-        {#each ticker_array as tx}
-            <button class="secondary button"  style="font:1.5rem;padding:1rem 0.8rem" on:click={e => new_ticker=tx}>{tx}</button>
-        {/each}
-      </header>
+    <div class="card" >
+    <div class="row">
+
+        <div class="col-8 " >
+            <h3>Check Favorites</h3>
+            {#each ticker_array as tx}
+                <button class="secondary button"  style="font:1rem;padding:0.8rem; margin:0.2rem;" on:click={e => new_ticker=tx}>{tx}</button>
+            {/each}
+        </div>
+        <div class="col-4" >
+            <h3>Or Enter Symbol</h3>
+            <input  class="text-uppercase" bind:value={new_ticker}/>
+        </div>
+
+      </div>
+      <button class="button error is-center" style="width:70%; margin:2rem auto;"  on:click={changeTicker}> CLICK TO SIZE </button>
       <div class="row">
-	   <iframe width="80%" style="margin-left:5%" height=420 src="https://public.com/stocks/{new_ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
+	   <iframe width="90%" style="margin-left:5%" height=420 src="https://public.com/stocks/{new_ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
       </div>
       <div class="row">
-          <div class="col-3 text-uppercase"> <input bind:value={new_ticker} /></div>
-	  <div class="col-3"><button class="button primary" on:click={changeTicker}> CLICK TO SIZE </button></div>
-         <!--  <div class="col-6"> <input bind:value={portfolio_size}/></div> -->
+
+
       </div>
 
     </div>
@@ -276,9 +284,9 @@ let post_title =  encodeURIComponent("Social and options data made into actionab
 		<h3 > Given {ticker} pricing odds, keep some tradeable cash for later</h3>
 		<table>
 			<tr>
-			    <td width="15%"><button class="fa  fa-twitter pull-left bg-dark text-white" on:click={shareWith}> &nbsp;&nbsp; Share</td>
-			    <td width="70%" class="text-center" style="font-size:3rem;color:blue;font-weight:bolder;">Use {Math.round(my_kelly[0])}% now</td>
-			    <td width="15%"><button class="text-white  bg-dark pull-right" on:click={updateClipboard(my_kelly[0])}>Copy-Trade</button></td>
+			    <td width="20%"><button class="fa  fa-twitter pull-left bg-dark text-white" on:click={shareWith}> &nbsp;&nbsp; Share</td>
+			    <td width="60%" class="text-center" style="font-size:3rem;color:blue;font-weight:bolder;">Use {Math.round(my_kelly[0])}% now</td>
+			    <td width="20%"><button class="text-white  bg-dark pull-right" on:click={updateClipboard(my_kelly[0])}>Copy-Trade</button></td>
 			</tr>
 		</table>
 			<Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">

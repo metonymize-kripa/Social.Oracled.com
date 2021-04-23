@@ -145,7 +145,7 @@ function calculateGains(kelly,varx)
         ret_val =  Math.round( 100*(0.03*varx*kelly+1)/(1+varx) );
     return ret_val;
 }
-let post_url = encodeURIComponent("https://social.oracled.com/?symbol=");
+let post_url = encodeURIComponent("https://social.oracled.com/#/stock/");
 let post_title =  encodeURIComponent("Social and options data made into actionable trade timing/size picks for ");
 </script>
 
@@ -192,7 +192,6 @@ let post_title =  encodeURIComponent("Social and options data made into actionab
     </div>
   </Auth0Context>
 
-<h2>Hi there!</h2>
 <!--
 <p>
     Your route is:
@@ -251,9 +250,9 @@ let post_title =  encodeURIComponent("Social and options data made into actionab
 		<h3 > Given {ticker} pricing odds, keep some tradeable cash for later</h3>
 		<table>
 			<tr>
-			    <td width="15%"><button class="fa  fa-twitter pull-left bg-dark text-white" on:click={shareWith}> &nbsp;&nbsp; Share</td>
-			    <td width="70%" class="text-center" style="font-size:3rem;color:blue;font-weight:bolder;">Use {Math.round(my_kelly[0])}% now</td>
-			    <td width="15%"><button class="text-white  bg-dark pull-right" on:click={updateClipboard(my_kelly)[0]}>Copy-Trade</button></td>
+			    <td width="20%"><button class="fa  fa-twitter pull-left bg-dark text-white" on:click={shareWith}> &nbsp;&nbsp; Share</td>
+			    <td width="60%" class="text-center" style="font-size:3rem;color:blue;font-weight:bolder;">Use {Math.round(my_kelly[0])}% now</td>
+			    <td width="20%"><button class="text-white  bg-dark pull-right" on:click={updateClipboard(my_kelly)[0]}>Copy-Trade</button></td>
 			</tr>
 		</table>
 			<Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
