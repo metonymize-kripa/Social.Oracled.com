@@ -29,9 +29,9 @@
   $: params.user;
 
 function changeUser(){
-    user = new_user;
     if ($isAuthenticated)
 	    getMyRating($userInfo["email"]);
+    push('/user/'+new_user);
 }
 
 function getMyRating(user_email){
