@@ -150,7 +150,14 @@
 	 return 'https://avataaars.io/?'+
 		 'avatarStyle=Circle&'+
 		 'topType=ShortHairShortCurly&'+
-	 'accessoriesType=Prescription01&hairColor=BlondeGolden&facialHairType=Blank&clotheType=BlazerSweater&eyeType=Surprised&eyebrowType=RaisedExcited&mouthType=Eating&skinColor=Pale';
+		 'accessoriesType=Prescription01&'+
+		 'hairColor=BlondeGolden&'+
+		 'facialHairType=Blank&'+
+		 'clotheType=BlazerSweater&'+
+		 'eyeType=Surprised&'+
+		 'eyebrowType=RaisedExcited&'+
+		 'mouthType=Eating&'+
+		 'skinColor=Pale';
  }
 	
   let user_array = ['FatTony','Pappe','Kripa','Pani', 'Harsha','Brad','Sunil','Deba']
@@ -188,7 +195,8 @@ function changeUser(new_user){
         <div class="col-8 " >
             <h3>Check Favorites</h3>
             {#each user_array as tx}
-		<img src={createRandomAvataar}/>
+		<img src='https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortCurly&accessoriesType=Prescription01&hairColor=BlondeGolden&facialHairType=Blank&clotheType=BlazerSweater&eyeType=Surprised&eyebrowType=RaisedExcited&mouthType=Eating&skinColor=Pale'
+/>
                 <button class="button"  style="font:1rem;padding:0.8rem; margin:0.2rem; background:#351eb5;color:white;" on:click={() => changeUser(tx)}>{tx}</button>
             {/each}
         </div>
