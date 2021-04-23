@@ -109,6 +109,10 @@ function changeTicker(){
 	    getMyRating($userInfo["email"]);
 }
 
+function GoBack(){
+show_entry_card = true;
+}
+
 function getMyRating(user_email){
     var my_url = 'https://www.insuremystock.com/stocks/getuserratings/'+ticker+'/?secret_key=Fat Neo&user_email='+user_email;
     my_kelly = [0];
@@ -289,9 +293,12 @@ let post_title =  encodeURIComponent("Social and options data made into actionab
 			    <td width="20%"><button class="text-white" style="background:#c10aa9;" on:click={updateClipboard(my_kelly[0])}>Copy-Trade</button></td>
 			</tr>
 		</table>
+        <button class="button is-center" style="width:50%; margin:2rem auto;color:white;background:#4a27b1;padding:1rem;font-size:2rem;font-weight:700;"  on:click={GoBack}> Go Back </button>
+        <!--
 			<Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
 				<Auth0LogoutButton class="button text-center is-full-width is-big" >Logout once your work here is done</Auth0LogoutButton>
 			</Auth0Context>
+        -->
 	</div>
 
 {/if}
