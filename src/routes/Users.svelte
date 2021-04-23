@@ -21,8 +21,8 @@
 	  userInfo,
 	} from '@dopry/svelte-auth0';
 
-  let user_array = ['GME','AMC','SPY','PLTR', 'MELI','TWTR','IAC','TSLA']
-  let new_user= 'TSLA';
+  let user_array = ['FatTony','Pappe','Kripa','Pani', 'Harsha','Brad','Sunil','Deba']
+  let new_user= 'FatTony';
 	
   export let params = {}
   let user = params.user;
@@ -66,6 +66,7 @@ function getMyRating(user_email){
 
 <body>
 
+
   <Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
     <div class="row">
 	    {#if !$isAuthenticated}
@@ -82,7 +83,7 @@ function getMyRating(user_email){
 	    {/if}
     </div>
   </Auth0Context>
-
+	<h2> Welcome {user} ! </h2>
     <div class="card" >
     <div class="row">
         <div class="col-8 " >
