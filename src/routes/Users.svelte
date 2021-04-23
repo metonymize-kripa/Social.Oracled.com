@@ -14,9 +14,10 @@
 	
   export let params = {}
   
-  $: params.user;
   let user = params.user;
 
+  $: params.user;
+	
 function changeUser(new_user){
     push('/user/'+new_user);
 }
