@@ -11,7 +11,7 @@
   import {push, pop, replace} from 'svelte-spa-router'
 
  const avataar_inputs = {
-    "avatar-style": [
+    "avatarStyle": [
         "Circle",
         "Transparent"
     ],
@@ -148,16 +148,16 @@
  
  function createRandomAvataar(){
 	 return 'https://avataaars.io/?'+
-		 'avatarStyle=Circle&'+
-		 'topType=ShortHairShortCurly&'+
-		 'accessoriesType=Prescription01&'+
-		 'hairColor=BlondeGolden&'+
-		 'facialHairType=Blank&'+
-		 'clotheType=BlazerSweater&'+
-		 'eyeType=Surprised&'+
-		 'eyebrowType=RaisedExcited&'+
-		 'mouthType=Eating&'+
-		 'skinColor=Pale';
+		 'avatarStyle='+_.sample(avataar_inputs["avatarStyle"])+
+		 '&topType='+_.sample(avataar_inputs["topType"])+
+		 '&accessoriesType='+_.sample(avataar_inputs["accessoriesType"])+
+		 '&hairColor='+_.sample(avataar_inputs["hairColor"])+
+		 '&facialHairType='+_.sample(avataar_inputs["facialHairType"])+
+		 '&clotheType='+_.sample(avataar_inputs["clotheType"])+
+		 '&eyeType='+_.sample(avataar_inputs["eyeType"])+
+		 '&eyebrowType='+_.sample(avataar_inputs["eyebrowType"])+
+		 '&mouthType='+_.sample(avataar_inputs["mouthType"])+
+		 '&skinColor='+_.sample(avataar_inputs["skinColor"])
  }
 	
   let user_array = ['FatTony','Pappe','Kripa','Pani', 'Harsha','Brad','Sunil','Deba']
@@ -196,7 +196,7 @@ function changeUser(new_user){
             <h3>Check Favorites</h3>
             {#each user_array as tx}
 		<img src='https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortCurly&accessoriesType=Prescription01&hairColor=BlondeGolden&facialHairType=Blank&clotheType=BlazerSweater&eyeType=Surprised&eyebrowType=RaisedExcited&mouthType=Eating&skinColor=Pale'
-/>
+		width = 50 />
                 <button class="button"  style="font:1rem;padding:0.8rem; margin:0.2rem; background:#351eb5;color:white;" on:click={() => changeUser(tx)}>{tx}</button>
             {/each}
         </div>
