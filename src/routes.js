@@ -2,6 +2,7 @@
 import Home from './routes/Home.svelte'
 import Stock from './routes/Stock.svelte'
 import User from './routes/Users.svelte'
+import Holding from './routes/Holdings.svelte'
 import NotFound from './routes/NotFound.svelte'
 
 // Export the route definition object
@@ -10,9 +11,11 @@ export default {
     '/': Home,
 
     // Using named parameters, with last being optional
-    '/stock/:symbol?/:cmd?': Stock,
+    '/stock/:symbol/': Stock,
+    
+    '/user/:symbol/:name/': Holding,
 
-    '/user/:user?': User,
+    '/user/:name/': User,
 
     // Catch-all, must be last
     '*': NotFound,
