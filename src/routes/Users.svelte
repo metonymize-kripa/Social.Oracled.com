@@ -8,7 +8,8 @@
   import { onMount } from "svelte";
   import _ from "underscore";
   import Avatar from "svelte-avatar";
-  import {push, pop, replace} from 'svelte-spa-router'
+  import {push, pop, replace} from 'svelte-spa-router';
+      import RangeSlider from "svelte-range-slider-pips";
 
  const avataar_inputs = {
     "avatarStyle": [
@@ -168,7 +169,7 @@
 
   export let params = {}
 
-  let user = params.user;
+  let user = params.name;
   function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -187,7 +188,11 @@
     return array;
   }
 
-$: params.user && user_array ;
+$: params.name && user_array ;
+let arrow = ['⬆','⬇'];
+let rand_list=[];
+for (var i=0;i<40;i++)
+    rand_list.push([Math.round(Math.random() * (96 - 33) + 33)]);
 
 </script>
 
@@ -205,9 +210,35 @@ $: params.user && user_array ;
 <body>
     <h2> Welcome {user}!</h2>
     <div class ="card row">
-    <div class="col-12"><h3>My friends</h3></div>
-      {#each user_array as peep}
-        <div class="col-3 card" style="background:#f9dbdb">
+    <div class="col-12"><h3>{user}' ratings</h3></div>
+       {#each shuffle(symbol_list).slice(1,7) as tx}
+           <div class="col-4 card" style="background:#f9dbdb">
+            <h2 class='text-center' style="color:#8a008a" ><a href="/#/stock/{tx}">{tx}</a></h2>
+            <h2 class='text-center' style="color:#6621cc">{Math.round(Math.random() * (96 - 33) + 33)}%</h2>
+           </div>
+      {/each}
+    </div>
+    
+    <div class ="card row">
+       <table>
+		    <thead>
+		      <tr>
+		        <th width="100%" colspan="3" class="text-center">{user}' ratings</th>
+		      </tr>
+		    </thead>
+              {#each shuffle(symbol_list).slice(1,7) as tx,i}
+               <tr>
+                 <a class="text-center" href="/#/stock/{tx}"><td width="20%" style="font-size:3rem;color:#1e1aa6;font-weight:500;"> {tx}</td></a>
+                 <td width="60%"><RangeSlider float pips all='label' disabled={true}  bind:values={rand_list[i]}  pipstep={50} min={0} max={100}  }/></td>
+                 <td width="20%" class="text-right" style="font-size:3rem;color:purple;">{rand_list[i]}%({arrow[Math.round(Math.random() * +1)]})</td>
+               </tr>
+               {/each}
+        </table>
+      </div>
+ </body>
+ 
+ <!--
+         <div class="col-3 card" style="background:#f9dbdb">
           <header>{peep}</header>
           <div class="row">
             <div class="col-12">
@@ -222,17 +253,11 @@ $: params.user && user_array ;
                   <td style="padding: 0 0.5rem 0 0; font-size: 1.3rem;"><a style="color:purple;border:none;" href="/#/stock/{tx}">{tx}</a></td>
                   <td style="padding:0; font-size: 1.3rem;">{Math.round(Math.random() * (96 - 33) + 33)}%</td>
                   </tr>
-              <!--
-                <button style="text-align:left;color:purple;width:7rem; margin:0.1rem;padding:0.2rem;font-size:1.25rem;">{tx}:{Math.round(Math.random() * (96 - 33) + 33)}%</button><br>
-                -->
+
               {/each}
               </table>
 
             </div>
           </div>
-
         </div>
-      {/each}
-    </div>
-
- </body>
+ -->

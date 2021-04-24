@@ -191,7 +191,7 @@ let post_title =  encodeURIComponent("Social and options data made into actionab
 		    <Auth0LoginButton class="button text-center error is-full-width is-big" >Login</Auth0LoginButton>
 		</div>
 	    {:else}
-		    <div class="col-9"><h1>💎Oracle, is this a good time to buy?</h1></div>
+		    <div class="col-9"><h1>💎Oracle, should I buy now?</h1></div>
 		    <div class="col-3 hide-xs">
 			 <span class="tag is-large">Welcome {$userInfo["nickname"]}</span>
 		     </div>
@@ -217,27 +217,26 @@ let post_title =  encodeURIComponent("Social and options data made into actionab
 	<table>
 		<thead>
 		  <tr>
-
 		    <th width="100%" colspan="3" class="text-center">What is the chance of an up move?</th>
 		  </tr>
 		</thead>
 		  <tr>
 		    <a class="text-center" href="/#/user/FatTony"><td width="20%" ><img href="/" src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairTheCaesarSidePart&accessoriesType=Kurt&hairColor=Brown&facialHairType=BeardMajestic&facialHairColor=BrownDark&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Angry&mouthType=Serious&skinColor=Pale'
-					    width="50"/><br> Mr. Options </td></a>
+					    width="50"/><br><span style="font-size:1.2rem;color:navy;"> Mr.Options Says </span></td></a>
 		    <td width="60%"><RangeSlider float pips all='label' disabled={true} bind:values={gain_chance}  pipstep={50} min={0} max={100} }/></td>
 		    <td width="20%" class="text-center" style="font-size:3rem;color:purple;">{gain_chance}%</td>
 		  </tr>
 		   <tr>
-		     <a class="text-center" href="/#/user/MyPals"><td width="20%" ><img src='pals.png' width="50"/><br>My Pals</td></a>
+		     <a class="text-center" href="/#/user/MyPals"><td width="20%" ><img src='pals.png' width="50"/><br><span style="font-size:1.2rem;color:navy;"> My Pals Think </span></td></a>
 		     <td width="60%"><RangeSlider float pips all='label' disabled={true}  bind:values={friend_kelly}  pipstep={50} min={0} max={100}  }/></td>
 		     <td width="20%" class="text-center" style="font-size:3rem;color:purple;">{friend_kelly[0]}%</td>
 		   </tr>
 		   {#if $isAuthenticated}
 			     <tr>
 				<a class="text-center" href="/#/user/Me"><td width="20%" ><img src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Prescription02&hairColor=BrownDark&facialHairType=Blank&clotheType=GraphicShirt&clotheColor=Red&graphicType=Diamond&eyeType=Surprised&eyebrowType=RaisedExcited&mouthType=Twinkle&skinColor=Light'
-							width="50" /><br> {$userInfo["nickname"]} </td></a>
+							width="50" /><br> <span style="font-size:1.2rem;color:navy;"> I believe</span> </td></a>
 			<!--
-				<td width="20%"> <img src={$userInfo["picture"]} width="50" /> <br> {$userInfo["nickname"]}</td>
+				<td width="20%"> <img src={$userInfo["picture"]} width="50" /> <br> <span style="font-size:1.2rem;color:navy;"> I believe</span>{$userInfo["nickname"]}</td>
 			-->
 				<td width="60%"><RangeSlider float pips all='label'  bind:values={my_kelly}  pipstep={50} min={0} max={100} /></td>
 				<td width="20%" class="text-center" style="font-size:3rem;color:purple;">{my_kelly[0]}%</td>
