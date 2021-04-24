@@ -10,9 +10,9 @@ export default {
     '/': Home,
 
     // Using named parameters, with last being optional
-    '/stock/:symbol/:cmd?': Stock,
-    
-    '/user/:user': User,
+    '/stock/:symbol?/:cmd?': Stock,
+
+    '/user/:user?': User,
 
     // Catch-all, must be last
     '*': NotFound,

@@ -209,12 +209,14 @@ $: params.user && user_array ;
         <div class="col-3 card">
           <header>{peep}</header>
           <div class="row">
-            <div class="col-6">
-              <a href="/#/user/{peep}"><img src={createRandomAvataar()} width = 50/></a>
-            </div>
-            <div class="col-6">
+            <div class="col-12">
               <table>
-              {#each shuffle(symbol_list).slice(1,4) as tx}
+              <tr>
+                <td rowspan="3"><a href="/#/user/{peep}"><img src={createRandomAvataar()} width = 50/></a></td>
+                <td style="padding: 0 0.5rem 0 0; font-size: 1.3rem;"><a style="color:purple;" href="/#/stock/{symbol_list[0]}">{symbol_list[0]}</a></td>
+                <td style="padding:0; font-size: 1.3rem;">{Math.round(Math.random() * (96 - 33) + 33)}%</td>
+              </tr>
+              {#each shuffle(symbol_list).slice(2,4) as tx}
                 <tr>
                   <td style="padding: 0 0.5rem 0 0; font-size: 1.3rem;"><a style="color:purple;" href="/#/stock/{tx}">{tx}</a></td>
                   <td style="padding:0; font-size: 1.3rem;">{Math.round(Math.random() * (96 - 33) + 33)}%</td>
