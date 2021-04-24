@@ -201,12 +201,12 @@ let post_title =  encodeURIComponent("Social and options data made into actionab
   <Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
     <div class="row">
 	    {#if !$isAuthenticated}
-		<div class="col-9"><h1>💎Oracle, How much should I buy?</h1></div>
+		<div class="col-9"><h1>💎Oracle, is this a good time to buy?</h1></div>
 		<div class="col-3">
 		    <Auth0LoginButton class="button text-center error is-full-width is-big" >Login</Auth0LoginButton>
 		</div>
 	    {:else}
-		    <div class="col-9"><h1>💎Oracle, How much should I buy?</h1></div>
+		    <div class="col-9"><h1>💎Oracle, is this a good time to buy?</h1></div>
 		    <div class="col-3 hide-xs">
 			 <span class="tag is-large">Welcome {$userInfo["nickname"]}</span>
 		     </div>
@@ -223,6 +223,7 @@ let post_title =  encodeURIComponent("Social and options data made into actionab
             <h3>Check Favorites</h3>
             {#each ticker_array as tx}
                 <button class="button"  style="font:1rem;padding:0.8rem; margin:0.2rem; background:#351eb5;color:white;" on:click={e => new_ticker=tx}>{tx}</button>
+
             {/each}
         </div>
         <div class="col-4" >
@@ -231,7 +232,11 @@ let post_title =  encodeURIComponent("Social and options data made into actionab
         </div>
 
       </div>
-      <button class="button is-center" style="width:50%; margin:2rem auto;color:white;background:#c10aa9;padding:1.5rem;font-size:2rem;font-weight:700;"  on:click={changeTicker}> CLICK TO SIZE </button>
+      <!--
+      <button class="button is-center" style="width:50%; margin:2rem auto;color:white;background:#c10aa9;padding:1.5rem;font-size:2rem;font-weight:700;"  on:click={changeTicker}> Click to find out </button>
+      -->
+      <a href="/#/stock/{new_ticker}" class="button is-center" style="width:50%; margin:2rem auto;color:white;background:#c10aa9;padding:1.5rem;font-size:2rem;font-weight:700;"> Click to find out </a>
+
       <div class="row">
 	   <iframe width="90%" style="margin-left:5%" height=420 src="https://public.com/stocks/{new_ticker}/embed" frameborder="0" allow="encrypted-media" allowfullscreen allowtransparency></iframe>
       </div>

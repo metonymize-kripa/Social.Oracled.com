@@ -26,7 +26,7 @@
   let friend_output={};
   export let params = {}
 
-  const moods = ["Sell","😫","😫","😫","😥","Weak","😥","😐","😐","😐","Hold","😐","😀","😀","😀","Meh","😀","😁","😁","😁","Buy"];
+  //const moods = ["Bear","😫","😫","😫","😫","😫","😫","😫","😫","😫","😫","😫","😫","😫","😫","😫","😫","😫","😫","😫","😫","😫","😥","😫","😫","😥","😥","😥","😥","😥","😥","😥","😥","😥","😥","😥","😥","😥","😥","😥","😥","😥","😥","😥","😥","😥","😥","😐","😐","😐""😐","😐","😐""😐","😐","😐""😐","😐","😐""😐","😐","😐""😐","😐","😐","Hold","😀","😀","😀","😀","😀","😀","😀","😀","😀","😀","😀","😀","😀","😀","😀","😀","😀","😀","Meh","😀","😁","😁","😁","😀","😁","😁","😁","😀","😁","😁","😀","😁","😁","😁","😀","😁","😁","😁","Bull"];
 
   onMount(async () => {
     //const res = await fetch("/api/date");
@@ -40,8 +40,11 @@ let my_kelly = [0];
 let fat_kelly = [0];
 let friend_kelly = [0];
 
-let gain_chance=0;
+let gain_chance=[0];
+
 let ticker = params.symbol;
+
+
 $: params.symbol && calculateKelly();
 let varx = 0;
 
@@ -50,14 +53,15 @@ function currencyFormat(num,decimals) {
 }
 
 function calculateKelly() {
-    my_kelly = 0;
+    my_kelly = [0];
     fat_kelly=[0];
     friend_kelly=[0];
-    gain_chance = "NA";
+    gain_chance = [0];
     varx = 0;
-
+    if (params.symbol === null)
+      params.symbol = 'SPY';
     ticker = params.symbol;
-    console.log(ticker);
+
     ticker = ticker.toUpperCase();
         fetch("https://www.insuremystock.com/options/kelly/"+ticker)
             .then(d => d.text())
@@ -69,9 +73,9 @@ function calculateKelly() {
                 else
                 {
                     fat_kelly = [(api_output.kelly_k*100)];
-                    gain_chance = Math.round(api_output.prob_up*100);
+                    gain_chance = [Math.round(api_output.prob_up*100)];
                     varx = api_output.prob_up_n/api_output.prob_down_n;
-                    if (fat_kelly > 10)
+                  /*  if (fat_kelly > 10)
                     {
                         fat_kelly = [10];
                         gain_chance = Math.round( 100*(0.03*varx*10+1)/(1+varx) ) ;
@@ -81,9 +85,11 @@ function calculateKelly() {
                         fat_kelly = [-10];
                         gain_chance = Math.round( 100*(0.03*varx*-10+1)/(1+varx) )
                     }
+                    */
                 }
             });
         fetch("https://www.insuremystock.com/stocks/getratings/"+ticker)
+
             .then(d => d.text())
             .then(d =>
             {
@@ -106,12 +112,13 @@ function getMyRating(user_email){
         .then(d => d.text())
         .then(d =>
         {
-            api_output = JSON.parse(d);
-            if ('error' in api_output)
+            var output = JSON.parse(d);
+            if ('error' in output)
                 err_val="error";
             else
             {
-                my_kelly = [api_output.Rating];
+                my_kelly = [output.Rating];
+                console.log(output);
             }
         });
 }
@@ -179,12 +186,12 @@ let post_title =  encodeURIComponent("Social and options data made into actionab
   <Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
     <div class="row">
 	    {#if !$isAuthenticated}
-		<div class="col-9"><h1>💎Oracle, How much should I buy?</h1></div>
+		<div class="col-9"><h1>💎Oracle, is this a good time to buy?</h1></div>
 		<div class="col-3">
 		    <Auth0LoginButton class="button text-center error is-full-width is-big" >Login</Auth0LoginButton>
 		</div>
 	    {:else}
-		    <div class="col-9"><h1>💎Oracle, How much should I buy?</h1></div>
+		    <div class="col-9"><h1>💎Oracle, is this a good time to buy?</h1></div>
 		    <div class="col-3 hide-xs">
 			 <span class="tag is-large">Welcome {$userInfo["nickname"]}</span>
 		     </div>
@@ -207,35 +214,33 @@ let post_title =  encodeURIComponent("Social and options data made into actionab
 -->
 
 	<div class="row card">
-	<h3> Sizing {ticker} trade using Options & Social data implied odds</h3>
 	<table>
 		<thead>
 		  <tr>
-		    <th width="20%" ></th>
-		    <th width="50%" class="text-center">% of cash to trade now</th>
-		    <th width="30%" class="text-center is-large">1Wk Gain Odds</th>
+
+		    <th width="100%" colspan="3" class="text-center">What is the chance of an up move?</th>
 		  </tr>
 		</thead>
 		  <tr>
-		    <td width="20%" ><img src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairTheCaesarSidePart&accessoriesType=Kurt&hairColor=Brown&facialHairType=BeardMajestic&facialHairColor=BrownDark&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Angry&mouthType=Serious&skinColor=Pale'
-					    width="50" /> <br> Fat Tony </td>
-		    <td width="50%"><RangeSlider float pips all='label' disabled={true} bind:values={fat_kelly}  pipstep={10} min={-10} max={10} formatter={ v => moods[v+10] }/></td>
+		    <a class="text-center" href="/#/user/FatTony"><td width="20%" ><img href="/" src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairTheCaesarSidePart&accessoriesType=Kurt&hairColor=Brown&facialHairType=BeardMajestic&facialHairColor=BrownDark&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Angry&mouthType=Serious&skinColor=Pale'
+					    width="50"/><br> Mr. Options </td></a>
+		    <td width="50%"><RangeSlider float pips all='label' disabled={true} bind:values={gain_chance}  pipstep={25} min={0} max={100} }/></td>
 		    <td width="30%" class="text-center" style="font-size:4rem;color:purple;">{gain_chance}%</td>
 		  </tr>
 		   <tr>
-		     <td width="20%" ><img src='pals.png' width="50"/><br> Friends </td>
-		     <td width="50%"><RangeSlider float pips all='label' disabled={true}  bind:values={friend_kelly}  pipstep={10} min={-10} max={10} formatter={ v => moods[v+10] }/></td>
-		     <td width="30%" class="text-center" style="font-size:4rem;color:purple;">{calculateGains(friend_kelly[0],varx)}%</td>
+		     <a class="text-center" href="/#/user/MyPals"><td width="20%" ><img src='pals.png' width="50"/><br>My Pals</td></a>
+		     <td width="50%"><RangeSlider float pips all='label' disabled={true}  bind:values={friend_kelly}  pipstep={25} min={0} max={100}  }/></td>
+		     <td width="30%" class="text-center" style="font-size:4rem;color:purple;">{friend_kelly[0]}%</td>
 		   </tr>
 		   {#if $isAuthenticated}
 			     <tr>
-				<td width="20%" ><img src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Prescription02&hairColor=BrownDark&facialHairType=Blank&clotheType=GraphicShirt&clotheColor=Red&graphicType=Diamond&eyeType=Surprised&eyebrowType=RaisedExcited&mouthType=Twinkle&skinColor=Light'
-							width="50" /><br> {$userInfo["nickname"]} </td>
+				<a class="text-center" href="/#/user/Me"><td width="20%" ><img src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Prescription02&hairColor=BrownDark&facialHairType=Blank&clotheType=GraphicShirt&clotheColor=Red&graphicType=Diamond&eyeType=Surprised&eyebrowType=RaisedExcited&mouthType=Twinkle&skinColor=Light'
+							width="50" /><br> {$userInfo["nickname"]} </td></a>
 			<!--
 				<td width="20%"> <img src={$userInfo["picture"]} width="50" /> <br> {$userInfo["nickname"]}</td>
 			-->
-				<td width="50%"><RangeSlider float pips all='label'  bind:values={my_kelly}  pipstep={10} min={-10} max={10} formatter={ v => moods[v+10] }/></td>
-				<td width="30%" class="text-center" style="font-size:4rem;color:purple;">{calculateGains(my_kelly[0],varx)}%</td>
+				<td width="50%"><RangeSlider float pips all='label'  bind:values={my_kelly}  pipstep={25} min={0} max={100} /></td>
+				<td width="30%" class="text-center" style="font-size:4rem;color:purple;">{my_kelly[0]}%</td>
 			     </tr>
 		  {:else}
 			   <tr> <td colspan="3">
@@ -248,17 +253,19 @@ let post_title =  encodeURIComponent("Social and options data made into actionab
 	</div>
 
 	<div class="row card">
-		<h3 > Given {ticker} pricing odds, keep some tradeable cash for later</h3>
 		<table>
 			<tr>
 			    <td width="20%"><button class="fa  fa-twitter pull-left text-white"  style="background:#c10aa9;" on:click={shareWith}> &nbsp;&nbsp; Share</td>
-			    <td width="60%" class="text-center" style="font-size:3rem;color:blue;font-weight:bolder;">Use {Math.round(my_kelly[0])}% now</td>
+			    <td width="60%" ></td>
 			    <td width="20%"><button class="text-white pull-right" style="background:#c10aa9;" on:click={updateClipboard(my_kelly)[0]}>Copy-Trade</button></td>
 			</tr>
 		</table>
+    <a href="/" class="button is-center" style="width:50%; margin:2rem auto;color:white;background:#4a27b1;padding:1rem;font-size:2rem;font-weight:700;" > Go Back </a>
+    <!--
 			<Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
 				<Auth0LogoutButton class="button text-center is-full-width is-big" >Logout once your work here is done</Auth0LogoutButton>
 			</Auth0Context>
+    -->
 	</div>
 
 </body>

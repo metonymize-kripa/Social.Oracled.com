@@ -145,7 +145,7 @@
         "Black"
     ]
 }
- 
+
  function createRandomAvataar(){
 	 return 'https://avataaars.io/?'+
 		 'avatarStyle='+_.sample(avataar_inputs["avatarStyle"])+
@@ -159,19 +159,35 @@
 		 '&mouthType='+_.sample(avataar_inputs["mouthType"])+
 		 '&skinColor='+_.sample(avataar_inputs["skinColor"])
  }
-	
-  let user_array = ['FatTony','Pappe','Kripa','Pani', 'Harsha','Brad','Sunil','Deba']
-  let new_user= 'FatTony';
-	
-  export let params = {}
-  
-  let user = params.user;
 
-  $: params.user;
-	
-function changeUser(new_user){
-    push('/user/'+new_user);
-}
+  let user_array = ['FatTony','Pappe','Kripa','Pani', 'Harsha','Brad','Sunil','Deba'];
+  let symbol_list = ['IBM','C',"MELI","CLOV","TSLA","GME","XOM",'AMC','SPY','PLTR', 'TWTR','IAC','PG', 'V','X','FB']
+  user_array = shuffle(user_array);
+  symbol_list = shuffle(symbol_list);
+  let new_user= 'FatTony';
+
+  export let params = {}
+
+  let user = params.user;
+  function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+    return array;
+  }
+
+$: params.user && user_array ;
 
 </script>
 
@@ -186,22 +202,34 @@ function changeUser(new_user){
 	}
 </style>
 
-
 <body>
+    <h2> Welcome {user}!</h2>
+    <div class ="row">
+      {#each user_array as peep}
+        <div class="col-3 card">
+          <header>{peep}</header>
+          <div class="row">
+            <div class="col-6">
+              <a href="/#/user/{peep}"><img src={createRandomAvataar()} width = 50/></a>
+            </div>
+            <div class="col-6">
+              <table>
+              {#each shuffle(symbol_list).slice(1,4) as tx}
+                <tr>
+                  <td style="padding: 0 0.5rem 0 0; font-size: 1.3rem;"><a style="color:purple;" href="/#/stock/{tx}">{tx}</a></td>
+                  <td style="padding:0; font-size: 1.3rem;">{Math.round(Math.random() * (96 - 33) + 33)}%</td>
+                  </tr>
+              <!--
+                <button style="text-align:left;color:purple;width:7rem; margin:0.1rem;padding:0.2rem;font-size:1.25rem;">{tx}:{Math.round(Math.random() * (96 - 33) + 33)}%</button><br>
+                -->
+              {/each}
+              </table>
 
-    <h2> Welcome {user}! </h2>
-    <div class="card" >
-    <div class="row">
-        <div class="col-8 " >
-            <h3>Check Favorites</h3>
-            {#each user_array as tx}
-		<img src={createRandomAvataar()}
-		width = 50 />
-                <button class="button"  style="font:1rem;padding:0.8rem; margin:0.2rem; background:#351eb5;color:white;" on:click={() => changeUser(tx)}>{tx}</button>
-		<br>
-            {/each}
+            </div>
+          </div>
+
         </div>
-      </div>
+      {/each}
     </div>
-  
+
  </body>
