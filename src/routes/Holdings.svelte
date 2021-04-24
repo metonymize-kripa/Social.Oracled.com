@@ -261,11 +261,11 @@ let rand2 =  [Math.round(Math.random() * (96 - 33) + 33)];
 		        <a class="text-center" href="/#/user/FatTony"><td width="20%" ><img href="/" src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairTheCaesarSidePart&accessoriesType=Kurt&hairColor=Brown&facialHairType=BeardMajestic&facialHairColor=BrownDark&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Angry&mouthType=Serious&skinColor=Pale'
 					        width="50"/><br><span style="font-size:1.2rem;color:navy;"> Mr.Options Says </span></td></a>
 		        <td width="60%"><RangeSlider float pips all='label' disabled={true} bind:values={gain_chance}  pipstep={50} min={0} max={100} }/></td>
-		        <td width="20%" class="text-left" style="font-size:3rem;color:purple;">{gain_chance}%</td>
+		        <td width="20%" class="text-left" style="font-size:3rem;color:purple;">{gain_chance}%({arrow[Math.round(Math.random() * +1)]})</td>
 		      </tr>
 		      {#each shuffle(user_array).slice(1,5) as peep,i}
 		       <tr>
-		         <a class="text-center" href="/#/user/{peep}"><td width="20%" ><img src='pals.png' width="50"/><br><span style="font-size:1.2rem;color:navy;"> {peep}</span></td></a>
+		         <a class="text-center" href="/#/user/{peep}"><td width="20%" ><img src={createRandomAvataar()} width = 50/><br><span style="font-size:1.2rem;color:navy;"> {peep}</span></td></a>
 		         <td width="60%"><RangeSlider float pips all='label' disabled={true}  bind:values={rand_list[i]}  pipstep={50} min={0} max={100}  }/></td>
 		         <td width="20%" class="text-left" style="font-size:3rem;color:purple;">{rand_list[i]}%({arrow[Math.round(Math.random() * +1)]})</td>
 		       </tr>
@@ -276,7 +276,7 @@ let rand2 =  [Math.round(Math.random() * (96 - 33) + 33)];
 							    width="50" /><br> <span style="font-size:1.2rem;color:navy;"> I believe</span> </td></a>
 
 				    <td width="60%"><RangeSlider float pips all='label'  bind:values={rand1}  pipstep={50} min={0} max={100} /></td>
-				    <td width="20%" class="text-left" style="font-size:3rem;color:purple;">{rand1}%</td>
+				    <td width="20%" class="text-left" style="font-size:3rem;color:purple;">{rand1}%({arrow[Math.round(Math.random() * +1)]})</td>
 			         </tr>
 		      {:else}
 			       <tr> <td colspan="3">

@@ -208,7 +208,23 @@ for (var i=0;i<40;i++)
 </style>
 
 <body>
-    <h2> Welcome {user}!</h2>
+    <div class ="card row">
+       <table>
+		    <thead>
+		      <tr>
+		         <th width="20%" class="text-center">   <img src={createRandomAvataar()} width = 50/></th>
+		        <th width="80%" colspan="2" class="text-center" style="font-size:2.5rem;">{user}' ratings</th>
+		      </tr>
+		    </thead>
+              {#each shuffle(symbol_list).slice(1,7) as tx,i}
+               <tr>
+                 <a class="text-left" href="/#/stock/{tx}"><td width="15%" style="font-size:2.25rem;color:#1e1aa6;font-weight:500;"> {tx}</td></a>
+                 <td width="65%"><RangeSlider float pips all='label' disabled={true}  bind:values={rand_list[i]}  pipstep={50} min={0} max={100}  }/></td>
+                 <td width="20%" class="text-right" style="font-size:2.25rem;color:purple;">{rand_list[i]}%({arrow[Math.round(Math.random() * +1)]})</td>
+               </tr>
+               {/each}
+        </table>
+      </div>
     <div class ="card row">
     <div class="col-12"><h3>{user}' ratings</h3></div>
        {#each shuffle(symbol_list).slice(1,7) as tx}
@@ -219,22 +235,7 @@ for (var i=0;i<40;i++)
       {/each}
     </div>
     
-    <div class ="card row">
-       <table>
-		    <thead>
-		      <tr>
-		        <th width="100%" colspan="3" class="text-center">{user}' ratings</th>
-		      </tr>
-		    </thead>
-              {#each shuffle(symbol_list).slice(1,7) as tx,i}
-               <tr>
-                 <a class="text-center" href="/#/stock/{tx}"><td width="20%" style="font-size:3rem;color:#1e1aa6;font-weight:500;"> {tx}</td></a>
-                 <td width="60%"><RangeSlider float pips all='label' disabled={true}  bind:values={rand_list[i]}  pipstep={50} min={0} max={100}  }/></td>
-                 <td width="20%" class="text-right" style="font-size:3rem;color:purple;">{rand_list[i]}%({arrow[Math.round(Math.random() * +1)]})</td>
-               </tr>
-               {/each}
-        </table>
-      </div>
+    
  </body>
  
  <!--

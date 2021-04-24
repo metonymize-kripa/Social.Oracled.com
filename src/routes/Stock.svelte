@@ -227,7 +227,7 @@ let post_title =  encodeURIComponent("Social and options data made into actionab
 		    <td width="20%" class="text-center" style="font-size:3rem;color:purple;">{gain_chance}%</td>
 		  </tr>
 		   <tr>
-		     <a class="text-center" href="/#/user/MyPals"><td width="20%" ><img src='pals.png' width="50"/><br><span style="font-size:1.2rem;color:navy;"> My Pals Think </span></td></a>
+		     <a class="text-center" href="/#/user/{ticker}/me"><td width="20%" ><img src='pals.png' width="50"/><br><span style="font-size:1.2rem;color:navy;"> My Pals Think </span></td></a>
 		     <td width="60%"><RangeSlider float pips all='label' disabled={true}  bind:values={friend_kelly}  pipstep={50} min={0} max={100}  }/></td>
 		     <td width="20%" class="text-center" style="font-size:3rem;color:purple;">{friend_kelly[0]}%</td>
 		   </tr>
