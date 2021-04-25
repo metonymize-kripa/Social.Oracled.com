@@ -14,8 +14,6 @@
 	
 	<Auth />
 
-	<!--
 	<Router {routes}/>
-	-->
 	
 </body>
