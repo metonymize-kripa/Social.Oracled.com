@@ -11,8 +11,7 @@
 </script>
 
 <body>
-
-	<Auth />
+	
 	<Router {routes}/>
 	
 </body>
