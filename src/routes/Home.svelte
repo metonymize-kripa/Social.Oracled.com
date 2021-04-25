@@ -198,7 +198,6 @@ let post_title =  encodeURIComponent("Here's the upshot for ");
 
 <body>
 
-	<!--
 <Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
     <div class="row">
 	    {#if !$isAuthenticated}
@@ -215,7 +214,6 @@ let post_title =  encodeURIComponent("Here's the upshot for ");
 	    {/if}
     </div>
   </Auth0Context>
--->
 
 {#if show_entry_card}
     <div class="card" >
