@@ -6,11 +6,16 @@
 
 <script>
   import Router from "svelte-spa-router";
-  import routes from './routes'
+  import routes from './routes';
+  import Auth from './routes/utils/Auth.svelte';
 </script>
 
 <body>
+	
+	<Auth />
 
+	<!--
 	<Router {routes}/>
-		
+	-->
+	
 </body>
