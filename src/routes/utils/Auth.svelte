@@ -18,6 +18,24 @@
 	  logout,
 	  userInfo,
 	} from '@dopry/svelte-auth0';
+
+function getMyRating(user_email){
+    var my_url = 'https://www.insuremystock.com/stocks/getuserratings/'+ticker.replace(/\s/g, '') +'/?secret_key=Fat Neo&user_email='+user_email;
+    my_kelly = [0];
+    fetch(my_url)
+        .then(d => d.text())
+        .then(d =>
+        {
+            api_output = JSON.parse(d);
+            if ('error' in api_output)
+                err_val="error";
+            else
+            {
+                my_kelly = [api_output.Rating];
+            }
+        });
+}
+	
 </script>
 
 <style>
