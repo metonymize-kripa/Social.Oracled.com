@@ -7,7 +7,7 @@
 <script>
   import { onMount } from "svelte";
   import _ from "underscore";
-  import {makeString, createRandomAvataar} from 'utils/rand_avataar.js';
+  import {makeString, createRandomAvataar} from './utils/rand_avataar.js';
 
 /*
   const avataar_inputs = {
