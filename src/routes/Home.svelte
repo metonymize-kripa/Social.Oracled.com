@@ -185,7 +185,7 @@ let post_title =  encodeURIComponent("Here's the upshot for ");
 
 <body>
 
-<Auth/>
+<Auth />
 
 {#if show_entry_card}
     <div class="card" >
