@@ -7,6 +7,9 @@
 <script>
   import { onMount } from "svelte";
   import _ from "underscore";
+  import {makeString, createRandomAvataar} from 'utils/rand_avataar.js';
+
+/*
   const avataar_inputs = {
     "avatarStyle": [
         "Circle",
@@ -154,6 +157,7 @@ function createRandomAvataar(){
 		 '&mouthType='+_.sample(avataar_inputs["mouthType"])+
 		 '&skinColor='+_.sample(avataar_inputs["skinColor"])
  }
+ */
   import {push, pop, replace} from 'svelte-spa-router';
   import RangeSlider from "svelte-range-slider-pips";
 
