@@ -8,7 +8,6 @@
   import { onMount } from "svelte";
   import Avatar from "svelte-avatar";
   import RangeSlider from "svelte-range-slider-pips";
-  import Auth from "./utils/Auth.svelte"
   import {
 	  Auth0Context,
 	  Auth0LoginButton,
