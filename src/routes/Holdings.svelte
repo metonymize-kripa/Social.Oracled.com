@@ -6,7 +6,6 @@
 
 <script>
   import { onMount } from "svelte";
-  //import {createRandomAvataar} from './utils/Avataars.svelte';
   import _ from "underscore";
   const avataar_inputs = {
     "avatarStyle": [
