@@ -221,6 +221,7 @@ for (var i=0;i<40;i++)
                {/each}
         </table>
       </div>
+<!--
     <div class ="card row">
     <div class="col-12"><h3>{user}' ratings</h3></div>
        {#each shuffle(symbol_list).slice(1,7) as tx}
@@ -230,4 +231,5 @@ for (var i=0;i<40;i++)
            </div>
       {/each}
     </div> 
+-->
  </body>
