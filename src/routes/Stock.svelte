@@ -1,5 +1,5 @@
 <svelte:head>
-  <title>Social traders, Level up -- Home</title>
+  <title>Stock</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://unpkg.com/chota@latest">
 </svelte:head>
@@ -153,8 +153,8 @@ function calculateGains(kelly,varx)
         ret_val =  Math.round( 100*(0.03*varx*kelly+1)/(1+varx) );
     return ret_val;
 }
-let post_url = encodeURIComponent("https://social.oracled.com/#/stock/");
-let post_title =  encodeURIComponent("Social and options data made into actionable trade timing/size picks for ");
+let post_url = encodeURIComponent("https://upshot.oracled.com/#/stock/")
+let post_title =  encodeURIComponent("Here's the upshot for ");
 </script>
 
 <style>
@@ -186,12 +186,12 @@ let post_title =  encodeURIComponent("Social and options data made into actionab
   <Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
     <div class="row">
 	    {#if !$isAuthenticated}
-		<div class="col-9"><h1>💎Oracle, is this a good time to buy?</h1></div>
+		<div class="col-9"><h1>💎Oracle Upshot</h1></div>
 		<div class="col-3">
 		    <Auth0LoginButton class="button text-center error is-full-width is-big" >Login</Auth0LoginButton>
 		</div>
 	    {:else}
-		    <div class="col-9"><h1>💎Oracle, should I buy now?</h1></div>
+		    <div class="col-9"><h1>💎Oracle Upshot</h1></div>
 		    <div class="col-3 hide-xs">
 			 <span class="tag is-large">Welcome {$userInfo["nickname"]}</span>
 		     </div>
@@ -217,7 +217,7 @@ let post_title =  encodeURIComponent("Social and options data made into actionab
 	<table>
 		<thead>
 		  <tr>
-		    <th width="100%" colspan="3" class="text-center">What is the chance of an up move?</th>
+		    <th width="100%" colspan="3" class="text-center">What is the Upshot?</th>
 		  </tr>
 		</thead>
 		  <tr>
