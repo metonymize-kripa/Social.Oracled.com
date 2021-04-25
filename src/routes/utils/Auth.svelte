@@ -49,4 +49,4 @@
     </div>
   </Auth0Context>
 -->
-<h1> Testing if Auth component import worked </h1>
+<h1> Being coded with 💖 </h1>
