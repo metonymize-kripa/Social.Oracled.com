@@ -1,6 +1,5 @@
 <script>
   import _ from "underscore";
-  import Avatar from "svelte-avatar";
   const avataar_inputs = {
     "avatarStyle": [
         "Circle",
