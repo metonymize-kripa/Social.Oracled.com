@@ -7,7 +7,7 @@
 <script>
   import { onMount } from "svelte";
   import _ from "underscore";
-  import createRandomAvataar from 'utils/Avataars.svelte';
+  import createRandomAvataar from './utils/Avataars.svelte';
   import {push, pop, replace} from 'svelte-spa-router';
       import RangeSlider from "svelte-range-slider-pips";
 /*
