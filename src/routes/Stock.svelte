@@ -217,7 +217,7 @@ let post_title =  encodeURIComponent("Here's the upshot for ");
 	<table>
 		<thead>
 		  <tr>
-		    <th width="100%" colspan="3" class="text-center">What is the Upshot?</th>
+			  <th width="100%" colspan="3" class="text-center"><h1>Upshot for {ticker}</h1></th>
 		  </tr>
 		</thead>
 		  <tr>
