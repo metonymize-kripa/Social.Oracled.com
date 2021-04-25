@@ -7,10 +7,10 @@
 <script>
   import { onMount } from "svelte";
   import _ from "underscore";
-  import Avatar from "svelte-avatar";
+  import createRandomAvataar from 'utils/Avataars.svelte';
   import {push, pop, replace} from 'svelte-spa-router';
       import RangeSlider from "svelte-range-slider-pips";
-
+/*
  const avataar_inputs = {
     "avatarStyle": [
         "Circle",
@@ -160,7 +160,7 @@
 		 '&mouthType='+_.sample(avataar_inputs["mouthType"])+
 		 '&skinColor='+_.sample(avataar_inputs["skinColor"])
  }
-
+*/
   let user_array = ['FatTony','Pappe','Kripa','Pani', 'Harsha','Brad','Sunil','Deba'];
   let symbol_list = ['IBM','C',"MELI","CLOV","TSLA","GME","XOM",'AMC','SPY','PLTR', 'TWTR','IAC','PG', 'V','X','FB']
   user_array = shuffle(user_array);
