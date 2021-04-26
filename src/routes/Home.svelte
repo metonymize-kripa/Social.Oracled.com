@@ -281,12 +281,15 @@ let post_title =  encodeURIComponent("Here's the upshot for ");
 				<td width="50%"><RangeSlider float pips all='label'  bind:values={my_kelly}  pipstep={10} min={-10} max={10} formatter={ v => moods[v+10] }/></td>
 				<td width="30%" class="text-center" style="font-size:4rem;color:purple;">{Math.round(50+my_kelly[0]*1.75)}%</td>
 			     </tr>
+		
+		<!--
 		  {:else}
 			   <tr> <td colspan="3">
 			   <Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
 				<Auth0LoginButton class="button text-center  outline primary is-full-width is-big" >Login to get Oracled</Auth0LoginButton>
 			   </Auth0Context>
 			   </td></tr>
+		-->
 		  {/if}
 	</table>
 	</div>
