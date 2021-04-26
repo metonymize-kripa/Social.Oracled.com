@@ -98,24 +98,6 @@ let rand2 =  [Math.round(Math.random() * (96 - 33) + 33)];
 
 <body>
 	
-<Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
-    <div class="row">
-	    {#if !$isAuthenticated}
-		<div class="col-9"><h1>💎Oracle Upshot</h1></div>
-		<div class="col-3">
-		    <Auth0LoginButton class="button text-center error is-full-width is-big" >Login</Auth0LoginButton>
-		</div>
-	    {:else}
-		    <div class="col-9"><h1>💎Oracle Upshot</h1></div>
-		    <div class="col-3 hide-xs">
-			 <span class="tag is-large">Welcome {$userInfo["nickname"]}</span>
-			 <Auth0LogoutButton class="button text-center is-full-width is-big" >Logout</Auth0LogoutButton>
-		     </div>
-			{getMyRating($userInfo["email"]) || ""}
-	    {/if}
-    </div>
-  </Auth0Context>
-	
     <h2> Welcome {user}!</h2>
 
      <div class="row card">
