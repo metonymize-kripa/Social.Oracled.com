@@ -38,6 +38,8 @@
 let err_val = 'no';
 let my_kelly = [0];
 let fat_kelly = [0];
+let twitter_says = [0];
+let wsb_says = [0];
 let friend_kelly = [0];
 
 let gain_chance=[0];
@@ -94,14 +96,19 @@ function calculateKelly() {
             .then(d =>
             {
                 friend_output = JSON.parse(d);
+                console.log(friend_output);
                 if ('error' in friend_output)
                     err_val="error";
                 else
                 {
-                    friend_kelly = [friend_output.Rating];
+                    friend_kelly = [friend_output.rating];
                 }
             });
         getMyRating($userInfo["email"]);
+        getTwitterRating("$"+ticker);
+        getWSBRating(ticker);
+        //console.log(trating);
+        //twitter_says = [Math.round((getTwitterRating("$"+ticker)+1)/0.02)];
 }
 
 function getMyRating(user_email){
@@ -117,10 +124,51 @@ function getMyRating(user_email){
                 err_val="error";
             else
             {
-                my_kelly = [output.Rating];
+                my_kelly = [output.rating];
                 console.log(output);
             }
         });
+}
+
+function getTwitterRating(symbol){
+    let my_url = 'https://insuremystock.com/sentiment/twitter/'+symbol;
+    let twitter_rating = 0;
+
+    fetch(my_url)
+        .then(d => d.text())
+        .then(d =>
+        {
+            var output = JSON.parse(d);
+            if ('error' in output)
+                err_val="error";
+            else
+            {
+                twitter_rating = output.twitter_index;
+                console.log(output);
+                twitter_says = [Math.round((twitter_rating+100)/2)];
+            }
+        });
+}
+
+function getWSBRating(symbol){
+    let my_url = 'https://api.fatneo.com/parse/'+symbol+' WSB';
+    let wsb_rating = 0;
+
+    fetch(my_url)
+        .then(d => d.text())
+        .then(d =>
+        {
+            var output = JSON.parse(d);
+            if ('error' in output)
+                err_val="error";
+            else
+            {
+                wsb_rating = output.skill_output;
+                console.log(output);
+                wsb_says = [Math.round(wsb_rating*100+50)];
+            }
+        });
+
 }
 
 function updateClipboard(newClip) {
@@ -155,6 +203,7 @@ function calculateGains(kelly,varx)
 }
 let post_url = encodeURIComponent("https://upshot.oracled.com/#/stock/")
 let post_title =  encodeURIComponent("Here's the upshot for ");
+$: twitter_says;
 </script>
 
 <style>
@@ -222,15 +271,27 @@ let post_title =  encodeURIComponent("Here's the upshot for ");
 		  </tr>
 		</thead>
 		  <tr>
-		    <a class="text-center" href="/#/user/FatTony"><td width="20%" ><img href="/" src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairTheCaesarSidePart&accessoriesType=Kurt&hairColor=Brown&facialHairType=BeardMajestic&facialHairColor=BrownDark&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Angry&mouthType=Serious&skinColor=Pale'
+		    <a class="text-center" href="/#/user/FatTony"><td width="20%" ><img href="/" src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairTheCaesarSidePart&accessoriesType=Kurt&hairColor=BrownDark&facialHairType=BeardMajestic&facialHairColor=BrownDark&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Angry&mouthType=Serious&skinColor=Pale'
 					    width="50"/><br><span style="font-size:1.2rem;color:navy;"> Mr.Options Says </span></td></a>
-		    <td width="60%"><RangeSlider float pips all='label' disabled={true} bind:values={gain_chance}  pipstep={50} min={0} max={100} }/></td>
+		    <td width="60%"><RangeSlider float pips all='label' disabled={true} bind:values={gain_chance}  pipstep={50} min={0} max={100} /></td>
 		    <td width="20%" class="text-center" style="font-size:3rem;color:purple;">{gain_chance}%</td>
 		  </tr>
 		   <tr>
 		     <a class="text-center" href="/#/user/{ticker}/me"><td width="20%" ><img src='pals.png' width="50"/><br><span style="font-size:1.2rem;color:navy;"> My Pals Think </span></td></a>
-		     <td width="60%"><RangeSlider float pips all='label' disabled={true}  bind:values={friend_kelly}  pipstep={50} min={0} max={100}  }/></td>
-		     <td width="20%" class="text-center" style="font-size:3rem;color:purple;">{friend_kelly[0]}%</td>
+		     <td width="60%"><RangeSlider float pips all='label' disabled={true}  bind:values={friend_kelly}  pipstep={50} min={0} max={100} /></td>
+		     <td width="20%" class="text-center" style="font-size:3rem;color:purple;">{friend_kelly}%</td>
+		   </tr>
+           <tr>
+		     <a class="text-center" href="/#/user/Twitter"><td width="20%" ><img href="/" src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairTheCaesarSidePart&accessoriesType=Kurt&hairColor=Platinum&facialHairType=BeardMajestic&facialHairColor=Platinum&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Angry&mouthType=Serious&skinColor=Pale'
+ 					    width="50"/><br><span style="font-size:1.2rem;color:navy;"> Twitter Says </span></td></a>
+		     <td width="60%"><RangeSlider float pips all='label' disabled={true}  bind:values={twitter_says}  pipstep={50} min={0} max={100} /></td>
+		     <td width="20%" class="text-center" style="font-size:3rem;color:purple;">{twitter_says}%</td>
+		   </tr>
+           <tr>
+		     <a class="text-center" href="/#/user/WSB"><td width="20%" ><img href="/" src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairTheCaesarSidePart&accessoriesType=Kurt&hairColor=PastelPink&facialHairType=BeardMajestic&facialHairColor=Red&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Angry&mouthType=Serious&skinColor=Pale'
+ 					    width="50"/><br><span style="font-size:1.2rem;color:navy;"> Reddit Says </span></td></a>
+		     <td width="60%"><RangeSlider float pips all='label' disabled={true}  bind:values={wsb_says}  pipstep={50} min={0} max={100} /></td>
+		     <td width="20%" class="text-center" style="font-size:3rem;color:purple;">{wsb_says}%</td>
 		   </tr>
 		   {#if $isAuthenticated}
 			     <tr>
@@ -240,7 +301,7 @@ let post_title =  encodeURIComponent("Here's the upshot for ");
 				<td width="20%"> <img src={$userInfo["picture"]} width="50" /> <br> <span style="font-size:1.2rem;color:navy;"> I believe</span>{$userInfo["nickname"]}</td>
 			-->
 				<td width="60%"><RangeSlider float pips all='label'  bind:values={my_kelly}  pipstep={50} min={0} max={100} /></td>
-				<td width="20%" class="text-center" style="font-size:3rem;color:purple;">{my_kelly[0]}%</td>
+				<td width="20%" class="text-center" style="font-size:3rem;color:purple;">{my_kelly}%</td>
 			     </tr>
 		<!--
 		  {:else}
@@ -257,9 +318,9 @@ let post_title =  encodeURIComponent("Here's the upshot for ");
 	<div class="row card">
 		<table>
 			<tr>
-			    <td width="20%"><button class="fa  fa-twitter pull-left text-white"  style="background:#c10aa9;" on:click={shareWith}> &nbsp;&nbsp; Share</td>
-			    <td width="60%" ></td>
-			    <td width="20%"><button class="text-white pull-right" style="background:#c10aa9;" on:click={updateClipboard(my_kelly)[0]}>Copy-Trade</button></td>
+			    <td width="40%"><button class="fa  fa-twitter pull-left text-white"  style="background:#c10aa9;" on:click={shareWith}> &nbsp;&nbsp; Share</td>
+			    <td width="20%" ><button class="text-white text-center is-full-width" style="background:#c10aa9;align:center;" on:click={submitRatings(ticker,my_kelly[0])}>Save</button></td>
+			    <td width="40%"><button class="text-white pull-right" style="background:#c10aa9;" on:click={updateClipboard(my_kelly)[0]}>Copy-Trade</button></td>
 			</tr>
 		</table>
     <a href="/" class="button is-center" style="width:50%; margin:2rem auto;color:white;background:#4a27b1;padding:1rem;font-size:2rem;font-weight:700;" > Go Back </a>

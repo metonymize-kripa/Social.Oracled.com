@@ -81,6 +81,18 @@ let arrow = ['⬆','⬇'];
 let rand_list=[];
 for (var i=0;i<40;i++)
     rand_list.push([Math.round(Math.random() * (96 - 33) + 33)]);
+
+function CalcFreshness(my_ts){
+    let n = new Date();
+    let diff = n - Date.parse(my_ts);
+    let hrs_elapsed =  diff/(1000*60*60);
+    console.log(my_ts);
+    let freshness = 0;
+
+    if (hrs_elapsed < 100)
+        freshness = 100 - hrs_elapsed;
+    return freshness;
+}
 </script>
 
 <style>
@@ -99,20 +111,22 @@ for (var i=0;i<40;i++)
        <table>
 		    <thead>
 		      <tr>
-		         <th width="20%" class="text-center">   <img src={createRandomAvataar()} width = 50/></th>
-		        <th width="80%" colspan="2" class="text-center" style="font-size:2.5rem;">{user}' ratings</th>
+		         <th width="15%" class="text-center">   <img src={createRandomAvataar()} width = 50/></th>
+		         <th width="65%" colspan="2" class="text-center" style="font-size:2.5rem;">{user}' ratings</th>
+                 <th width="10%" class="text-center"> Accuracy</th>
+                 <th width="10%" class="text-center">Freshness</th>
 		      </tr>
 		    </thead>
 
-              {#each user_ratings as {symbol,rating}}
+              {#each user_ratings as {symbol,rating,timestamp,px_at_save,px_now}}
                <tr>
-                 <a class="text-left" href="/#/stock/{symbol}"><td width="15%" style="font-size:2.25rem;color:#1e1aa6;font-weight:500;"> {symbol}</td></a>
-                 <td width="65%"><RangeSlider float pips all='label' disabled={true}  bind:values={rating}  pipstep={50} min={0} max={100} /></td>
-                 <td width="20%" class="text-right" style="font-size:2.25rem;color:purple;">{rating}%({arrow[Math.round(Math.random() * +1)]})</td>
+                 <a class="text-left" href="/#/stock/{symbol}"><td width="15%" style="font-size:1.75rem;color:#1e1aa6;font-weight:500;"> {symbol}</td></a>
+                 <td width="50%"><RangeSlider float pips all='label' disabled={true}  bind:values={rating}  pipstep={50} min={0} max={100} /></td>
+                 <td width="15%" class="text-right" style="font-size:1.75rem;color:purple;">{rating}%({arrow[Math.round(Math.random() * +1)]})</td>
+                 <td width="10%" class="text-right" style="font-size:1.75rem;color:purple;">{2*(px_now-px_at_save)/Math.abs(px_now-px_at_save)*(rating-50)}%</td>
+                 <td width="10%" class="text-right" style="font-size:1.75rem;color:purple;">{Math.round(CalcFreshness(timestamp))}%</td>
                </tr>
                {/each}
-
-
         </table>
       </div>
 <!--

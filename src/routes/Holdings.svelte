@@ -25,6 +25,7 @@
 
 let gain_chance=[0];
 let err_val="";
+let user_ratings = [];
 function getGainChance() {
 
     gain_chance = [0];
@@ -45,6 +46,27 @@ function getGainChance() {
             }
         });
 
+}
+
+function getPalsList() {
+    user_ratings = [];
+    fetch("https://www.insuremystock.com/stocks/getallfriendsratings/"+ticker+"/?secret_key=Fat Neo&user_email='anon@anon.com'")
+        .then(d => d.text())
+        .then(d =>
+        {
+            var api_output = JSON.parse(d);
+            if ('error' in api_output)
+                err_val =  "error";
+            else
+            {
+          //for (var i=0;i<api_output.user_list.length;i++)
+          //      user_ratings.push({'symbol':api_output.user_list[i].symbol,'my_rating':[api_output.user_list[i].rating]});
+            user_ratings = api_output.user_list;
+            }
+
+            console.log(user_ratings);
+
+        });
 }
 
   let user_array = ['FatTony','Pappe','Kripa','Pani', 'Harsha','Brad','Sunil','Deba'];
@@ -71,8 +93,19 @@ function getGainChance() {
     return array;
   }
 
+  function CalcFreshness(my_ts){
+      let n = new Date();
+      let diff = n - Date.parse(my_ts);
+      let hrs_elapsed =  diff/(1000*60*60);
+      console.log(my_ts);
+      let freshness = 0;
 
-$: params.name && params.symbol && getGainChance() ;
+      if (hrs_elapsed < 100)
+          freshness = 100 - hrs_elapsed;
+      return freshness;
+  }
+//$: params.name && params.symbol && getGainChance();
+$: params.name && params.symbol  && getPalsList();
 
 let arrow = ['⬆','⬇'];
 let rand_list=[];
@@ -104,23 +137,32 @@ let rand2 =  [Math.round(Math.random() * (96 - 33) + 33)];
      <div class="row card">
 	    <table>
 		    <thead>
-		      <tr>
-		        <th width="100%" colspan="3" class="text-center">This is your friends view on {ticker}</th>
-		      </tr>
+
+            <tr>
+               <th width="15%" class="text-center">Friend </th>
+               <th width="65%" colspan="2" class="text-center" style="font-size:2.5rem;">Ratings</th>
+                <th width="10%" class="text-center"> Accuracy</th>
+                <th width="10%" class="text-center">Freshness</th>
+            </tr>
+
 		    </thead>
+             <!--
 		      <tr>
 		        <a class="text-center" href="/#/user/FatTony"><td width="20%" ><img href="/" src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairTheCaesarSidePart&accessoriesType=Kurt&hairColor=Brown&facialHairType=BeardMajestic&facialHairColor=BrownDark&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Angry&mouthType=Serious&skinColor=Pale'
 					        width="50"/><br><span style="font-size:1.2rem;color:navy;"> Mr.Options Says </span></td></a>
 		        <td width="60%"><RangeSlider float pips all='label' disabled={true} bind:values={gain_chance}  pipstep={50} min={0} max={100} }/></td>
 		        <td width="20%" class="text-left" style="font-size:3rem;color:purple;">{gain_chance}%({arrow[Math.round(Math.random() * +1)]})</td>
 		      </tr>
-		      {#each shuffle(user_array).slice(1,5) as peep,i}
-		       <tr>
-		         <a class="text-center" href="/#/user/{peep}"><td width="20%" ><img src={createRandomAvataar()} width = 50/><br><span style="font-size:1.2rem;color:navy;"> {peep}</span></td></a>
-		         <td width="60%"><RangeSlider float pips all='label' disabled={true}  bind:values={rand_list[i]}  pipstep={50} min={0} max={100}  }/></td>
-		         <td width="20%" class="text-left" style="font-size:3rem;color:purple;">{rand_list[i]}%({arrow[Math.round(Math.random() * +1)]})</td>
-		       </tr>
-		       {/each}
+               -->
+               {#each user_ratings as {symbol,rating,timestamp,px_at_save,px_now,friend}}
+                <tr>
+                  <a class="text-left" href="/#/user/{friend}"><td width="15%" style="font-size:1.75rem;color:#1e1aa6;font-weight:500;"> <img src={createRandomAvataar()} width = 50/><br> {friend.split('@')[0]}</td></a>
+                  <td width="50%"><RangeSlider float pips all='label' disabled={true}  bind:values={rating}  pipstep={50} min={0} max={100} /></td>
+                  <td width="15%" class="text-right" style="font-size:1.75rem;color:purple;">{rating}%({arrow[Math.round(Math.random() * +1)]})</td>
+                  <td width="10%" class="text-right" style="font-size:1.75rem;color:purple;">{2*(px_now-px_at_save)/Math.abs(px_now-px_at_save)*(rating-50)}%</td>
+                  <td width="10%" class="text-right" style="font-size:1.75rem;color:purple;">{Math.round(CalcFreshness(timestamp))}%</td>
+                </tr>
+                {/each}
 		       {#if $isAuthenticated}
 			         <tr>
 				    <a class="text-center" href="/#/user/Me"><td width="20%" ><img src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Prescription02&hairColor=BrownDark&facialHairType=Blank&clotheType=GraphicShirt&clotheColor=Red&graphicType=Diamond&eyeType=Surprised&eyebrowType=RaisedExcited&mouthType=Twinkle&skinColor=Light'
