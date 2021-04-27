@@ -271,8 +271,8 @@ $: twitter_says;
 		  </tr>
 		</thead>
 		  <tr>
-		    <a class="text-center" href="/#/user/FatTony"><td width="20%" ><img href="/" src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairTheCaesarSidePart&accessoriesType=Kurt&hairColor=BrownDark&facialHairType=BeardMajestic&facialHairColor=BrownDark&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Angry&mouthType=Serious&skinColor=Pale'
-					    width="50"/><br><span style="font-size:1.2rem;color:navy;"> Mr.Options Says </span></td></a>
+		    <td width="20%" class="text-center"><img href="/" src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairTheCaesarSidePart&accessoriesType=Kurt&hairColor=BrownDark&facialHairType=BeardMajestic&facialHairColor=BrownDark&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Angry&mouthType=Serious&skinColor=Pale'
+					    width="50"/><br><span style="font-size:1.2rem;color:navy;"> Mr.Options Says </span></td>
 		    <td width="60%"><RangeSlider float pips all='label' disabled={true} bind:values={gain_chance}  pipstep={50} min={0} max={100} /></td>
 		    <td width="20%" class="text-center" style="font-size:3rem;color:purple;">{gain_chance}%</td>
 		  </tr>
@@ -282,20 +282,20 @@ $: twitter_says;
 		     <td width="20%" class="text-center" style="font-size:3rem;color:purple;">{friend_kelly}%</td>
 		   </tr>
            <tr>
-		     <a class="text-center" href="/#/user/Twitter"><td width="20%" ><img href="/" src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairTheCaesarSidePart&accessoriesType=Kurt&hairColor=Platinum&facialHairType=BeardMajestic&facialHairColor=Platinum&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Angry&mouthType=Serious&skinColor=Pale'
- 					    width="50"/><br><span style="font-size:1.2rem;color:navy;"> Twitter Says </span></td></a>
+		     <td width="20%" class="text-center" ><img href="/" src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairTheCaesarSidePart&accessoriesType=Kurt&hairColor=Platinum&facialHairType=BeardMajestic&facialHairColor=Platinum&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Angry&mouthType=Serious&skinColor=Pale'
+ 					    width="50"/><br><span style="font-size:1.2rem;color:navy;"> Twitter Says </span></td>
 		     <td width="60%"><RangeSlider float pips all='label' disabled={true}  bind:values={twitter_says}  pipstep={50} min={0} max={100} /></td>
 		     <td width="20%" class="text-center" style="font-size:3rem;color:purple;">{twitter_says}%</td>
 		   </tr>
            <tr>
-		     <a class="text-center" href="/#/user/WSB"><td width="20%" ><img href="/" src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairTheCaesarSidePart&accessoriesType=Kurt&hairColor=PastelPink&facialHairType=BeardMajestic&facialHairColor=Red&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Angry&mouthType=Serious&skinColor=Pale'
- 					    width="50"/><br><span style="font-size:1.2rem;color:navy;"> Reddit Says </span></td></a>
+		     <td class="text-center" width="20%" ><img href="/" src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairTheCaesarSidePart&accessoriesType=Kurt&hairColor=PastelPink&facialHairType=BeardMajestic&facialHairColor=Red&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Angry&mouthType=Serious&skinColor=Pale'
+ 					    width="50"/><br><span style="font-size:1.2rem;color:navy;"> Reddit Says </span></td>
 		     <td width="60%"><RangeSlider float pips all='label' disabled={true}  bind:values={wsb_says}  pipstep={50} min={0} max={100} /></td>
 		     <td width="20%" class="text-center" style="font-size:3rem;color:purple;">{wsb_says}%</td>
 		   </tr>
 		   {#if $isAuthenticated}
 			     <tr>
-				<a class="text-center" href="/#/user/Me"><td width="20%" ><img src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Prescription02&hairColor=BrownDark&facialHairType=Blank&clotheType=GraphicShirt&clotheColor=Red&graphicType=Diamond&eyeType=Surprised&eyebrowType=RaisedExcited&mouthType=Twinkle&skinColor=Light'
+				<a class="text-center" href="/#/user/{$userInfo["email"]}"><td width="20%" ><img src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Prescription02&hairColor=BrownDark&facialHairType=Blank&clotheType=GraphicShirt&clotheColor=Red&graphicType=Diamond&eyeType=Surprised&eyebrowType=RaisedExcited&mouthType=Twinkle&skinColor=Light'
 							width="50" /><br> <span style="font-size:1.2rem;color:navy;"> I believe</span> </td></a>
 			<!--
 				<td width="20%"> <img src={$userInfo["picture"]} width="50" /> <br> <span style="font-size:1.2rem;color:navy;"> I believe</span>{$userInfo["nickname"]}</td>

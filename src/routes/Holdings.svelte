@@ -159,27 +159,29 @@ let rand2 =  [Math.round(Math.random() * (96 - 33) + 33)];
                   <a class="text-left" href="/#/user/{friend}"><td width="15%" style="font-size:1.75rem;color:#1e1aa6;font-weight:500;"> <img src={createRandomAvataar()} width = 50/><br> {friend.split('@')[0]}</td></a>
                   <td width="50%"><RangeSlider float pips all='label' disabled={true}  bind:values={rating}  pipstep={50} min={0} max={100} /></td>
                   <td width="15%" class="text-right" style="font-size:1.75rem;color:purple;">{rating}%({arrow[Math.round(Math.random() * +1)]})</td>
-                  <td width="10%" class="text-right" style="font-size:1.75rem;color:purple;">{2*(px_now-px_at_save)/Math.abs(px_now-px_at_save)*(rating-50)}%</td>
+                  <!-- <td width="10%" class="text-right" style="font-size:1.75rem;color:purple;">{2*(px_now-px_at_save)/Math.abs(px_now-px_at_save)*(rating-50)}%</td> -->
+                  <td width="10%" class="text-right" style="font-size:1.75rem;color:purple;">{Math.round(Math.random() * (96 - 33) + 33)}%</td>
                   <td width="10%" class="text-right" style="font-size:1.75rem;color:purple;">{Math.round(CalcFreshness(timestamp))}%</td>
                 </tr>
                 {/each}
+                <!--
 		       {#if $isAuthenticated}
 			         <tr>
-				    <a class="text-center" href="/#/user/Me"><td width="20%" ><img src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Prescription02&hairColor=BrownDark&facialHairType=Blank&clotheType=GraphicShirt&clotheColor=Red&graphicType=Diamond&eyeType=Surprised&eyebrowType=RaisedExcited&mouthType=Twinkle&skinColor=Light'
+				    <a class="text-center" href="/#/user/Me"><td width="15%" ><img src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Prescription02&hairColor=BrownDark&facialHairType=Blank&clotheType=GraphicShirt&clotheColor=Red&graphicType=Diamond&eyeType=Surprised&eyebrowType=RaisedExcited&mouthType=Twinkle&skinColor=Light'
 							    width="50" /><br> <span style="font-size:1.2rem;color:navy;"> I believe</span> </td></a>
-
-				    <td width="60%"><RangeSlider float pips all='label'  bind:values={rand1}  pipstep={50} min={0} max={100} /></td>
-				    <td width="20%" class="text-left" style="font-size:3rem;color:purple;">{rand1}%({arrow[Math.round(Math.random() * +1)]})</td>
+				    <td width="50%"><RangeSlider float pips all='label'  bind:values={rand1}  pipstep={50} min={0} max={100} /></td>
+				    <td width="1%" class="text-left" style="font-size:3rem;color:purple;">{rand1}%({arrow[Math.round(Math.random() * +1)]})</td>
 			         </tr>
-		    <!--
+
 		      {:else}
 			       <tr> <td colspan="3">
 			       <Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
 				    <Auth0LoginButton class="button text-center  outline primary is-full-width is-big" >Login to get Oracled</Auth0LoginButton>
 			       </Auth0Context>
 			       </td></tr>
-		    -->
+
 		      {/if}
+               -->
 	    </table>
 	</div>
 
