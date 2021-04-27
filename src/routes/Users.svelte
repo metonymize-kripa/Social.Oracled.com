@@ -11,17 +11,53 @@
   import {push, pop, replace} from 'svelte-spa-router';
   import RangeSlider from "svelte-range-slider-pips";
 
+  import {
+    Auth0Context,
+    Auth0LoginButton,
+    Auth0LogoutButton,
+    authError,
+    authToken,
+    idToken,
+    isAuthenticated,
+    isLoading,
+    login,
+    logout,
+    userInfo,
+  } from '@dopry/svelte-auth0';
+
+
   let user_array = ['FatTony','Pappe','Kripa','Pani', 'Harsha','Brad','Sunil','Deba'];
   let symbol_list = ['IBM','C',"MELI","CLOV","TSLA","GME","XOM",'AMC','SPY','PLTR', 'TWTR','IAC','PG', 'V','X','FB']
   user_array = shuffle(user_array);
   symbol_list = shuffle(symbol_list);
   let new_user= 'FatTony';
+  let err_val="";
+  let user_ratings = [];
+  function getUsersList() {
+      user_ratings = [];
+      fetch("https://www.insuremystock.com/stocks/getalluserratings/"+params.name+"/?secret_key=Fat Neo")
+          .then(d => d.text())
+          .then(d =>
+          {
+              var api_output = JSON.parse(d);
+              if ('error' in api_output)
+                  err_val =  "error";
+              else
+              {
+            //for (var i=0;i<api_output.user_list.length;i++)
+            //      user_ratings.push({'symbol':api_output.user_list[i].symbol,'my_rating':[api_output.user_list[i].rating]});
+              user_ratings = api_output.user_list;
+              }
+
+              console.log(user_ratings);
+
+          });
+  }
 
   export let params = {}
-
   let user = params.name;
   function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+  var currentIndex = array.length, temporaryValue, randomIndex;
 
     // While there remain elements to shuffle...
     while (0 !== currentIndex) {
@@ -38,12 +74,13 @@
     return array;
   }
 
-$: params.name && user_array ;
+$: params.name  && getUsersList();
+
+
 let arrow = ['⬆','⬇'];
 let rand_list=[];
 for (var i=0;i<40;i++)
     rand_list.push([Math.round(Math.random() * (96 - 33) + 33)]);
-
 </script>
 
 <style>
@@ -66,13 +103,16 @@ for (var i=0;i<40;i++)
 		        <th width="80%" colspan="2" class="text-center" style="font-size:2.5rem;">{user}' ratings</th>
 		      </tr>
 		    </thead>
-              {#each shuffle(symbol_list).slice(1,7) as tx,i}
+
+              {#each user_ratings as {symbol,rating}}
                <tr>
-                 <a class="text-left" href="/#/stock/{tx}"><td width="15%" style="font-size:2.25rem;color:#1e1aa6;font-weight:500;"> {tx}</td></a>
-                 <td width="65%"><RangeSlider float pips all='label' disabled={true}  bind:values={rand_list[i]}  pipstep={50} min={0} max={100}  }/></td>
-                 <td width="20%" class="text-right" style="font-size:2.25rem;color:purple;">{rand_list[i]}%({arrow[Math.round(Math.random() * +1)]})</td>
+                 <a class="text-left" href="/#/stock/{symbol}"><td width="15%" style="font-size:2.25rem;color:#1e1aa6;font-weight:500;"> {symbol}</td></a>
+                 <td width="65%"><RangeSlider float pips all='label' disabled={true}  bind:values={rating}  pipstep={50} min={0} max={100} /></td>
+                 <td width="20%" class="text-right" style="font-size:2.25rem;color:purple;">{rating}%({arrow[Math.round(Math.random() * +1)]})</td>
                </tr>
                {/each}
+
+
         </table>
       </div>
 <!--
@@ -84,6 +124,6 @@ for (var i=0;i<40;i++)
             <h2 class='text-center' style="color:#6621cc">{Math.round(Math.random() * (96 - 33) + 33)}%</h2>
            </div>
       {/each}
-    </div> 
+    </div>
 -->
  </body>

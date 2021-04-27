@@ -24,6 +24,7 @@
 	} from '@dopry/svelte-auth0';
 
 let gain_chance=[0];
+let err_val="";
 function getGainChance() {
 
     gain_chance = [0];
@@ -40,12 +41,12 @@ function getGainChance() {
                 err_val="error";
             else
             {
-                gain_chance = [Math.round(api_output.prob_up*100)];      
+                gain_chance = [Math.round(api_output.prob_up*100)];
             }
         });
-        
+
 }
- 
+
   let user_array = ['FatTony','Pappe','Kripa','Pani', 'Harsha','Brad','Sunil','Deba'];
 
   export let params = {}
@@ -71,7 +72,7 @@ function getGainChance() {
   }
 
 
-$: params.name && params.symbol && getGainChance() ; 
+$: params.name && params.symbol && getGainChance() ;
 
 let arrow = ['⬆','⬇'];
 let rand_list=[];
@@ -97,7 +98,7 @@ let rand2 =  [Math.round(Math.random() * (96 - 33) + 33)];
 </style>
 
 <body>
-	
+
     <h2> Welcome {user}!</h2>
 
      <div class="row card">
@@ -139,6 +140,6 @@ let rand2 =  [Math.round(Math.random() * (96 - 33) + 33)];
 		      {/if}
 	    </table>
 	</div>
-      
+
 
  </body>
