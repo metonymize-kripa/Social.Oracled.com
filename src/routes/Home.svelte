@@ -246,13 +246,11 @@ let post_title =  encodeURIComponent("Here's the upshot for ");
 {#if show_entry_card}
     <div class="card" >
 	<div class="row">
-	<h1>Link into <em>{beaconSample(beacon,sourceData)}</em> data, and more.</h1> <br>
-	   <h1>To predict if $<strong>{placeholderTicker}</strong> goes up.</h1>
-	   
-	   <input class="text-center" width="50" bind:value={inputTicker} placeholder={placeholderTicker}>
-		<a href="/#/stock/{inputTicker}" class="button is-center" style="width:50%; margin:2rem auto;color:white;background:#c10aa9;padding:1.5rem;font-size:2rem;font-weight:700;"> Let's Go </a>
+		<h1>Link into <em>{beaconSample(beacon,sourceData)}</em> data, and more.</h1> 
 	</div>
-	    
+	<div class="row">
+	  	<h1>To predict if $<strong>{placeholderTicker}</strong> goes up.</h1>
+	</div>	    
     <div class="row">
 
         <div class="col-8 " >
