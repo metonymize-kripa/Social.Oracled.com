@@ -8,10 +8,22 @@
   import Router from "svelte-spa-router";
   import routes from './routes';
   import Auth from './routes/utils/Auth.svelte';
+	
+  import { onMount } from 'svelte';
+  let time = new Date();
+  $: beacon = Math.round(time.getSeconds()/10);
+  onMount(() => {
+		const interval = setInterval(() => {
+			time = new Date();
+		}, 1000);
+
+</script>
+
+{seconds}
 </script>
 
 <body>
-	
+	<h1>Beep:{beacon}</h1>
 	<Router {routes}/>
 	
 </body>
