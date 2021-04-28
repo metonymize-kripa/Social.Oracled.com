@@ -249,7 +249,8 @@ let post_title =  encodeURIComponent("Here's the upshot for ");
 		<h1>Link into <em>{beaconSample(beacon,sourceData)}</em> data, and more.</h1> 
 	</div>
 	<div class="row">
-	  	<h1>To predict if $<strong>{placeholderTicker}</strong> goes up.</h1>
+	  	<h1>To predict if <button class="button"  style="font:1rem;padding:0.8rem; margin:0.2rem; background:#351eb5;color:white;" on:click={e => new_ticker=placeholderTicker}>{placeholderTicker}</button>
+goes up.</h1>
 	</div>	 
 	    
     </div>
