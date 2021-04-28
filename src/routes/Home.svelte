@@ -46,7 +46,7 @@
 	};
   });
   	const sourceData = ["Twitter", "WallStreetBets", "Options Market", "Yahoo Finance", "Your Friends"];
-	const tickerData = ["TSLA", "GME", "SPY", "PLTR", "AMC"];
+	let tickerData = ticker_array;
 	
 	function beaconSample(beacon,sampler) {
 		updatePlaceholderTicker();
