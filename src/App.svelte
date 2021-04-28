@@ -9,16 +9,8 @@
   import routes from './routes';
   import Auth from './routes/utils/Auth.svelte';
 
-	let time = new Date();
-	$: beacon = Math.round(time.getSeconds()/5)%2;
-	onMount(() => {
-		const interval = setInterval(() => {
-			time = new Date();
-		}, 1000);
-	});
 </script>
 
 <body>
-	<h1>Beep:{beacon}</h1>
 	<Router {routes}/>
 </body>
