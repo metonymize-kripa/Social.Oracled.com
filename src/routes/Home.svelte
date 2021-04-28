@@ -257,7 +257,7 @@ let post_title =  encodeURIComponent("Here's the upshot for ");
     </div>
 
 
-        <div class="row card">
+        <div class="row card" style="margin-top:5rem;">
 
             <div class="col-12" style="font-size:2rem;" >
                 Or Enter Symbol:
