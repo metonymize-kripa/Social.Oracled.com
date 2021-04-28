@@ -35,7 +35,7 @@
   let beacon = 0;
   let inputTicker = '';
   let placeholderTicker = 'TSLA';
-  $: beacon = Math.round(time.getSeconds()/3)%2;
+  $: beacon = Math.round(time.getSeconds()/2)%2;
   onMount(async () => {
     calculateKelly();
     const interval = setInterval(() => {
