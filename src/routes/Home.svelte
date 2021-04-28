@@ -245,8 +245,8 @@ let post_title =  encodeURIComponent("Here's the upshot for ");
 {#if show_entry_card}
     <div class="card" >
 	<div class="row">
-	<h1 class="text-center">Link into <em>{beaconSample(beacon,sourceData)}</em> data, and more.</h1>
-	   <h1 class="text-center">To predict if $<strong>{placeholderTicker}</strong> goes up.</h1>
+	<h1>Link into <em>{beaconSample(beacon,sourceData)}</em> data, and more.</h1> <br>
+	   <h1>To predict if $<strong>{placeholderTicker}</strong> goes up.</h1>
 	   
 	   <input class="text-center" width="50" bind:value={inputTicker} placeholder={placeholderTicker}>
            <button class="text-center" on:click={clickHandler}>
