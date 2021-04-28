@@ -247,25 +247,21 @@ let post_title =  encodeURIComponent("Here's the upshot for ");
 
 {#if show_entry_card}
     <br>
-    <div  >
-		<h1 style="margin-bottom:0.5rem;">💎Oracle looks at </h1>
-        <span style="color:purple; border-bottom:3px solid pink; font-size:3rem; font-weight:500">{beaconSample(beacon,sourceData)} data.</span>
-        <h1 style="margin-bottom:0.5rem;">To calculate the chance</h1>
-        <span style="color:purple; border-bottom:3px solid pink; font-size:3rem; font-weight:500">
-        <a class="button" style="font-size:2rem;padding:0.4rem; margin:0.2rem 0.2rem 1rem 0.2rem; background:#351eb5;color:white;" href="/#/stock/{placeholderTicker}">{placeholderTicker}</a>
-        {beaconSample(beacon,sourceAction)}</span>
-    </div>
-
-
-        <div class="row card" style="margin-top:5rem;">
-
-            <div class="col-12" style="font-size:2rem;" >
-                <input class="text-uppercase" style="margin-top:1.5rem;font-size:3rem; font-weight:500" bind:value={new_ticker}/>
-            </div>
-            <div class="col-12" >
-                <a href="/#/stock/{new_ticker}" class="button is-center" style="width:100%;color:white;background:#c10aa9;font-size:3rem;font-weight:700; padding:1rem;">💎Oracle it </a>
-            </div>
+    <div class="row">
+        <div class="col-7">
+    		<h1 style="margin-bottom:0.5rem;">💎Oracle looks at </h1>
+            <span style="color:#c10aa9; border-bottom:4px solid #0330ff; font-size:3rem; font-weight:500">{beaconSample(beacon,sourceData)} data.</span>
+            <h1 style="margin-bottom:0.5rem;">To calculate the chance</h1>
+            <span style="color:#0330ff; border-bottom:4px solid #c10aa9; font-size:3rem; font-weight:500">
+            <a class="button" style="font-size:2rem;padding:0.4rem; margin:0.2rem 0.2rem 1rem 0.2rem; background:#351eb5;color:white;" href="/#/stock/{placeholderTicker}">{placeholderTicker}</a>
+            {beaconSample(beacon,sourceAction)}</span>
         </div>
+        <div class="col-5 card" style="margin-top:3rem;" >
+            <br>
+                <input class="text-uppercase" style="margin:2rem auto;font-size:3rem; font-weight:500" bind:value={new_ticker}/>
+                <a href="/#/stock/{new_ticker}" class="button is-center" style="width:100%;color:white;background:#c10aa9;font-size:3rem;font-weight:700; padding:1rem;">💎Oracle it </a>
+        </div>
+    </div>
 
 
 
