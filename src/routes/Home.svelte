@@ -287,7 +287,7 @@ let post_title =  encodeURIComponent("Here's the upshot for ");
 {:else}
 
 	<div class="row card">
-	<h3> Upshot for {ticker} using Options & Social data</h3>
+	<h3> Chance of an up move for {ticker} using Options & Social data</h3>
 	<table>
 		<thead>
 		  <tr>
