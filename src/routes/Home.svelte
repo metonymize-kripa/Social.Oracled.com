@@ -250,7 +250,11 @@ let post_title =  encodeURIComponent("Here's the upshot for ");
 	</div>
 	<div class="row">
 	  	<h1>To predict if $<strong>{placeholderTicker}</strong> goes up.</h1>
-	</div>	    
+	</div>	 
+	    
+    </div>
+
+   <div class="card" >
     <div class="row">
 
         <div class="col-8 " >
