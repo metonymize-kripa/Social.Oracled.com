@@ -1,5 +1,5 @@
 <svelte:head>
-  <title>Enter 💎Oracle</title>
+  <title>💎Oracle</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://unpkg.com/chota@latest">
 </svelte:head>
@@ -22,7 +22,7 @@
 	  logout,
 	  userInfo,
 	} from '@dopry/svelte-auth0';
-	
+
   let api_output ={};
   let friend_output={};
 
@@ -35,10 +35,10 @@
   let beacon = 0;
   let inputTicker = '';
   let placeholderTicker = 'TSLA';
-  const refreshPeriod = 1;
+  const refreshPeriod = 2;
   $: beacon = Math.round(time.getSeconds()/refreshPeriod)%2;
   onMount(async () => {
-    calculateKelly();
+    //calculateKelly();
     const interval = setInterval(() => {
 			time = new Date();
 		}, 1000);
@@ -47,8 +47,9 @@
 	};
   });
   	const sourceData = ["Twitter", "WallStreetBets", "Options Market", "Yahoo Finance", "Your Friends"];
+    const sourceAction = ["goes up", "goes down", "stays flat", "reaches the moon", "crashes and burns"];
 	let tickerData = ["LBRDK","IAC","TWTR","SE","MELI","PYPL","PTON","CHNG","CVNA","MU","PINS","DIS","WFC","C","GDDY","CZR","UBER","ALXN","EXPE","BAC","JPM","NOW","MVIS","MNMD","GME","AMD","TSLA","SPY","MSFT","AMC","PLTR","AAPL","OCGN","VIAC","BB","VXRT","NIO","RKT","PINS","GOOG","NNDM","CLOV","GSAT","COIN","FB","UPS"];
-	
+
 	function beaconSample(beacon,sampler) {
 		updatePlaceholderTicker();
 		return _.sample(sampler)
@@ -61,7 +62,7 @@
 	function clickHandler(){
 		new_ticker = inputTicker;
 	}
-	
+
   let err_val = 'no';
   let my_kelly = [0];
   let fat_kelly = [0];
@@ -229,15 +230,15 @@ let post_title =  encodeURIComponent("Here's the upshot for ");
 <Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
     <div class="row">
 	    {#if !$isAuthenticated}
-		<div class="col-9"><span class="tag is-large">💎Oracle</span></div>
+		<div class="col-9"><span class="is-large">💎Oracle</span></div>
 		<div class="col-3">
 		    <Auth0LoginButton class="button text-center error is-full-width is-big" >Login</Auth0LoginButton>
 		</div>
 	    {:else}
-		    <div class="col-9"><span class="tag is-large">💎Oracle</span></div>
+		    <div class="col-9"><span class="is-large">💎Oracle</span></div>
 		    <div class="col-3 hide-xs">
-			 <span class="tag is-large">Welcome {$userInfo["nickname"]}</span>
-			 <Auth0LogoutButton class="button text-center is-full-width is-big" >Logout</Auth0LogoutButton>
+			 <span class="is-large text-capitalize pull-right">Welcome {$userInfo["nickname"]}</span>
+			<!-- <Auth0LogoutButton class="button text-center is-full-width is-big" >Logout</Auth0LogoutButton> -->
 		     </div>
 			{getMyRating($userInfo["email"]) || ""}
 	    {/if}
@@ -245,17 +246,31 @@ let post_title =  encodeURIComponent("Here's the upshot for ");
   </Auth0Context>
 
 {#if show_entry_card}
-    <div class="card" >
-	<div class="row">
-		<h1>Merge with <em>{beaconSample(beacon,sourceData)}</em> data.</h1> 
-	</div>
-	<div class="row">
-	  	<h1>To refine your odds <button class="button"  style="font:1rem;padding:0.8rem; margin:0.2rem; background:#351eb5;color:white;" on:click={e => new_ticker=placeholderTicker}>{placeholderTicker}</button>
-goes up.</h1>
-	</div>	 
-	    
+    <br>
+    <div  >
+		<h1 style="margin-bottom:0.5rem;">💎Oracle looks at </h1>
+        <span style="color:purple; border-bottom:3px solid pink; font-size:3rem; font-weight:500">{beaconSample(beacon,sourceData)} data.</span>
+        <h1 style="margin-bottom:0.5rem;">To calculate the chance</h1>
+        <span style="color:purple; border-bottom:3px solid pink; font-size:3rem; font-weight:500">
+        <a class="button" style="font-size:2rem;padding:0.4rem; margin:0.2rem 0.2rem 1rem 0.2rem; background:#351eb5;color:white;" href="/#/stock/{placeholderTicker}">{placeholderTicker}</a>
+        {beaconSample(beacon,sourceAction)}</span>
     </div>
 
+
+        <div class="row card">
+
+            <div class="col-12" style="font-size:2rem;" >
+                Or Enter Symbol:
+                <input class="text-uppercase" style="" bind:value={new_ticker}/>
+            </div>
+            <div class="col-12" >
+                <a href="/#/stock/{new_ticker}" class="button is-center" style="width:100%;color:white;background:#c10aa9;font-size:2rem;font-weight:700; padding:1rem;"> Get it </a>
+            </div>
+        </div>
+
+
+
+<!--
    <div class="card" >
     <div class="row">
 
@@ -272,9 +287,7 @@ goes up.</h1>
         </div>
 
       </div>
-      <!--
-      <button class="button is-center" style="width:50%; margin:2rem auto;color:white;background:#c10aa9;padding:1.5rem;font-size:2rem;font-weight:700;"  on:click={changeTicker}> Click to find out </button>
-      -->
+
       <a href="/#/stock/{new_ticker}" class="button is-center" style="width:50%; margin:2rem auto;color:white;background:#c10aa9;padding:1.5rem;font-size:2rem;font-weight:700;"> Get Upshot </a>
 
       <div class="row">
@@ -286,6 +299,7 @@ goes up.</h1>
       </div>
 
     </div>
+    -->
 
 {:else}
 
@@ -320,7 +334,7 @@ goes up.</h1>
 				<td width="50%"><RangeSlider float pips all='label'  bind:values={my_kelly}  pipstep={10} min={-10} max={10} formatter={ v => moods[v+10] }/></td>
 				<td width="30%" class="text-center" style="font-size:4rem;color:purple;">{Math.round(50+my_kelly[0]*1.75)}%</td>
 			     </tr>
-		
+
 		<!--
 		  {:else}
 			   <tr> <td colspan="3">
