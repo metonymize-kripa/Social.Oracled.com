@@ -260,10 +260,10 @@ let post_title =  encodeURIComponent("Here's the upshot for ");
         <div class="row card" style="margin-top:5rem;">
 
             <div class="col-12" style="font-size:2rem;" >
-                <input class="text-uppercase" style="margin-top:1.5rem;" bind:value={new_ticker}/>
+                <input class="text-uppercase" style="margin-top:1.5rem;font-size:3rem; font-weight:500" bind:value={new_ticker}/>
             </div>
             <div class="col-12" >
-                <a href="/#/stock/{new_ticker}" class="button is-center" style="width:100%;color:white;background:#c10aa9;font-size:2rem;font-weight:700; padding:1rem;">💎Oracle it </a>
+                <a href="/#/stock/{new_ticker}" class="button is-center" style="width:100%;color:white;background:#c10aa9;font-size:3rem;font-weight:700; padding:1rem;">💎Oracle it </a>
             </div>
         </div>
 
