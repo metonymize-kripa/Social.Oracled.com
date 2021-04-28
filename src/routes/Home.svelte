@@ -228,7 +228,7 @@ let post_title =  encodeURIComponent("Here's the upshot for ");
 <body>
 
 <Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
-    <div class="row">
+    <div class="row" style="background-color:#EEEEEE">
 	    {#if !$isAuthenticated}
 		<div class="col-9"><span class="is-large">💎Oracle</span></div>
 		<div class="col-3">
