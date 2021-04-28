@@ -35,7 +35,8 @@
   let beacon = 0;
   let inputTicker = '';
   let placeholderTicker = 'TSLA';
-  $: beacon = Math.round(time.getSeconds()/2)%2;
+  const refreshPeriod = 1;
+  $: beacon = Math.round(time.getSeconds()/refreshPeriod)%2;
   onMount(async () => {
     calculateKelly();
     const interval = setInterval(() => {
@@ -46,7 +47,7 @@
 	};
   });
   	const sourceData = ["Twitter", "WallStreetBets", "Options Market", "Yahoo Finance", "Your Friends"];
-	let tickerData = ticker_array;
+	let tickerData = ["LBRDK","IAC","TWTR","SE","MELI","PYPL","PTON","CHNG","CVNA","MU","PINS","DIS","WFC","C","GDDY","CZR","UBER","ALXN","EXPE","BAC","JPM","NOW","MVIS","MNMD","GME","AMD","TSLA","SPY","MSFT","AMC","PLTR","AAPL","OCGN","VIAC","BB","VXRT","NIO","RKT","PINS","GOOG","NNDM","CLOV","GSAT","COIN","FB","UPS"];
 	
 	function beaconSample(beacon,sampler) {
 		updatePlaceholderTicker();
