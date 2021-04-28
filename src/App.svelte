@@ -16,14 +16,9 @@
 		const interval = setInterval(() => {
 			time = new Date();
 		}, 1000);
-
-</script>
-
-{seconds}
 </script>
 
 <body>
 	<h1>Beep:{beacon}</h1>
 	<Router {routes}/>
-	
 </body>
