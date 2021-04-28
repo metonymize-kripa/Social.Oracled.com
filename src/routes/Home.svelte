@@ -28,12 +28,23 @@
   let show_entry_card = true;
   let ticker_array = ['GME','SPY','MELI','TWTR','TSLA']
   const moods = ["Sell","😫","😫","😫","😥","Weak","😥","😐","😐","😐","Hold","😐","😀","😀","😀","Meh","😀","😁","😁","😁","Buy"];
+
+  // Added for dynamic text input
+  let time = new Date();
+  let beacon = 0;
+  let inputTicker = '';
+  let placeholderTicker = 'TSLA';
+  $: beacon = Math.round(time.getSeconds()/3)%2;
   onMount(async () => {
-    //const res = await fetch("/api/date");
-    //const newDate = await res.text();
-    //date = newDate;
     calculateKelly();
+    const interval = setInterval(() => {
+			time = new Date();
+		}, 1000);
+    return () => {
+	clearInterval(interval);
+	};
   });
+	
   let err_val = 'no';
   let my_kelly = [0];
   let fat_kelly = [0];
