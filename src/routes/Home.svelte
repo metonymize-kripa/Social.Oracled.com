@@ -58,6 +58,7 @@
 	}
 
 	function clickHandler(){
+		new_ticker = inputTicker;
 	}
 	
   let err_val = 'no';
@@ -249,9 +250,7 @@ let post_title =  encodeURIComponent("Here's the upshot for ");
 	   <h1>To predict if $<strong>{placeholderTicker}</strong> goes up.</h1>
 	   
 	   <input class="text-center" width="50" bind:value={inputTicker} placeholder={placeholderTicker}>
-           <button class="text-center" on:click={clickHandler}>
-		Go
-	   </button>
+		<a href="/#/stock/{inputTicker}" class="button is-center" style="width:50%; margin:2rem auto;color:white;background:#c10aa9;padding:1.5rem;font-size:2rem;font-weight:700;"> Let's Go </a>
 	</div>
 	    
     <div class="row">
