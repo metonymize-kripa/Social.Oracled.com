@@ -7,6 +7,7 @@
 <script>
   import { onMount } from "svelte";
   import Avatar from "svelte-avatar";
+  import _ from "underscore";
   import RangeSlider from "svelte-range-slider-pips";
   import {
 	  Auth0Context,
@@ -44,6 +45,20 @@
 	clearInterval(interval);
 	};
   });
+  	const sourceData = ["Twitter", "WallStreetBets", "Options Market", "Yahoo Finance", "Your Friends"];
+	const tickerData = ["TSLA", "GME", "SPY", "PLTR", "AMC"];
+	
+	function beaconSample(beacon,sampler) {
+		updatePlaceholderTicker();
+		return _.sample(sampler)
+	}
+
+	function updatePlaceholderTicker(){
+		placeholderTicker = _.sample(tickerData);
+	}
+
+	function clickHandler(){
+	}
 	
   let err_val = 'no';
   let my_kelly = [0];
@@ -229,6 +244,16 @@ let post_title =  encodeURIComponent("Here's the upshot for ");
 
 {#if show_entry_card}
     <div class="card" >
+	<div class="row">
+	<h1 class="text-center">Link into <em>{beaconSample(beacon,sourceData)}</em> data, and more.</h1>
+	   <h1 class="text-center">To predict if $<strong>{placeholderTicker}</strong> goes up.</h1>
+	   
+	   <input class="text-center" width="50" bind:value={inputTicker} placeholder={placeholderTicker}>
+           <button class="text-center" on:click={clickHandler}>
+		Go
+	   </button>
+	</div>
+	    
     <div class="row">
 
         <div class="col-8 " >
