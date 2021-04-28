@@ -263,7 +263,7 @@ let post_title =  encodeURIComponent("Here's the upshot for ");
                 <input class="text-uppercase" style="margin-top:1.5rem;" bind:value={new_ticker}/>
             </div>
             <div class="col-12" >
-                <a href="/#/stock/{new_ticker}" class="button is-center" style="width:100%;color:white;background:#c10aa9;font-size:2rem;font-weight:700; padding:1rem;"> Oracle it </a>
+                <a href="/#/stock/{new_ticker}" class="button is-center" style="width:100%;color:white;background:#c10aa9;font-size:2rem;font-weight:700; padding:1rem;">💎Oracle it </a>
             </div>
         </div>
 
