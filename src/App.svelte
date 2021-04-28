@@ -8,14 +8,14 @@
   import Router from "svelte-spa-router";
   import routes from './routes';
   import Auth from './routes/utils/Auth.svelte';
-	
-  import { onMount } from 'svelte';
-  let time = new Date();
-  $: beacon = Math.round(time.getSeconds()/10);
-  onMount(() => {
+
+	let time = new Date();
+	$: beacon = Math.round(time.getSeconds()/5)%2;
+	onMount(() => {
 		const interval = setInterval(() => {
 			time = new Date();
 		}, 1000);
+	});
 </script>
 
 <body>
