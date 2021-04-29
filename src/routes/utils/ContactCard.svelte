@@ -15,10 +15,6 @@ import {createRandomAvataar} from './rand_avataar.js';
 	}
 
 	.name, h2 {
-		padding: 0 0 0 1.5em;
-		background:  0 50% no-repeat;
-		background-size: 2em 2em;
-		margin: 0 0 0.5em 0;
 		border-bottom: 1px solid #ff3e00;
 	}
 
@@ -37,8 +33,8 @@ import {createRandomAvataar} from './rand_avataar.js';
 
 <article class="contact-card">
 	
-	<div class="name">
-		<h2>{my_name}</h2>
+	<div>
+		<h2> <img src={createRandomAvataar()} width = 50/> {my_name}</h2>
 	</div>
 
 	<div class="freshness">
