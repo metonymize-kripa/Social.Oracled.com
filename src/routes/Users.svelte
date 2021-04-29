@@ -92,7 +92,7 @@ function CalcFreshness(my_ts){
 
     if (hrs_elapsed < 100)
         freshness = 100 - hrs_elapsed;
-    return freshness;
+    return  Math.min(freshness,100);
 }
 </script>
 

@@ -104,7 +104,8 @@ function getPalsList() {
 
       if (hrs_elapsed < 100)
           freshness = 100 - hrs_elapsed;
-      return freshness;
+
+      return Math.min(freshness,100);
   }
 //$: params.name && params.symbol && getGainChance();
 $: params.name && params.symbol  && getPalsList();
