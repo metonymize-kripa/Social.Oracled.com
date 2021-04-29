@@ -28,16 +28,17 @@ else {
 		border-radius: 50px;
 		box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
 		padding: 1em;
-		background-color:"LightSalmon";
+		background-color:;
 	}
 
 	.name, h1 {
 		border-bottom: 5px solid #1000ff;
+		margin: 0 0 1em 0;
 	}
 	
 	h2 {
 		text-align: center;
-		line-height: 1.5;
+		margin: 0 0 1em 0;
 	}
 
 	.freshness, .accuracy {
@@ -56,7 +57,9 @@ else {
 	
 	<div>
 		<div class="row"> <h2> {my_name} </h2> </div>
-		<h1> <img src={createRandomAvataar()} width = 50/> {my_rating}%</h1>
+		<div class="row">
+			<h1> <img src={createRandomAvataar()} width = 50/> {my_rating}%</h1>
+		</div>
 	</div>
 	<div class="row">
 		<div class="col">	
