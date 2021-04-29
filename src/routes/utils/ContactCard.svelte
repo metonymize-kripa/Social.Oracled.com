@@ -22,7 +22,7 @@ import {createRandomAvataar} from './rand_avataar.js';
 		border-bottom: 1px solid #ff3e00
 	}
 
-	.address, .email {
+	.freshness, .accuracy {
 		padding: 0 0 0 1.5em;
 		background:  0 50% no-repeat;
 		background-size: 1em 1em;
@@ -31,9 +31,8 @@ import {createRandomAvataar} from './rand_avataar.js';
 	}
 
 	.name { background-image: url('https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/279/face-with-raised-eyebrow_1f928.png') }
-	.address { background-image: url('https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/279/fire_1f525.png') }
-	.email   { background-image: url('https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/279/incoming-envelope_1f4e8.png') }
-	.missing { color: #999 }
+	.freshness { background-image: url('https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/279/fire_1f525.png') }
+	.accuracy   { background-image: url('https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/279/incoming-envelope_1f4e8.png') }
 </style>
 
 <article class="contact-card">
@@ -42,11 +41,11 @@ import {createRandomAvataar} from './rand_avataar.js';
 		{my_name}>
 	</div>
 
-	<div class="address">
-		{my_status}>
+	<div class="freshness">
+		{my_freshnes}>
 	</div>
 
-	<div class="email">
-		{accuracy}
+	<div class="accuracy">
+		{my_accuracy}
 	</div>
 </article>
