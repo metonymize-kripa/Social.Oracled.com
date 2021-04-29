@@ -24,11 +24,10 @@ else {
 <style>
 	.contact-card {
 		width: 250px;
-		border: 1px solid #aaa;
+		border: 5px solid #FFA07A;
 		border-radius: 50px;
 		box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
 		padding: 1em;
-		background-color:#FFA07A;
 	}
 
 	.name, h1 {
@@ -38,7 +37,6 @@ else {
 	
 	h2 {
 		text-align: center;
-		margin: 0 0 1em 0;
 		padding: 0 0 0 2em;
 	}
 
