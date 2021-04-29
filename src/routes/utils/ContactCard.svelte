@@ -9,13 +9,13 @@ import {createRandomAvataar} from './rand_avataar.js';
 	.contact-card {
 		width: 300px;
 		border: 1px solid #aaa;
-		border-radius: 2px;
+		border-radius: 10px;
 		box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
 		padding: 1em;
 	}
 
 	.name, h2 {
-		border-bottom: 1px solid #ff3e00;
+		border-bottom: 2px solid ##461be4;
 	}
 
 	.freshness, .accuracy {
