@@ -57,7 +57,6 @@ else {
 	<div>
 		<h1> <img src={createRandomAvataar()} width = 50/> <strong>{my_rating}%</strong></h1>
 	</div>
-	<div class="row"> <h2> {my_name} </h2> </div>
 	<div class="row">
 		<div class="col">	
 			<div class="freshness">
