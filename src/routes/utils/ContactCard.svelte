@@ -1,3 +1,10 @@
+<script>
+export let my_name="Bearfox";
+export let my_freshness="56%";
+export let my_accuracy="42%";
+import {createRandomAvataar} from './rand_avataar.js';
+</script>
+
 <style>
 	.contact-card {
 		width: 300px;
@@ -7,9 +14,11 @@
 		padding: 1em;
 	}
 
-	h2 {
+	.name, h2 {
 		padding: 0 0 0.2em 0;
 		margin: 0 0 1em 0;
+		background:  0 50% no-repeat;
+		background-size: 1em 1em;
 		border-bottom: 1px solid #ff3e00
 	}
 
@@ -21,26 +30,28 @@
 		line-height: 1.2;
 	}
 
+	.name { background-image: url({createRandomAvataar()}) }
 	.address { background-image: url('https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/279/fire_1f525.png') }
 	.email   { background-image: url('https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/279/incoming-envelope_1f4e8.png') }
 	.missing { color: #999 }
 </style>
 
 <article class="contact-card">
-	<h2>
-		<slot name="name">
+	
+	<div class="name">
+		<slot name={my_name}>
 			<span class="missing">Unknown name</span>
 		</slot>
-	</h2>
+	</div>
 
 	<div class="address">
-		<slot name="address">
+		<slot name={my_status}>
 			<span class="missing">Unknown address</span>
 		</slot>
 	</div>
 
 	<div class="email">
-		<slot name="email">
+		<slot name={accuracy}>
 			<span class="missing">Unknown email</span>
 		</slot>
 	</div>
