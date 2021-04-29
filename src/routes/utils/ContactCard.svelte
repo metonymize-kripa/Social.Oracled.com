@@ -19,9 +19,9 @@ import {createRandomAvataar} from './rand_avataar.js';
 	}
 
 	.freshness, .accuracy {
-		padding: 0 0 0 1.5em;
+		padding: 0 0 0 2em;
 		background:  0 50% no-repeat;
-		background-size: 1em 1em;
+		background-size: 2em 2em;
 		margin: 0 0 0.5em 0;
 		line-height: 1.2;
 	}
