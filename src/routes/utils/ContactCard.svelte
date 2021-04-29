@@ -39,6 +39,7 @@ else {
 	h2 {
 		text-align: center;
 		margin: 0 0 1em 0;
+		padding: 0 0 0 2em;
 	}
 
 	.freshness, .accuracy {
@@ -56,11 +57,9 @@ else {
 <article class="contact-card">
 	
 	<div>
-		<div class="row"> <h2> {my_name} </h2> </div>
-		<div class="row">
-			<h1> <img src={createRandomAvataar()} width = 50/> {my_rating}%</h1>
-		</div>
+		<h1> <img src={createRandomAvataar()} width = 50/> <strong>{my_rating}%</strong></h1>
 	</div>
+	<div class="row"> <h2> {my_name} </h2> </div>
 	<div class="row">
 		<div class="col">	
 			<div class="freshness">
