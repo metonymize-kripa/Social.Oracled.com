@@ -41,12 +41,7 @@ else {
 		margin: 0 0 1em 0;
 		line-height: 1.5;
 	}
-	
-	.legend {
-		line-height: 0.5;
-	}
 
-	.name { background-image: url('https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/279/face-with-raised-eyebrow_1f928.png') }
 	.freshness { background-image: url('https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/279/sparkles_2728.png') }
 	.accuracy   { background-image: url('https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/279/direct-hit_1f3af.png') }
 </style>
@@ -54,7 +49,8 @@ else {
 <article class="contact-card" background-color="LightSalmon">
 	
 	<div>
-		<h2> <img src={createRandomAvataar()} width = 50/> {my_name}</h2>
+		<div class="row"> {my_name} </div>
+		<h1> <img src={createRandomAvataar()} width = 50/> {my_rating}%</h1>
 	</div>
 	<div class="row">
 		<div class="col">	
@@ -66,18 +62,6 @@ else {
 			<div class="accuracy">
 				{my_accuracy}
 			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col">
-			<div class="legend">
-				<p><small>Freshness</small></p>
-			</div>	
-		</div>
-		<div class="col">
-			<div class="legend">
-				<p><small>Accuracy</small></p>
-			</div>	
 		</div>
 	</div>
 </article>
