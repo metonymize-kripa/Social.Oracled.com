@@ -38,11 +38,11 @@ import {createRandomAvataar} from './rand_avataar.js';
 <article class="contact-card">
 	
 	<div class="name">
-		{my_name}>
+		{my_name}
 	</div>
 
 	<div class="freshness">
-		{my_freshnes}>
+		{my_freshnes}
 	</div>
 
 	<div class="accuracy">
