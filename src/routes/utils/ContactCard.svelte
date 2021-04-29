@@ -42,7 +42,7 @@ import {createRandomAvataar} from './rand_avataar.js';
 	</div>
 
 	<div class="freshness">
-		{my_freshnes}
+		{my_freshness}
 	</div>
 
 	<div class="accuracy">
