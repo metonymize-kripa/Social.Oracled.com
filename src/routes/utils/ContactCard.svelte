@@ -24,7 +24,7 @@ else {
 <style>
 	.contact-card {
 		width: 250px;
-		border: 5px solid #FFA07A;
+		border: 5px solid;
 		border-radius: 50px;
 		box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
 		padding: 1em;
@@ -33,11 +33,13 @@ else {
 	.name, h1 {
 		border-bottom: 5px solid #1000ff;
 		margin: 0 0 1em 0;
+		font-size: 50px;
+		color: #7d03fc;
 	}
 	
 	h2 {
 		text-align: center;
-		padding: 0 0 0 2em;
+		padding: 0 0 0 1em;
 	}
 
 	.freshness, .accuracy {
@@ -53,7 +55,6 @@ else {
 </style>
 
 <article class="contact-card">
-	
 	<div>
 		<h1> <img src={createRandomAvataar()} width = 50/> <strong>{my_rating}%</strong></h1>
 	</div>
