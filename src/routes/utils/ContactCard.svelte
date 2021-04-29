@@ -43,7 +43,7 @@ else {
 	}
 
 	.freshness, .accuracy {
-		padding: 0 0 0 1em;
+		padding: 0 0 0 2.5em;
 		background:  0 50% no-repeat;
 		background-size: 1.5em 1.5em;
 		margin: 0 0 1em 0;
