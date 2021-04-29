@@ -165,9 +165,20 @@ let rand2 =  [Math.round(Math.random() * (96 - 33) + 33)];
     <div class ="row">
     <table style="margin-bottom:3rem;">
 		<thead>
-		  <tr>
-			  <th width="100%"  class="text-center"><h1>Chance {ticker} goes up</h1></th>
-		  </tr>
+        <Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
+         {#if $isAuthenticated}
+    		  <tr>
+    			  <th width="100%"  class="text-center"><h1>Chance {ticker} goes up</h1></th>
+    		  </tr>
+         {:else}
+         <tr>
+             <td width="100%"  class="text-center" style="padding:0;margin-bottom:0;"><h3>This is {user.split('@')[0]} pals' view on {ticker}</h3></td>
+         </tr>
+           <tr>
+             <th width="100%"  class="text-center"><Auth0LoginButton class="button text-center error">Login To See what your pals think of {ticker} </Auth0LoginButton></th>
+           </tr>
+           {/if}
+           </Auth0Context>
 		</thead>
     </table>
 

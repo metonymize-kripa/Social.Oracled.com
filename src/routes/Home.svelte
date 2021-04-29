@@ -254,10 +254,10 @@ let post_title =  encodeURIComponent("Here's the upshot for ");
     <div class="row">
         <div class="col-7">
     		<h1 style="margin-bottom:0.5rem;">We look at </h1>
-            <span style="color:#c10aa9; border-bottom:4px solid #0330ff; font-size:3rem; font-weight:500">{beaconSample(beacon,sourceData)} data.</span>
+            <span style="color:#c10aa9; border-bottom:4px solid #0330ff; font-size:3rem; font-weight:500">{beaconSample(beacon,sourceData)} data</span>
             <h1 style="margin-bottom:0.5rem;">To calculate the chance</h1>
             <span style="color:#0330ff;  font-size:3rem; font-weight:500">
-            <a class="button" style="font-size:2rem;padding:0.6rem; margin:0.2rem 0.2rem 1rem 0.2rem; width:8rem;background:#351eb5;color:white;border-radius:5rem;box-shadow:4px 4px 2px 3px rgb(0 0 0 / 26%)" href="/#/stock/{placeholderTicker}">{placeholderTicker}</a>
+            <a class="button" style="font-size:2rem;padding:0.6rem; margin:0.2rem 0.2rem 1rem 0.2rem; width:8rem;background:#351eb5;color:white;border-radius:5rem;box-shadow:2px 2px 2px 3px rgb(0 0 0 / 26%)" href="/#/stock/{placeholderTicker}">{placeholderTicker}</a>
             {beaconSample(beacon,sourceAction)}</span>
         </div>
         <div class="col-5 " style="margin-top:3rem;" >

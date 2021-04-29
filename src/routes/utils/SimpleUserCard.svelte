@@ -1,5 +1,5 @@
 <script>
-export let my_email="Bearfox@";
+export let my_email="harmeet@oracled.com";
 export let my_rating=49;
 export let my_freshness=44;
 export let my_accuracy=42;

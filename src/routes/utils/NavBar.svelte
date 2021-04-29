@@ -44,14 +44,16 @@ background:#f0efff;
           {#if $isAuthenticated}
             <a  class='{user}' href="/#/user/{$userInfo["email"]}">MyList</a>
             <a class='{rating}' href="/#/user/{ticker}/{$userInfo["nickname"]}">Ratings</a>
-          {/if}
+         {:else}
+            <a  class='{user}' href="/#/user/harmeet@oracled.com">MyList</a>
+            <a class='{rating}' href="/#/user/TSLA/harmeet@oracled.com">Ratings</a>
+            <Auth0LoginButton class="button text-center error">Login</Auth0LoginButton>
+         {/if}
         </div>
       </div>
       <div class="nav-right">
         {#if $isAuthenticated}
             <a class="hide-xs" style="color:#cd00ff">Welcome {$userInfo["nickname"]}</a>
-        {:else}
-            <Auth0LoginButton class="button text-center error">Login</Auth0LoginButton>
         {/if}
       </div>
     </nav>

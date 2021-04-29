@@ -267,7 +267,17 @@ $: twitter_says;
       		     <td width="60%"><RangeSlider float pips all='label' disabled={true}  bind:values={friend_kelly}  pipstep={50} min={0} max={100} /></td>
       		     <td width="20%" class="text-center myrating" >{friend_kelly}%</td>
       		   </tr>
-
+         {:else}
+         <tr>
+         <td colspan="3" width="100%"><h3 class="text-center">Login to see your and your friends ratings</h3></td>
+          </tr>
+          <tr>
+          <td colspan="3" width="80%">
+             <Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
+                <Auth0LoginButton style="margin:0 3rem;" class="button text-center is-full-width text-center error">Login</Auth0LoginButton>
+             </Auth0Context>
+             </td>
+             </tr>
 		  {/if}
 	</table>
 	</div>
@@ -275,7 +285,6 @@ $: twitter_says;
 	<div class="row ">
 		<table>
 			<tr>
-
 			    <td width="50%"><button class="text-white text-center"  style="background:#c10aa9; margin-left:10%; border-radius: 20rem;" on:click={submitRatings(ticker,my_kelly[0])}>Save</td>
 			    <td width="50%"><button class="text-white pull-right" style="background:#c10aa9; margin-right:10%;border-radius: 20rem;" on:click={updateClipboard(my_kelly)[0]}>Copy-Trade</button></td>
 			</tr>

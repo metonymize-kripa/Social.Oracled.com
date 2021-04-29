@@ -134,12 +134,25 @@ function CalcFreshness(my_ts){
       </div>
       -->
 
+
+
       <div class ="row">
       <table style="margin-bottom:3rem;">
         <thead>
+         <Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
+         {#if $isAuthenticated}
           <tr>
-              <th width="100%"  class="text-center"><h1>Chance of Up Move</h1></th>
+              <th width="100%"  class="text-center"><h1>{user.split('@')[0].toUpperCase()}'s View on Up Moves</h1></th>
           </tr>
+          {:else}
+              <tr>
+                  <td width="100%"  class="text-center" style="padding:0;margin-bottom:0;"><h3>This is {user.split('@')[0]}'s view on market</h3></td>
+              </tr>
+              <tr>
+                <th width="100%"  class="text-center"><Auth0LoginButton class="button text-center error">Login To See yours </Auth0LoginButton></th>
+            </tr>
+        {/if}
+        </Auth0Context>
         </thead>
       </table>
 
