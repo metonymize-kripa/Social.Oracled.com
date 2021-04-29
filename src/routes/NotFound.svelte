@@ -9,6 +9,8 @@ import ContactCard from './utils/ContactCard.svelte';
 
 <button on:click={() => push('/stock/spy')}>Click to start with SPY</button>
 
+<br>
+
 <ContactCard>
 	<span slot="name">
 		Bearfox
