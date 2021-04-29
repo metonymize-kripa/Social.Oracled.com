@@ -7,9 +7,10 @@
 <script>
   import { onMount } from "svelte";
   import {createRandomAvataar} from './utils/rand_avataar.js';
-    import TickerCard from './utils/TickerCard.svelte';
+  import SimpleTickerCard from './utils/SimplerTickerCard.svelte';
   import {push, pop, replace} from 'svelte-spa-router';
   import RangeSlider from "svelte-range-slider-pips";
+    import NavBar from './utils/NavBar.svelte';
 
   import {
     Auth0Context,
@@ -107,6 +108,8 @@ function CalcFreshness(my_ts){
 </style>
 
 <body>
+<NavBar user="active" />
+    <!--
     <div class ="card row">
        <table>
 		    <thead>
@@ -129,23 +132,23 @@ function CalcFreshness(my_ts){
                {/each}
         </table>
       </div>
-           <div class="row ">
-         {#each user_ratings as {symbol,rating,timestamp,px_at_save,px_now}}
-         <div class="col-4">
-            <TickerCard ticker={symbol} rating={rating} accuracy={Math.round(Math.random() * (96 - 33) + 33)} freshness={Math.round(Math.random() * (96 - 33) + 33)}/>
-         </div>
-            
-            {/each}
-     <div>
-<!--
-    <div class ="card row">
-    <div class="col-12"><h3>{user}' ratings</h3></div>
-       {#each shuffle(symbol_list).slice(1,7) as tx}
-           <div class="col-4 card" style="background:#f9dbdb">
-            <h2 class='text-center' style="color:#8a008a" ><a href="/#/stock/{tx}">{tx}</a></h2>
-            <h2 class='text-center' style="color:#6621cc">{Math.round(Math.random() * (96 - 33) + 33)}%</h2>
-           </div>
+      -->
+
+      <div class ="row">
+      <table style="margin-bottom:3rem;">
+        <thead>
+          <tr>
+              <th width="100%"  class="text-center"><h1>User Ratings</h1></th>
+          </tr>
+        </thead>
+      </table>
+
+      {#each user_ratings as {symbol,rating,timestamp,px_at_save,px_now}}
+          <div class="col-4">
+              <SimpleTickerCard my_ticker={symbol}  my_rating={rating} my_accuracy={Math.round(Math.random() * (96 - 33) + 33)} my_freshness={Math.round(CalcFreshness(timestamp))}/>
+          </div>
       {/each}
-    </div>
--->
+      </div>
+
+
  </body>

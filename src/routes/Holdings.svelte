@@ -8,7 +8,8 @@
   import { onMount } from "svelte";
   import {createRandomAvataar} from './utils/rand_avataar.js';
   import {push, pop, replace} from 'svelte-spa-router'
-  import TickerCard from './utils/TickerCard.svelte';
+  import SimpleUserCard from './utils/SimpleUserCard.svelte';
+  import NavBar from './utils/NavBar.svelte';
     import RangeSlider from "svelte-range-slider-pips";
     import {
 	  Auth0Context,
@@ -133,13 +134,12 @@ let rand2 =  [Math.round(Math.random() * (96 - 33) + 33)];
 
 <body>
 
-    <h2> Welcome {user}!</h2>
+    <NavBar rating="active" ticker={ticker}/>
 
-
+<!--
      <div class="row card">
 	    <table>
 		    <thead>
-
             <tr>
                <th width="15%" class="text-center">Friend </th>
                <th width="65%" colspan="2" class="text-center" style="font-size:2.5rem;">Ratings</th>
@@ -148,45 +148,34 @@ let rand2 =  [Math.round(Math.random() * (96 - 33) + 33)];
             </tr>
 
 		    </thead>
-             <!--
-		      <tr>
-		        <a class="text-center" href="/#/user/FatTony"><td width="20%" ><img href="/" src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairTheCaesarSidePart&accessoriesType=Kurt&hairColor=Brown&facialHairType=BeardMajestic&facialHairColor=BrownDark&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Angry&mouthType=Serious&skinColor=Pale'
-					        width="50"/><br><span style="font-size:1.2rem;color:navy;"> Mr.Options Says </span></td></a>
-		        <td width="60%"><RangeSlider float pips all='label' disabled={true} bind:values={gain_chance}  pipstep={50} min={0} max={100} }/></td>
-		        <td width="20%" class="text-left" style="font-size:3rem;color:purple;">{gain_chance}%({arrow[Math.round(Math.random() * +1)]})</td>
-		      </tr>
-               -->
                {#each user_ratings as {symbol,rating,timestamp,px_at_save,px_now,friend}}
                 <tr>
                   <a class="text-left" href="/#/user/{friend}"><td width="15%" style="font-size:1.75rem;color:#1e1aa6;font-weight:500;"> <img src={createRandomAvataar()} width = 50/><br> {friend.split('@')[0]}</td></a>
                   <td width="50%"><RangeSlider float pips all='label' disabled={true}  bind:values={rating}  pipstep={50} min={0} max={100} /></td>
                   <td width="15%" class="text-right" style="font-size:1.75rem;color:purple;">{rating}%({arrow[Math.round(Math.random() * +1)]})</td>
-                  <!-- <td width="10%" class="text-right" style="font-size:1.75rem;color:purple;">{2*(px_now-px_at_save)/Math.abs(px_now-px_at_save)*(rating-50)}%</td> -->
+                  <td width="10%" class="text-right" style="font-size:1.75rem;color:purple;">{2*(px_now-px_at_save)/Math.abs(px_now-px_at_save)*(rating-50)}%</td>
                   <td width="10%" class="text-right" style="font-size:1.75rem;color:purple;">{Math.round(Math.random() * (96 - 33) + 33)}%</td>
                   <td width="10%" class="text-right" style="font-size:1.75rem;color:purple;">{Math.round(CalcFreshness(timestamp))}%</td>
                 </tr>
                 {/each}
-                
-                <!--
-		       {#if $isAuthenticated}
-			         <tr>
-				    <a class="text-center" href="/#/user/Me"><td width="15%" ><img src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Prescription02&hairColor=BrownDark&facialHairType=Blank&clotheType=GraphicShirt&clotheColor=Red&graphicType=Diamond&eyeType=Surprised&eyebrowType=RaisedExcited&mouthType=Twinkle&skinColor=Light'
-							    width="50" /><br> <span style="font-size:1.2rem;color:navy;"> I believe</span> </td></a>
-				    <td width="50%"><RangeSlider float pips all='label'  bind:values={rand1}  pipstep={50} min={0} max={100} /></td>
-				    <td width="1%" class="text-left" style="font-size:3rem;color:purple;">{rand1}%({arrow[Math.round(Math.random() * +1)]})</td>
-			         </tr>
-
-		      {:else}
-			       <tr> <td colspan="3">
-			       <Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
-				    <Auth0LoginButton class="button text-center  outline primary is-full-width is-big" >Login to get Oracled</Auth0LoginButton>
-			       </Auth0Context>
-			       </td></tr>
-
-		      {/if}
-               -->
 	    </table>
 	</div>
+    -->
 
+    <div class ="row">
+    <table style="margin-bottom:3rem;">
+		<thead>
+		  <tr>
+			  <th width="100%"  class="text-center"><h1>Chance {ticker} goes up</h1></th>
+		  </tr>
+		</thead>
+    </table>
+
+    {#each user_ratings as {symbol,rating,timestamp,px_at_save,px_now,friend}}
+        <div class="col-4">
+            <SimpleUserCard my_name={friend.split('@')[0]}  my_rating={rating} my_accuracy={Math.round(Math.random() * (96 - 33) + 33)} my_freshness={Math.round(CalcFreshness(timestamp))}/>
+        </div>
+    {/each}
+    </div>
 
  </body>

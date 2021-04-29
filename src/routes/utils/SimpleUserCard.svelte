@@ -20,10 +20,9 @@ else {
 }
 
 </script>
-
 <style>
 	.contact-card {
-		max-width: 250px;
+		max-width: 450px;
 		border: 1px solid #aaa;
 		box-shadow: 11px 9px 7px 2px rgb(0 0 0 / 10%);;
 		padding: 1em;
@@ -31,13 +30,13 @@ else {
 
 	h1 {
 
-		font-size: 50px;
+		font-size: 4rem;
 		color: #00fc;
 	}
 
 	h2 {
 		text-align: center;
-		font-size: 20px;
+		font-size: 3rem;
 		color: #aaa;
 	}
 

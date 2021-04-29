@@ -8,6 +8,7 @@
   import { onMount } from "svelte";
   import Avatar from "svelte-avatar";
   import _ from "underscore";
+  import NavBar from './utils/NavBar.svelte';
   import RangeSlider from "svelte-range-slider-pips";
   import {
 	  Auth0Context,
@@ -224,9 +225,11 @@ let post_title =  encodeURIComponent("Here's the upshot for ");
 	}
 </style>
 
-
 <body>
+<NavBar  ticker={new_ticker}/>
 
+			<!-- <Auth0LogoutButton class="button text-center is-full-width is-big" >Logout</Auth0LogoutButton> -->
+<!--
 <Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
     <div class="row" style="background-color:#EEEEEE">
 	    {#if !$isAuthenticated}
@@ -238,12 +241,13 @@ let post_title =  encodeURIComponent("Here's the upshot for ");
 		    <div class="col-9"><span class="is-large">💎Oracle</span></div>
 		    <div class="col-3 hide-xs">
 			 <span class="is-large text-capitalize pull-right">Welcome {$userInfo["nickname"]}</span>
-			<!-- <Auth0LogoutButton class="button text-center is-full-width is-big" >Logout</Auth0LogoutButton> -->
+
 		     </div>
 			{getMyRating($userInfo["email"]) || ""}
 	    {/if}
     </div>
   </Auth0Context>
+  -->
 
 {#if show_entry_card}
     <br>
@@ -253,13 +257,13 @@ let post_title =  encodeURIComponent("Here's the upshot for ");
             <span style="color:#c10aa9; border-bottom:4px solid #0330ff; font-size:3rem; font-weight:500">{beaconSample(beacon,sourceData)} data.</span>
             <h1 style="margin-bottom:0.5rem;">To calculate the chance</h1>
             <span style="color:#0330ff;  font-size:3rem; font-weight:500">
-            <a class="button" style="font-size:2rem;padding:0.4rem; margin:0.2rem 0.2rem 1rem 0.2rem; background:#351eb5;color:white;" href="/#/stock/{placeholderTicker}">{placeholderTicker}</a>
+            <a class="button" style="font-size:2rem;padding:0.6rem; margin:0.2rem 0.2rem 1rem 0.2rem; width:8rem;background:#351eb5;color:white;border-radius:5rem;" href="/#/stock/{placeholderTicker}">{placeholderTicker}</a>
             {beaconSample(beacon,sourceAction)}</span>
         </div>
-        <div class="col-5 card" style="margin-top:3rem;" >
+        <div class="col-5 " style="margin-top:3rem;" >
             <br>
                 <input class="text-uppercase" style="margin:2rem auto;font-size:3rem; font-weight:500" bind:value={new_ticker}/>
-                <a href="/#/stock/{new_ticker}" class="button is-center" style="width:100%;color:white;background:#c10aa9;font-size:3rem;font-weight:700; padding:1rem;">💎Oracle it </a>
+                <a href="/#/stock/{new_ticker}" class="button is-center" style="width:100%;color:white;background:#c10aa9;font-size:3rem;font-weight:700; padding:1rem; border-radius: 20rem;">💎Oracle it </a>
         </div>
     </div>
 

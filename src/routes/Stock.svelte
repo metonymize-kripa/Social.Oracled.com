@@ -7,6 +7,7 @@
 <script>
   import { onMount } from "svelte";
   import Avatar from "svelte-avatar";
+  import NavBar from './utils/NavBar.svelte';
   import RangeSlider from "svelte-range-slider-pips";
   import {
 	  Auth0Context,
@@ -215,96 +216,71 @@ $: twitter_says;
 	:global(.rangeSlider .rangeNub ){
 	     background-color:#68328a !important;
 	}
+
+  .myrating{
+  font-size:4rem;
+  color:#00f;
+  font-weight:500
+  }
 </style>
 
 
 <body>
+<NavBar overview="active" ticker={ticker}/>
 
-  <Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
-    <div class="row">
-	    {#if !$isAuthenticated}
-		<div class="col-9"><h1>💎Oracle Upshot</h1></div>
-		<div class="col-3">
-		    <Auth0LoginButton class="button text-center error is-full-width is-big" >Login</Auth0LoginButton>
-		</div>
-	    {:else}
-		    <div class="col-9"><h1>💎Oracle Upshot</h1></div>
-		    <div class="col-3 hide-xs">
-			 <span class="tag is-large">Welcome {$userInfo["nickname"]}</span>
-			 <Auth0LogoutButton class="button text-center is-full-width is-big" >Logout</Auth0LogoutButton>
-		     </div>
-			{getMyRating($userInfo["email"]) || ""}
-	    {/if}
-    </div>
-  </Auth0Context>
-
-
-	<div class="row card">
+	<div class="row ">
 	<table>
 		<thead>
 		  <tr>
-			  <th width="100%" colspan="3" class="text-center"><h1>Upshot for {ticker}</h1></th>
+			  <th width="100%" colspan="3" class="text-center"><h1>Chance {ticker} goes up</h1></th>
 		  </tr>
 		</thead>
 		  <tr>
 		    <td width="20%" class="text-center"><img href="/" src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairTheCaesarSidePart&accessoriesType=Kurt&hairColor=BrownDark&facialHairType=BeardMajestic&facialHairColor=BrownDark&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Angry&mouthType=Serious&skinColor=Pale'
-					    width="50"/><br><span style="font-size:1.2rem;color:navy;"> Mr.Options Says </span></td>
+					    width="50"/><br><span style="font-size:1.2rem;color:navy;">OptionsData</span></td>
 		    <td width="60%"><RangeSlider float pips all='label' disabled={true} bind:values={gain_chance}  pipstep={50} min={0} max={100} /></td>
-		    <td width="20%" class="text-center" style="font-size:3rem;color:purple;">{gain_chance}%</td>
+		    <td width="20%" class="text-center myrating" >{gain_chance}%</td>
 		  </tr>
-		   <tr>
-		     <a class="text-center" href="/#/user/{ticker}/me"><td width="20%" ><img src='pals.png' width="50"/><br><span style="font-size:1.2rem;color:navy;"> My Pals Think </span></td></a>
-		     <td width="60%"><RangeSlider float pips all='label' disabled={true}  bind:values={friend_kelly}  pipstep={50} min={0} max={100} /></td>
-		     <td width="20%" class="text-center" style="font-size:3rem;color:purple;">{friend_kelly}%</td>
-		   </tr>
+
            <tr>
-		     <td width="20%" class="text-center" ><img href="/" src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairTheCaesarSidePart&accessoriesType=Kurt&hairColor=Platinum&facialHairType=BeardMajestic&facialHairColor=Platinum&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Angry&mouthType=Serious&skinColor=Pale'
- 					    width="50"/><br><span style="font-size:1.2rem;color:navy;"> Twitter Says </span></td>
+		     <td width="20%" class="text-center" ><img href="/" src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairTheCaesarSidePart&accessoriesType=Kurt&hairColor=Blonde&facialHairType=BeardMajestic&facialHairColor=Blonde&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Angry&mouthType=Serious&skinColor=Pale'
+ 					    width="50"/><br><span style="font-size:1.2rem;color:navy;">TwitterData</span></td>
 		     <td width="60%"><RangeSlider float pips all='label' disabled={true}  bind:values={twitter_says}  pipstep={50} min={0} max={100} /></td>
-		     <td width="20%" class="text-center" style="font-size:3rem;color:purple;">{twitter_says}%</td>
+		     <td width="20%" class="text-center myrating" >{twitter_says}%</td>
 		   </tr>
            <tr>
 		     <td class="text-center" width="20%" ><img href="/" src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairTheCaesarSidePart&accessoriesType=Kurt&hairColor=PastelPink&facialHairType=BeardMajestic&facialHairColor=Red&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Angry&mouthType=Serious&skinColor=Pale'
- 					    width="50"/><br><span style="font-size:1.2rem;color:navy;"> Reddit Says </span></td>
+ 					    width="50"/><br><span style="font-size:1.2rem;color:navy;">RedditData</span></td>
 		     <td width="60%"><RangeSlider float pips all='label' disabled={true}  bind:values={wsb_says}  pipstep={50} min={0} max={100} /></td>
-		     <td width="20%" class="text-center" style="font-size:3rem;color:purple;">{wsb_says}%</td>
+		     <td width="20%" class="text-center myrating" >{wsb_says}%</td>
 		   </tr>
 		   {#if $isAuthenticated}
 			     <tr>
 				<a class="text-center" href="/#/user/{$userInfo["email"]}"><td width="20%" ><img src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Prescription02&hairColor=BrownDark&facialHairType=Blank&clotheType=GraphicShirt&clotheColor=Red&graphicType=Diamond&eyeType=Surprised&eyebrowType=RaisedExcited&mouthType=Twinkle&skinColor=Light'
-							width="50" /><br> <span style="font-size:1.2rem;color:navy;"> I believe</span> </td></a>
-			<!--
-				<td width="20%"> <img src={$userInfo["picture"]} width="50" /> <br> <span style="font-size:1.2rem;color:navy;"> I believe</span>{$userInfo["nickname"]}</td>
-			-->
+							width="50" /><br> <span style="font-size:1.2rem;color:navy;"> MyView</span> </td></a>
+
 				<td width="60%"><RangeSlider float pips all='label'  bind:values={my_kelly}  pipstep={50} min={0} max={100} /></td>
-				<td width="20%" class="text-center" style="font-size:3rem;color:purple;">{my_kelly}%</td>
+				<td width="20%" class="text-center myrating" >{my_kelly}%</td>
 			     </tr>
-		<!--
-		  {:else}
-			   <tr> <td colspan="3">
-			   <Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
-				<Auth0LoginButton class="button text-center  outline primary is-full-width is-big" >Login to get Oracled</Auth0LoginButton>
-			   </Auth0Context>
-			   </td></tr>
-		-->
+                 <tr>
+      		     <a class="text-center" href="/#/user/{ticker}/me"><td width="20%" ><img src='pals.png' width="50"/><br><span style="font-size:1.2rem;color:navy;"> MyPals </span></td></a>
+      		     <td width="60%"><RangeSlider float pips all='label' disabled={true}  bind:values={friend_kelly}  pipstep={50} min={0} max={100} /></td>
+      		     <td width="20%" class="text-center myrating" >{friend_kelly}%</td>
+      		   </tr>
+
 		  {/if}
 	</table>
 	</div>
 
-	<div class="row card">
+	<div class="row ">
 		<table>
 			<tr>
-			    <td width="40%"><button class="fa  fa-twitter pull-left text-white"  style="background:#c10aa9;" on:click={shareWith}> &nbsp;&nbsp; Share</td>
-			    <td width="20%" ><button class="text-white text-center is-full-width" style="background:#c10aa9;align:center;" on:click={submitRatings(ticker,my_kelly[0])}>Save</button></td>
-			    <td width="40%"><button class="text-white pull-right" style="background:#c10aa9;" on:click={updateClipboard(my_kelly)[0]}>Copy-Trade</button></td>
+
+			    <td width="50%"><button class="text-white text-center"  style="background:#c10aa9; margin-left:10%; border-radius: 20rem;" on:click={submitRatings(ticker,my_kelly[0])}>Save</td>
+			    <td width="50%"><button class="text-white pull-right" style="background:#c10aa9; margin-right:10%;border-radius: 20rem;" on:click={updateClipboard(my_kelly)[0]}>Copy-Trade</button></td>
 			</tr>
 		</table>
-    <a href="/" class="button is-center" style="width:50%; margin:2rem auto;color:white;background:#4a27b1;padding:1rem;font-size:2rem;font-weight:700;" > Go Back </a>
-    <!--
-			<Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
-				<Auth0LogoutButton class="button text-center is-full-width is-big" >Logout once your work here is done</Auth0LogoutButton>
-			</Auth0Context>
-    -->
+
 	</div>
 
 </body>

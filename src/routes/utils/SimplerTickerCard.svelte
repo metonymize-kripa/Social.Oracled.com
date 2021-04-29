@@ -1,9 +1,9 @@
 <script>
-export let my_name="Bearfox";
+export let my_ticker="SPY";
 export let my_rating=49;
 export let my_freshness=44;
 export let my_accuracy=42;
-import {createRandomAvataar} from './rand_avataar.js';
+
 
 let cardColor="MintCream";
 
@@ -20,26 +20,27 @@ else {
 }
 
 </script>
-
 <style>
 	.contact-card {
-		max-width: 250px;
+		max-width: 450px;
 		border: 1px solid #aaa;
 		box-shadow: 11px 9px 7px 2px rgb(0 0 0 / 10%);;
 		padding: 1em;
 	}
 
 	h1 {
-
-		font-size: 50px;
+		text-align:center;
+		font-size: 4rem;;
 		color: #00fc;
+		margin:0;
+	}
+	h2{
+	color:#c10aa9;
+	font-weight:500;
+	font-size:4rem;
+	margin:0;
 	}
 
-	h2 {
-		text-align: center;
-		font-size: 20px;
-		color: #aaa;
-	}
 
 	.freshness, .accuracy {
 		padding: 0 0 0 2.5em;
@@ -60,11 +61,9 @@ else {
 </style>
 
 <article class="contact-card" style="background:{cardColor};">
-<h2 style="margin-bottom:0;color:#e218c8;">{my_name}</h2>
-	<div style="display:flex;border-bottom: 1px solid #aaa; margin-bottom:0;">
-		<div style="width:40%;"> <img src={createRandomAvataar()} /></div><div style="width:50%;" ><h1 style="text-align:right;margin:1rem 0 0 0 ;">{my_rating}%</h1></div>
-	</div>
-	<!-- <div class="row"><h2>{my_name}</h2></div> -->
+<div><h1>{my_ticker}</h1></div>
+<div><h2 style="text-align:center">{my_rating}%</h2></div>
+
 	<div style="display:flex;align-items: center;justify-content:center;">
 		<div  style="width:50%">
 		<span class="small_desc"> Freshness</span><br>
