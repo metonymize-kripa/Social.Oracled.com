@@ -30,7 +30,7 @@ else {
 		padding: 1em;
 	}
 
-	.name, h1 {
+	h1 {
 		border-bottom: 1px solid #aaa;
 		margin: 0 0 1em 0;
 		font-size: 50px;
@@ -39,7 +39,9 @@ else {
 	
 	h2 {
 		text-align: center;
-		padding: 0 0 0 1em;
+		margin: 0 0 0 0;
+		font-size: 20px;
+		color: #aaa;
 	}
 
 	.freshness, .accuracy {
@@ -58,6 +60,7 @@ else {
 	<div>
 		<h1> <img src={createRandomAvataar()} width = 50/> <strong>{my_rating}%</strong></h1>
 	</div>
+	<div class="row"><h2>{my_name}</h2></div>
 	<div class="row">
 		<div class="col">	
 			<div class="freshness">
