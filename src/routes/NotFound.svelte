@@ -19,7 +19,7 @@ import TickerCard from './utils/TickerCard.svelte';
 
 <body>
 
-<h2>NotFound</h2>
+<h1>Not Found</h1>
 
 <button on:click={() => push('/stock/spy')}>Click to start with SPY</button>
 
