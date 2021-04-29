@@ -138,7 +138,7 @@ function CalcFreshness(my_ts){
       <table style="margin-bottom:3rem;">
         <thead>
           <tr>
-              <th width="100%"  class="text-center"><h1>User Ratings</h1></th>
+              <th width="100%"  class="text-center"><h1>Chance of Up Move</h1></th>
           </tr>
         </thead>
       </table>

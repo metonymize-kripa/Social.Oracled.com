@@ -26,7 +26,7 @@ function handleClick(){
 	.contact-card {
 		max-width: 450px;
 		border: 1px solid #aaa;
-		box-shadow: 11px 9px 7px 2px rgb(0 0 0 / 10%);;
+		box-shadow: 11px 9px 7px 2px rgb(0 0 0 / 10%);
 		padding: 1em;
 	}
     .contact-card:hover{

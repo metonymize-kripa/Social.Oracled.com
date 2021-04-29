@@ -29,6 +29,10 @@ border:none;
 a:hover{
  color:#c10aa9;
 }
+
+.nav{
+background:#f0efff;
+}
 </style>
 
 <Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
