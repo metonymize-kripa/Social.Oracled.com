@@ -28,10 +28,16 @@ else {
 		border-radius: 50px;
 		box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
 		padding: 1em;
+		background-color:"LightSalmon";
 	}
 
-	.name, h2 {
+	.name, h1 {
 		border-bottom: 5px solid #1000ff;
+	}
+	
+	h2 {
+		text-align: center;
+		line-height: 1.5;
 	}
 
 	.freshness, .accuracy {
@@ -46,10 +52,10 @@ else {
 	.accuracy   { background-image: url('https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/279/direct-hit_1f3af.png') }
 </style>
 
-<article class="contact-card" background-color="LightSalmon">
+<article class="contact-card">
 	
 	<div>
-		<div class="row"> {my_name} </div>
+		<div class="row"> <h2> {my_name} </h2> </div>
 		<h1> <img src={createRandomAvataar()} width = 50/> {my_rating}%</h1>
 	</div>
 	<div class="row">
