@@ -17,8 +17,8 @@ import {createRandomAvataar} from './rand_avataar.js';
 	.name, h2 {
 		padding: 0 0 0 1.5em;
 		background:  0 50% no-repeat;
-		background-size: 1em 1em;
-		margin: 0 0 1em 0;
+		background-size: 2em 2em;
+		margin: 0 0 0.5em 0;
 		border-bottom: 1px solid #ff3e00;
 	}
 
@@ -31,8 +31,8 @@ import {createRandomAvataar} from './rand_avataar.js';
 	}
 
 	.name { background-image: url('https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/279/face-with-raised-eyebrow_1f928.png') }
-	.freshness { background-image: url('https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/279/fire_1f525.png') }
-	.accuracy   { background-image: url('https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/279/incoming-envelope_1f4e8.png') }
+	.freshness { background-image: url('https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/279/sparkles_2728.png') }
+	.accuracy   { background-image: url('https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/279/direct-hit_1f3af.png') }
 </style>
 
 <article class="contact-card">
