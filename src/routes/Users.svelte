@@ -7,7 +7,7 @@
 <script>
   import { onMount } from "svelte";
   import {createRandomAvataar} from './utils/rand_avataar.js';
-
+    import TickerCard from './utils/TickerCard.svelte';
   import {push, pop, replace} from 'svelte-spa-router';
   import RangeSlider from "svelte-range-slider-pips";
 
@@ -129,6 +129,14 @@ function CalcFreshness(my_ts){
                {/each}
         </table>
       </div>
+           <div class="row ">
+         {#each user_ratings as {symbol,rating,timestamp,px_at_save,px_now}}
+         <div class="col-4">
+            <TickerCard ticker={symbol} rating={rating} accuracy={Math.round(Math.random() * (96 - 33) + 33)} freshness={Math.round(Math.random() * (96 - 33) + 33)}/>
+         </div>
+            
+            {/each}
+     <div>
 <!--
     <div class ="card row">
     <div class="col-12"><h3>{user}' ratings</h3></div>

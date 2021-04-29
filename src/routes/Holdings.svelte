@@ -8,6 +8,7 @@
   import { onMount } from "svelte";
   import {createRandomAvataar} from './utils/rand_avataar.js';
   import {push, pop, replace} from 'svelte-spa-router'
+  import TickerCard from './utils/TickerCard.svelte';
     import RangeSlider from "svelte-range-slider-pips";
     import {
 	  Auth0Context,
@@ -134,6 +135,7 @@ let rand2 =  [Math.round(Math.random() * (96 - 33) + 33)];
 
     <h2> Welcome {user}!</h2>
 
+
      <div class="row card">
 	    <table>
 		    <thead>
@@ -164,6 +166,7 @@ let rand2 =  [Math.round(Math.random() * (96 - 33) + 33)];
                   <td width="10%" class="text-right" style="font-size:1.75rem;color:purple;">{Math.round(CalcFreshness(timestamp))}%</td>
                 </tr>
                 {/each}
+                
                 <!--
 		       {#if $isAuthenticated}
 			         <tr>

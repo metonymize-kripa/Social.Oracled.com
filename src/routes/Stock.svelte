@@ -77,17 +77,6 @@ function calculateKelly() {
                     fat_kelly = [(api_output.kelly_k*100)];
                     gain_chance = [Math.round(api_output.prob_up*100)];
                     varx = api_output.prob_up_n/api_output.prob_down_n;
-                  /*  if (fat_kelly > 10)
-                    {
-                        fat_kelly = [10];
-                        gain_chance = Math.round( 100*(0.03*varx*10+1)/(1+varx) ) ;
-                    }
-                    else if (fat_kelly < -10)
-                    {
-                        fat_kelly = [-10];
-                        gain_chance = Math.round( 100*(0.03*varx*-10+1)/(1+varx) )
-                    }
-                    */
                 }
             });
         fetch("https://www.insuremystock.com/stocks/getratings/"+ticker)
@@ -168,7 +157,6 @@ function getWSBRating(symbol){
                 wsb_says = [Math.round(wsb_rating*100+50)];
             }
         });
-
 }
 
 function updateClipboard(newClip) {
@@ -250,18 +238,6 @@ $: twitter_says;
     </div>
   </Auth0Context>
 
-<!--
-<p>
-    Your route is:
-    <b>{params.symbol}</b>
-    <b>{#if params.cmd}{params.cmd}{/if}</b>
-	<br>
-
-	<b>stored ticker is :{ticker}, calculated fatkelly is:{fat_kelly}, apioutput:{api_output}</b>
-</p>
-
-<button on:click={() => calculateKelly()}>Force calculate kelly</button>
--->
 
 	<div class="row card">
 	<table>

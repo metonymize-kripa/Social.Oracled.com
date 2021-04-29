@@ -1,7 +1,8 @@
 <script>
 
 import {push, pop, replace} from 'svelte-spa-router'
-import ContactCard from './utils/ContactCard.svelte';
+import ContactCard from './utils/UserCard.svelte';
+import TickerCard from './utils/TickerCard.svelte';
   
 </script>
 
@@ -11,6 +12,11 @@ import ContactCard from './utils/ContactCard.svelte';
 
 <br>
 
+<ContactCard my_name="Harmeet" my_status="SuperMan" accuracy=80 followers=1256/>
+<TickerCard ticker="IBM" rating=56 accuracy=80 freshness=1256/>
+
+
+<!--
 <ContactCard>
 	<span slot="name">
 		Bearfox
@@ -24,3 +30,4 @@ import ContactCard from './utils/ContactCard.svelte';
 		upshot@oracled.com
 	</span>
 </ContactCard>
+-->
