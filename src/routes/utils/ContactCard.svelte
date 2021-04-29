@@ -21,7 +21,7 @@ import {createRandomAvataar} from './rand_avataar.js';
 	.freshness, .accuracy {
 		padding: 0 0 0 2em;
 		background:  0 50% no-repeat;
-		background-size: 2em 2em;
+		background-size: 1em 1em;
 		margin: 0 0 0.5em 0;
 		line-height: 1.2;
 	}
@@ -36,12 +36,16 @@ import {createRandomAvataar} from './rand_avataar.js';
 	<div>
 		<h2> <img src={createRandomAvataar()} width = 50/> {my_name}</h2>
 	</div>
-
-	<div class="freshness">
-		{my_freshness}
-	</div>
-
-	<div class="accuracy">
-		{my_accuracy}
+	<div class="row">
+		<div class="col">	
+			<div class="freshness">
+				{my_freshness}
+			</div>
+		</div>
+		<div class="col">
+			<div class="accuracy">
+				{my_accuracy}
+			</div>
+		</div>
 	</div>
 </article>
