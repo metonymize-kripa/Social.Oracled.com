@@ -9,21 +9,21 @@ import {createRandomAvataar} from './rand_avataar.js';
 	.contact-card {
 		width: 300px;
 		border: 1px solid #aaa;
-		border-radius: 10px;
+		border-radius: 60px;
 		box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
 		padding: 1em;
 	}
 
 	.name, h2 {
-		border-bottom: 2px solid #461be4;
+		border-bottom: 5px solid #1000ff;
 	}
 
 	.freshness, .accuracy {
 		padding: 0 0 0 2em;
 		background:  0 50% no-repeat;
-		background-size: 1em 1em;
-		margin: 0 0 0.5em 0;
-		line-height: 1.2;
+		background-size: 1.5em 1.5em;
+		margin: 0 0 1em 0;
+		line-height: 1.5;
 	}
 
 	.name { background-image: url('https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/279/face-with-raised-eyebrow_1f928.png') }
