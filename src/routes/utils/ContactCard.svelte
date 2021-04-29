@@ -15,7 +15,7 @@ import {createRandomAvataar} from './rand_avataar.js';
 	}
 
 	.name, h2 {
-		border-bottom: 2px solid ##461be4;
+		border-bottom: 2px solid #461be4;
 	}
 
 	.freshness, .accuracy {
