@@ -34,10 +34,9 @@ a:hover{
 <Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
     <nav class="nav">
       <div class="nav-left">
-      <a class="brand" href="/">💎</a>
         <div class="tabs">
+          <a class="brand" href="/">💎</a>
           <a class='{overview}' href="/#/stock/{ticker}">Overview</a>
-
           {#if $isAuthenticated}
             <a  class='{user}' href="/#/user/{$userInfo["email"]}">MyList</a>
             <a class='{rating}' href="/#/user/{ticker}/{$userInfo["nickname"]}">Ratings</a>
