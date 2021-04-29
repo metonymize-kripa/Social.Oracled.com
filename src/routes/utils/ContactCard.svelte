@@ -38,7 +38,7 @@ import {createRandomAvataar} from './rand_avataar.js';
 <article class="contact-card">
 	
 	<div class="name">
-		<img src={createRandomAvataar()} width = 1em/><h2>{my_name}</h2>
+		<h2>{my_name}</h2>
 	</div>
 
 	<div class="freshness">
