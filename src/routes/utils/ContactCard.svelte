@@ -1,8 +1,24 @@
 <script>
 export let my_name="Bearfox";
+export let my_rating=90;
 export let my_freshness="56%";
 export let my_accuracy="42%";
 import {createRandomAvataar} from './rand_avataar.js';
+	
+let cardColor="MintCream";
+	
+if (my_rating > 51) {
+	cardColor="LightGreen";
+}
+else {
+	if (my_rating <49) {
+		cardColor="LightSalmon";
+	}
+	else {
+		cardColor="MintCream";
+	}
+}
+	
 </script>
 
 <style>
@@ -31,7 +47,7 @@ import {createRandomAvataar} from './rand_avataar.js';
 	.accuracy   { background-image: url('https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/279/direct-hit_1f3af.png') }
 </style>
 
-<article class="contact-card">
+<article class="contact-card" background-color={cardColor}>
 	
 	<div>
 		<h2> <img src={createRandomAvataar()} width = 50/> {my_name}</h2>
@@ -46,6 +62,14 @@ import {createRandomAvataar} from './rand_avataar.js';
 			<div class="accuracy">
 				{my_accuracy}
 			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">	
+			<p><small>Freshness</small></p>
+		</div>
+		<div class="col">
+			<p><small>Accuracy</small></p>
 		</div>
 	</div>
 </article>
