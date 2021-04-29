@@ -24,14 +24,14 @@ else {
 <style>
 	.contact-card {
 		width: 250px;
-		border: 5px solid;
+		border: 1px solid;
 		border-radius: 50px;
 		box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
 		padding: 1em;
 	}
 
 	.name, h1 {
-		border-bottom: 5px solid #1000ff;
+		border-bottom: 1px solid #8b8b8b;
 		margin: 0 0 1em 0;
 		font-size: 50px;
 		color: #7d03fc;
