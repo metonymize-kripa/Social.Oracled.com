@@ -18,7 +18,9 @@ else {
 		cardColor="#f0efff";
 	}
 }
-
+function handleClick(){
+	window.location.href = "/#/stock/"+my_ticker;
+}
 </script>
 <style>
 	.contact-card {
@@ -26,6 +28,10 @@ else {
 		border: 1px solid #aaa;
 		box-shadow: 11px 9px 7px 2px rgb(0 0 0 / 10%);;
 		padding: 1em;
+	}
+	.contact-card:hover{
+		transform: scale(1.1);
+		cursor:pointer;
 	}
 
 	h1 {
@@ -58,9 +64,11 @@ else {
 
 	.freshness { background-image: url('https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/279/sparkles_2728.png') }
 	.accuracy { background-image: url('https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/279/direct-hit_1f3af.png'); }
+
+
 </style>
 
-<article class="contact-card" style="background:{cardColor};">
+<article on:click={handleClick} class="contact-card" style="background:{cardColor};">
 <div><h1>{my_ticker}</h1></div>
 <div><h2 style="text-align:center">{my_rating}%</h2></div>
 

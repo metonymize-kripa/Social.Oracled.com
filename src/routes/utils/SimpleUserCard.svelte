@@ -1,5 +1,5 @@
 <script>
-export let my_name="Bearfox";
+export let my_email="Bearfox@";
 export let my_rating=49;
 export let my_freshness=44;
 export let my_accuracy=42;
@@ -18,7 +18,9 @@ else {
 		cardColor="#f0efff";
 	}
 }
-
+function handleClick(){
+	window.location.href = "/#/user/"+my_email;
+}
 </script>
 <style>
 	.contact-card {
@@ -27,6 +29,10 @@ else {
 		box-shadow: 11px 9px 7px 2px rgb(0 0 0 / 10%);;
 		padding: 1em;
 	}
+    .contact-card:hover{
+        transform: scale(1.1);
+        cursor:pointer;
+    }
 
 	h1 {
 
@@ -58,8 +64,8 @@ else {
 	.accuracy { background-image: url('https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/279/direct-hit_1f3af.png'); }
 </style>
 
-<article class="contact-card" style="background:{cardColor};">
-<h2 style="margin-bottom:0;color:#e218c8;">{my_name}</h2>
+<article on:click={handleClick} class="contact-card" style="background:{cardColor};">
+<h2 style="margin-bottom:0;color:#e218c8;">{my_email.split('@')[0]}</h2>
 	<div style="display:flex;border-bottom: 1px solid #aaa; margin-bottom:0;">
 		<div style="width:40%;"> <img src={createRandomAvataar()} /></div><div style="width:50%;" ><h1 style="text-align:right;margin:1rem 0 0 0 ;">{my_rating}%</h1></div>
 	</div>
