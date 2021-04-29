@@ -7,9 +7,9 @@ import {createRandomAvataar} from './rand_avataar.js';
 
 <style>
 	.contact-card {
-		width: 300px;
+		width: 250px;
 		border: 1px solid #aaa;
-		border-radius: 60px;
+		border-radius: 50px;
 		box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
 		padding: 1em;
 	}
