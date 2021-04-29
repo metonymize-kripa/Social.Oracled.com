@@ -39,20 +39,14 @@ import {createRandomAvataar} from './rand_avataar.js';
 <article class="contact-card">
 	
 	<div class="name">
-		<slot name={my_name}>
-			<span class="missing">Unknown name</span>
-		</slot>
+		{my_name}>
 	</div>
 
 	<div class="address">
-		<slot name={my_status}>
-			<span class="missing">Unknown address</span>
-		</slot>
+		{my_status}>
 	</div>
 
 	<div class="email">
-		<slot name={accuracy}>
-			<span class="missing">Unknown email</span>
-		</slot>
+		{accuracy}
 	</div>
 </article>
