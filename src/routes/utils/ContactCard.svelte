@@ -30,7 +30,7 @@ import {createRandomAvataar} from './rand_avataar.js';
 		line-height: 1.2;
 	}
 
-	.name { background-image: url({createRandomAvataar()}) }
+	.name { background-image: url('https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/279/face-with-raised-eyebrow_1f928.png') }
 	.address { background-image: url('https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/279/fire_1f525.png') }
 	.email   { background-image: url('https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/279/incoming-envelope_1f4e8.png') }
 	.missing { color: #999 }
