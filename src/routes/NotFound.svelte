@@ -13,7 +13,7 @@ import TickerCard from './utils/TickerCard.svelte';
 
 <br>
 
-<ContactCard my_name="Harmeet" my_freshness="56%" my_accuracy="63%"/>
+<ContactCard my_name="Harmeet" my_rating=55 my_freshness="56%" my_accuracy="63%"/>
 <TickerCard ticker="IBM" rating=56 accuracy=80 freshness=1256/>
 
 
