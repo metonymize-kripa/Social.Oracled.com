@@ -24,14 +24,14 @@ else {
 <style>
 	.contact-card {
 		width: 250px;
-		border: 1px solid;
+		border: 1px solid #aaa;
 		border-radius: 50px;
 		box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
 		padding: 1em;
 	}
 
 	.name, h1 {
-		border-bottom: 1px solid #8b8b8b;
+		border-bottom: 1px solid #aaa;
 		margin: 0 0 1em 0;
 		font-size: 50px;
 		color: #7d03fc;
@@ -43,7 +43,7 @@ else {
 	}
 
 	.freshness, .accuracy {
-		padding: 0 0 0 2em;
+		padding: 0 0 0 1em;
 		background:  0 50% no-repeat;
 		background-size: 1.5em 1.5em;
 		margin: 0 0 1em 0;
