@@ -132,9 +132,8 @@ let rand2 =  [Math.round(Math.random() * (96 - 33) + 33)];
 	}
 </style>
 
+<NavBar rating="active" ticker={ticker}/>
 <body>
-
-    <NavBar rating="active" ticker={ticker}/>
 
 <!--
      <div class="row card">

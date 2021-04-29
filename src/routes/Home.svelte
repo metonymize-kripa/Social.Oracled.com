@@ -225,8 +225,10 @@ let post_title =  encodeURIComponent("Here's the upshot for ");
 	}
 </style>
 
-<body>
+
 <NavBar  ticker={new_ticker}/>
+<body>
+
 
 			<!-- <Auth0LogoutButton class="button text-center is-full-width is-big" >Logout</Auth0LogoutButton> -->
 <!--

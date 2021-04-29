@@ -107,8 +107,9 @@ function CalcFreshness(my_ts){
 	}
 </style>
 
-<body>
 <NavBar user="active" />
+<body>
+
     <!--
     <div class ="card row">
        <table>

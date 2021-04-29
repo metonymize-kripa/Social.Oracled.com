@@ -224,9 +224,9 @@ $: twitter_says;
   }
 </style>
 
-
-<body>
 <NavBar overview="active" ticker={ticker}/>
+<body>
+
 
 	<div class="row ">
 	<table>
