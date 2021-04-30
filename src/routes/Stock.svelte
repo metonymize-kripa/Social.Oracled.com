@@ -269,7 +269,7 @@ $: twitter_says;
       		   </tr>
          {:else}
          <tr>
-         <td colspan="3" width="100%"><h3 class="text-center">Login to see your and your friends ratings</h3></td>
+         <td colspan="3" width="100%"><h3 class="text-center">Login for saved ratings, yours and friends</h3></td>
           </tr>
           <tr>
           <td colspan="3" width="80%">
