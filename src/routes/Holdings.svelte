@@ -168,7 +168,7 @@ let rand2 =  [Math.round(Math.random() * (96 - 33) + 33)];
         <Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
          {#if $isAuthenticated}
     		  <tr>
-    			  <th width="100%"  class="text-center"><h1>Chance {ticker} goes up</h1></th>
+    			  <th width="100%"  class="text-center"><h1>{ticker} 💎council (chance of up move)</h1></th>
     		  </tr>
          {:else}
          <tr>
