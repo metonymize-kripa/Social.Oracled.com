@@ -226,7 +226,7 @@ let post_title =  encodeURIComponent("Here's the upshot for ");
 </style>
 
 
-<NavBar  ticker={new_ticker}/>
+<NavBar  ticker={new_ticker} home=true/>
 <body>
 
 
@@ -255,7 +255,7 @@ let post_title =  encodeURIComponent("Here's the upshot for ");
     <br>
     <div class="row">
         <div class="col-7">
-    		<h1 style="margin-bottom:0.5rem;">We look at </h1>
+    		<h1 style="margin-bottom:0.5rem;">💎Oracle looks at </h1>
             <span style="color:#c10aa9; border-bottom:4px solid #0330ff; font-size:3rem; font-weight:500">{beaconSample(beacon,sourceData)} data</span>
             <h1 style="margin-bottom:0.5rem;">To calculate the chance</h1>
             <span style="color:#0330ff;  font-size:3rem; font-weight:500">

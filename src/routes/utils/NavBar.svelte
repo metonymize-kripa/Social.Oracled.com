@@ -3,6 +3,7 @@ export let overview="";
 export let rating="";
 export let user="";
 export let ticker="SPY";
+export let home = false;
 import {
     Auth0Context,
     Auth0LoginButton,
@@ -39,7 +40,9 @@ background:#f0efff;
     <nav class="nav">
       <div class="nav-left">
         <div class="tabs">
+        {#if !home}
           <a class="brand" href="/">💎</a>
+           {/if}
           <a class='{overview}' href="/#/stock/{ticker}">Overview</a>
           {#if $isAuthenticated}
             <a  class='{user}' href="/#/user/{$userInfo["email"]}">MyList</a>
@@ -47,7 +50,9 @@ background:#f0efff;
          {:else}
             <a  class='{user}' href="/#/user/harmeet@oracled.com">MyList</a>
             <a class='{rating}' href="/#/user/TSLA/harmeet@oracled.com">Ratings</a>
+            {#if home}
             <Auth0LoginButton class="button text-center error">Login</Auth0LoginButton>
+            {/if}
          {/if}
         </div>
       </div>
