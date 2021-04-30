@@ -172,10 +172,10 @@ let rand2 =  [Math.round(Math.random() * (96 - 33) + 33)];
     		  </tr>
          {:else}
          <tr>
-             <td width="100%"  class="text-center" style="padding:0;margin-bottom:0;"><h3>This is {user.split('@')[0]} pals' view on {ticker}</h3></td>
+             <td width="100%"  class="text-center" style="padding:0;margin-bottom:0;"><h3>{user.split('@')[0].toUpperCase()}'S council on {ticker}</h3></td>
          </tr>
            <tr>
-             <th width="100%"  class="text-center"><Auth0LoginButton class="button text-center error">Login To See what your pals think of {ticker} </Auth0LoginButton></th>
+             <th width="100%"  class="text-center"><Auth0LoginButton class="button text-center error">Login and build your 💎council for {ticker} </Auth0LoginButton></th>
            </tr>
            {/if}
            </Auth0Context>
