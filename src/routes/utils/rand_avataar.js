@@ -174,5 +174,5 @@ const mapHappyOneToFiveToMouthType = {
  }
 
 export function createRandomBotAvataar(){
-	return 'https://avatars.dicebear.com/api/bottts/'+_.sample([1,2,3,4,5])+':seed.svg'
+	return 'https://avatars.dicebear.com/api/bottts/'+_.sample(_.range(1,100))+':seed.svg'
 }
