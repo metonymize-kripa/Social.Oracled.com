@@ -124,7 +124,12 @@ for (var i=0;i<40;i++)
 let rand1 =  [Math.round(Math.random() * (96 - 33) + 33)];
 let rand2 =  [Math.round(Math.random() * (96 - 33) + 33)];
 
-
+function calcAccuracy(px_now,px_at_save,rating){
+        let factor = 1;
+        if (px_now != px_at_save)
+            factor = (px_now-px_at_save)/Math.abs(px_now-px_at_save);
+        return 2*factor*(rating-50);
+}
 
 </script>
 
@@ -150,7 +155,7 @@ let rand2 =  [Math.round(Math.random() * (96 - 33) + 33)];
 
     {#each user_ratings as {symbol,rating,timestamp,px_at_save,px_now,friend}}
         <div class="col-4">
-            <SimpleUserCard my_email={friend}  my_rating={rating} my_accuracy={Math.round(Math.random() * (96 - 33) + 33)} my_freshness={Math.round(CalcFreshness(timestamp))}/>
+            <SimpleUserCard my_email={friend}  my_rating={rating} my_accuracy={calcAccuracy(px_now,px_at_save,rating)} my_freshness={Math.round(CalcFreshness(timestamp))}/>
         </div>
     {/each}
     </div>
