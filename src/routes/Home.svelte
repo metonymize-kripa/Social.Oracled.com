@@ -59,14 +59,6 @@
 
 </script>
 
-<style>
-	body {
-	    max-width:90rem;
-	    margin:0 auto;
-	    padding:2rem;
-	}
-</style>
-
   <div class="row">
       <div class="col-7">
   		<h1 style="margin-bottom:0.5rem;">💎Oracle looks at </h1>

@@ -100,42 +100,29 @@ function CalcFreshness(my_ts){
 }
 </script>
 
-<style>
-	body {
-	    max-width:90rem;
-	    margin:0 auto;
-	    padding:2rem;
-	}
-	.card{
-	    margin:1rem auto;
-	}
-</style>
+  <div class ="row">
+  <table style="margin-bottom:3rem;">
+    <thead>
 
-
-
-      <div class ="row">
-      <table style="margin-bottom:3rem;">
-        <thead>
-
-         {#if $isAuthenticated}
+     {#if $isAuthenticated}
+      <tr>
+          <th width="100%"  class="text-center"><h1>{user.split('@')[0].toUpperCase()}'S prophesies</h1></th>
+      </tr>
+      {:else}
           <tr>
-              <th width="100%"  class="text-center"><h1>{user.split('@')[0].toUpperCase()}'S prophesies</h1></th>
+              <td width="100%"  class="text-center" style="padding:0;margin-bottom:0;"><h3>{user.split('@')[0].toUpperCase()}'S prophesies</h3></td>
           </tr>
-          {:else}
-              <tr>
-                  <td width="100%"  class="text-center" style="padding:0;margin-bottom:0;"><h3>{user.split('@')[0].toUpperCase()}'S prophesies</h3></td>
-              </tr>
-              <tr>
-                <th width="100%"  class="text-center"><Auth0LoginButton class="button text-center error">Login to 💎Oracle</Auth0LoginButton></th>
-            </tr>
-        {/if}
+          <tr>
+            <th width="100%"  class="text-center"><Auth0LoginButton class="button text-center error">Login to 💎Oracle</Auth0LoginButton></th>
+        </tr>
+    {/if}
 
-        </thead>
-      </table>
+    </thead>
+  </table>
 
-      {#each user_ratings as {symbol,rating,timestamp,px_at_save,px_now}}
-          <div class="col-4">
-              <SimpleTickerCard my_ticker={symbol}  my_rating={rating} my_accuracy={Math.round(Math.random() * (96 - 33) + 33)} my_freshness={Math.round(CalcFreshness(timestamp))}/>
-          </div>
-      {/each}
+  {#each user_ratings as {symbol,rating,timestamp,px_at_save,px_now}}
+      <div class="col-4">
+          <SimpleTickerCard my_ticker={symbol}  my_rating={rating} my_accuracy={Math.round(Math.random() * (96 - 33) + 33)} my_freshness={Math.round(CalcFreshness(timestamp))}/>
       </div>
+  {/each}
+  </div>

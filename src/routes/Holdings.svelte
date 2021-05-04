@@ -128,17 +128,6 @@ let rand2 =  [Math.round(Math.random() * (96 - 33) + 33)];
 
 </script>
 
-<style>
-	body {
-	    max-width:90rem;
-	    margin:0 auto;
-	    padding:2rem;
-	}
-	.card{
-	    margin:1rem auto;
-	}
-</style>
-
     <div class ="row">
     <table style="margin-bottom:3rem;">
 		<thead>

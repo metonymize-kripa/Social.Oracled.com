@@ -19,6 +19,18 @@
 	    margin:0 auto;
 	    padding:2rem;
 	}
+  :global(.rangeSlider){
+      background-color:#e909ec !important;
+  }
+  :global(.rangeSlider.disabled){
+      background-color:#fe92ff !important;
+  }
+  :global(.rangeSlider.disabled .rangeNub ){
+       background-color:#6500c1 !important;
+  }
+  :global(.rangeSlider .rangeNub ){
+       background-color:#68328a !important;
+  }
   </style>
 <Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
 <h1> DEV BRANCH </h1>

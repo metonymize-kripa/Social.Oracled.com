@@ -204,27 +204,6 @@ $: twitter_says;
 </script>
 
 <style>
-	body {
-	    max-width:90rem;
-	    margin:0 auto;
-	    padding:2rem;
-	}
-	.card{
-	    margin:1rem auto;
-	}
-	:global(.rangeSlider){
-	    background-color:#e909ec !important;
-	}
-	:global(.rangeSlider.disabled){
-	    background-color:#fe92ff !important;
-	}
-	:global(.rangeSlider.disabled .rangeNub ){
-	     background-color:#6500c1 !important;
-	}
-	:global(.rangeSlider .rangeNub ){
-	     background-color:#68328a !important;
-	}
-
   .myrating{
   font-size:4rem;
   color:#00f;
