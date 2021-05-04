@@ -13,18 +13,23 @@
     import NavBar from './utils/NavBar.svelte';
 
   import {
-    Auth0Context,
     Auth0LoginButton,
     Auth0LogoutButton,
     authError,
-    authToken,
-    idToken,
     isAuthenticated,
-    isLoading,
-    login,
-    logout,
     userInfo,
   } from '@dopry/svelte-auth0';
+  import {
+    nav_ticker,
+    overview_class,
+    rating_class,
+    user_class,
+    is_home
+  } from './utils/navbar.js';
+  $is_home = false;
+  $overview_class = '';
+  $rating_class = '';
+  $user_class = 'active';
 
 
   let user_array = ['FatTony','Pappe','Kripa','Pani', 'Harsha','Brad','Sunil','Deba'];
@@ -77,7 +82,6 @@
 
 $: params.name  && getUsersList();
 
-
 let arrow = ['⬆','⬇'];
 let rand_list=[];
 for (var i=0;i<40;i++)
@@ -107,40 +111,12 @@ function CalcFreshness(my_ts){
 	}
 </style>
 
-<NavBar user="active" />
-<body>
-
-    <!--
-    <div class ="card row">
-       <table>
-		    <thead>
-		      <tr>
-		         <th width="15%" class="text-center">   <img src={createRandomAvataar()} width = 50/></th>
-		         <th width="65%" colspan="2" class="text-center" style="font-size:2.5rem;">{user}' ratings</th>
-                 <th width="10%" class="text-center"> Accuracy</th>
-                 <th width="10%" class="text-center">Freshness</th>
-		      </tr>
-		    </thead>
-
-              {#each user_ratings as {symbol,rating,timestamp,px_at_save,px_now}}
-               <tr>
-                 <a class="text-left" href="/#/stock/{symbol}"><td width="15%" style="font-size:1.75rem;color:#1e1aa6;font-weight:500;"> {symbol}</td></a>
-                 <td width="50%"><RangeSlider float pips all='label' disabled={true}  bind:values={rating}  pipstep={50} min={0} max={100} /></td>
-                 <td width="15%" class="text-right" style="font-size:1.75rem;color:purple;">{rating}%({arrow[Math.round(Math.random() * +1)]})</td>
-                 <td width="10%" class="text-right" style="font-size:1.75rem;color:purple;">{Math.round(Math.random() * (96 - 33) + 33)}%</td>
-                 <td width="10%" class="text-right" style="font-size:1.75rem;color:purple;">{Math.round(CalcFreshness(timestamp))}%</td>
-               </tr>
-               {/each}
-        </table>
-      </div>
-      -->
-
 
 
       <div class ="row">
       <table style="margin-bottom:3rem;">
         <thead>
-         <Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
+
          {#if $isAuthenticated}
           <tr>
               <th width="100%"  class="text-center"><h1>{user.split('@')[0].toUpperCase()}'S prophesies</h1></th>
@@ -153,7 +129,7 @@ function CalcFreshness(my_ts){
                 <th width="100%"  class="text-center"><Auth0LoginButton class="button text-center error">Login to 💎Oracle</Auth0LoginButton></th>
             </tr>
         {/if}
-        </Auth0Context>
+
         </thead>
       </table>
 
@@ -163,6 +139,3 @@ function CalcFreshness(my_ts){
           </div>
       {/each}
       </div>
-
-
- </body>

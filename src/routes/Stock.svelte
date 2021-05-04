@@ -7,21 +7,28 @@
 <script>
   import { onMount } from "svelte";
   import Avatar from "svelte-avatar";
-  import NavBar from './utils/NavBar.svelte';
+
   import RangeSlider from "svelte-range-slider-pips";
   import {
-	  Auth0Context,
 	  Auth0LoginButton,
 	  Auth0LogoutButton,
 	  authError,
-	  authToken,
-	  idToken,
 	  isAuthenticated,
-	  isLoading,
-	  login,
-	  logout,
 	  userInfo,
 	} from '@dopry/svelte-auth0';
+  import {
+    nav_ticker,
+    overview_class,
+    rating_class,
+    user_class,
+    is_home
+  } from './utils/navbar.js';
+  $is_home = false;
+  $overview_class = 'active';
+  $rating_class = '';
+  $user_class = '';
+
+
 
   let api_output ={};
   let friend_output={};
@@ -46,6 +53,7 @@ let friend_kelly = [0];
 let gain_chance=[0];
 
 let ticker = params.symbol;
+$nav_ticker = ticker;
 
 
 $: params.symbol && calculateKelly();
@@ -224,10 +232,6 @@ $: twitter_says;
   }
 </style>
 
-<NavBar overview="active" ticker={ticker}/>
-<body>
-
-
 	<div class="row ">
 	<table>
 		<thead>
@@ -273,9 +277,9 @@ $: twitter_says;
           </tr>
           <tr>
           <td colspan="3" width="80%">
-             <Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
+
                 <Auth0LoginButton style="margin:0 3rem;" class="button text-center is-full-width text-center error">Login</Auth0LoginButton>
-             </Auth0Context>
+
              </td>
              </tr>
 		  {/if}
@@ -291,5 +295,3 @@ $: twitter_says;
 		</table>
 
 	</div>
-
-</body>

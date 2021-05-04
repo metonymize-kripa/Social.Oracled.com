@@ -12,18 +12,23 @@
   import NavBar from './utils/NavBar.svelte';
     import RangeSlider from "svelte-range-slider-pips";
     import {
-	  Auth0Context,
 	  Auth0LoginButton,
 	  Auth0LogoutButton,
 	  authError,
-	  authToken,
-	  idToken,
 	  isAuthenticated,
-	  isLoading,
-	  login,
-	  logout,
 	  userInfo,
 	} from '@dopry/svelte-auth0';
+  import {
+    nav_ticker,
+    overview_class,
+    rating_class,
+    user_class,
+    is_home
+  } from './utils/navbar.js';
+  $is_home = false;
+  $overview_class = '';
+  $rating_class = 'active';
+  $user_class = '';
 
 let gain_chance=[0];
 let err_val="";
@@ -77,6 +82,7 @@ function getPalsList() {
 
   let user = params.name;
   let ticker = params.symbol.toUpperCase();
+  $nav_ticker = ticker;
   function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -133,52 +139,23 @@ let rand2 =  [Math.round(Math.random() * (96 - 33) + 33)];
 	}
 </style>
 
-<NavBar rating="active" ticker={ticker}/>
-<body>
-
-<!--
-     <div class="row card">
-	    <table>
-		    <thead>
-            <tr>
-               <th width="15%" class="text-center">Friend </th>
-               <th width="65%" colspan="2" class="text-center" style="font-size:2.5rem;">Ratings</th>
-                <th width="10%" class="text-center"> Accuracy</th>
-                <th width="10%" class="text-center">Freshness</th>
-            </tr>
-
-		    </thead>
-               {#each user_ratings as {symbol,rating,timestamp,px_at_save,px_now,friend}}
-                <tr>
-                  <a class="text-left" href="/#/user/{friend}"><td width="15%" style="font-size:1.75rem;color:#1e1aa6;font-weight:500;"> <img src={createRandomAvataar()} width = 50/><br> {friend.split('@')[0]}</td></a>
-                  <td width="50%"><RangeSlider float pips all='label' disabled={true}  bind:values={rating}  pipstep={50} min={0} max={100} /></td>
-                  <td width="15%" class="text-right" style="font-size:1.75rem;color:purple;">{rating}%({arrow[Math.round(Math.random() * +1)]})</td>
-                  <td width="10%" class="text-right" style="font-size:1.75rem;color:purple;">{2*(px_now-px_at_save)/Math.abs(px_now-px_at_save)*(rating-50)}%</td>
-                  <td width="10%" class="text-right" style="font-size:1.75rem;color:purple;">{Math.round(Math.random() * (96 - 33) + 33)}%</td>
-                  <td width="10%" class="text-right" style="font-size:1.75rem;color:purple;">{Math.round(CalcFreshness(timestamp))}%</td>
-                </tr>
-                {/each}
-	    </table>
-	</div>
-    -->
-
     <div class ="row">
     <table style="margin-bottom:3rem;">
 		<thead>
-        <Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
-         {#if $isAuthenticated}
-    		  <tr>
-    			  <th width="100%"  class="text-center"><h1>{ticker} 💎council (chance of up move)</h1></th>
-    		  </tr>
-         {:else}
+
+       {#if $isAuthenticated}
+  		  <tr>
+  			  <th width="100%"  class="text-center"><h1>{ticker} 💎council (chance of up move)</h1></th>
+  		  </tr>
+       {:else}
+       <tr>
+           <td width="100%"  class="text-center" style="padding:0;margin-bottom:0;"><h3>{user.split('@')[0].toUpperCase()}'S council on {ticker}</h3></td>
+       </tr>
          <tr>
-             <td width="100%"  class="text-center" style="padding:0;margin-bottom:0;"><h3>{user.split('@')[0].toUpperCase()}'S council on {ticker}</h3></td>
+           <th width="100%"  class="text-center"><Auth0LoginButton class="button text-center error">Login and build your 💎council for {ticker} </Auth0LoginButton></th>
          </tr>
-           <tr>
-             <th width="100%"  class="text-center"><Auth0LoginButton class="button text-center error">Login and build your 💎council for {ticker} </Auth0LoginButton></th>
-           </tr>
-           {/if}
-           </Auth0Context>
+         {/if}
+
 		</thead>
     </table>
 
@@ -188,5 +165,3 @@ let rand2 =  [Math.round(Math.random() * (96 - 33) + 33)];
         </div>
     {/each}
     </div>
-
- </body>
