@@ -155,7 +155,7 @@ const mapHappyOneToFiveToMouthType = {
         4:"Smile",
         5:"Twinkle"}
  
- export function createRandomAvataar(){
+ export function createRandomAvataar(happy_percent=-1){
 	 var my_happy = "Smile"; 
 	 //var my_happy_percent = (happy_percent>100) ? 5 : Math.round(happy_percent/20);
 	 //my_happy = (my_happy_percent < 0) ? _.sample(avataar_inputs["mouthType"]) : mapHappyOneToFiveToMouthType[my_happy_percent];
