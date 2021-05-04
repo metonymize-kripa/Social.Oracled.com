@@ -196,6 +196,11 @@ function calculateGains(kelly,varx)
 }
 let post_url = encodeURIComponent("https://upshot.oracled.com/#/stock/")
 let post_title =  encodeURIComponent("Here's the upshot for ");
+	
+let now_or_later = Math.abs(gain_chance-50) > 3 ? "NOW" : "LATER";
+let strong_or_weak = Math.abs(twitter_says-50) > 20 ? "STRONG" : "WEAK";
+let buy_or_sell = gain_chance > 50 ? "BUY" : "SELL";
+	
 $: twitter_says;
 </script>
 
@@ -211,7 +216,7 @@ $: twitter_says;
 	<table>
 		<thead>
 		  <tr>
-			  <th width="100%" colspan="3" class="text-center"><h1>Setup for {ticker}: STRONG/WEAK BUY/SELL NOW/LATER</h1></th>
+			  <th width="100%" colspan="3" class="text-center"><h1>Setup for {ticker}: {strong_or_weak} {buy_or_sell} {now_or_later}</h1></th>
 		  </tr>
 		</thead>
 		  <tr>
