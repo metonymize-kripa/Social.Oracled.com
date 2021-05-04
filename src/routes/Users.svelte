@@ -67,7 +67,7 @@ $: params.name  && getUsersList();
 
      {#if $isAuthenticated}
       <tr>
-          <th width="100%"  class="text-center"><h1>{user.split('@')[0].toUpperCase()}'S prophesies</h1></th>
+          <th width="100%"  class="text-center"><h1>{user.split('@')[0].toUpperCase()}'S predictions (chance of up moves)</h1></th>
       </tr>
       {:else}
           <tr>
