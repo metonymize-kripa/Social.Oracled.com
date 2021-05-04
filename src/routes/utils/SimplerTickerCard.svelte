@@ -3,7 +3,7 @@ export let my_ticker="SPY";
 export let my_rating=49;
 export let my_freshness=44;
 export let my_accuracy=42;
-import {createRandomAvataar} from './rand_avataar.js';
+import {createRandomAvataar, createRandomBotAvataar} from './rand_avataar.js';
 
 
 let cardColor="MintCream";
@@ -73,7 +73,7 @@ function handleClick(){
 <div><h1>{my_ticker}</h1></div>
 
 	<div style="display:flex;border-bottom: 1px solid #aaa; margin-bottom:0;">
-		<div style="width:40%;"> <img src={createRandomAvataar(my_rating)} /></div><div style="width:50%;" ><h2 style="text-align:right;margin:1rem 0 0 0 ;">{my_rating}%</h2></div>
+		<div style="width:40%;"> <img src={createRandomBotAvataar()} /></div><div style="width:50%;" ><h2 style="text-align:right;margin:1rem 0 0 0 ;">{my_rating}%</h2></div>
 	</div>
 
 		<!-- 
