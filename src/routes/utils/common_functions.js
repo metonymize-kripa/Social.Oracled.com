@@ -18,5 +18,9 @@
             sign = -1;
          let accuracy = 100*(px_now-px_at_save)/px_at_save;
          accuracy = accuracy + sign*(rating-50) + 50;
+         if (accuracy > 100)
+            accuracy = 100;
+        else if (accuracy < 0)
+            accuracy = 0;
          return Math.round(accuracy);
  }
