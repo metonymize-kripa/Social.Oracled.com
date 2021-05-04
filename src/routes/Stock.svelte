@@ -230,7 +230,7 @@ $: twitter_says;
 			 {#if $isAuthenticated}
 				  <th width="100%" colspan="3" class="text-center"><h1>Setup for {ticker}: 
 					  {(wsb_says-50) > 2 ? "STRONG" : "WEAK"} 
-					  {(friend_kelly+my_kelly)/2-50) > 5 ? "BUY" : "SELL"} 
+					  {((friend_kelly+my_kelly)/2-50) > 5 ? "BUY" : "SELL"} 
 					  {Math.abs(gain_chance-50) > 3 ? "NOW" : "LATER"}</h1></th>
 			 {:else}
 				  <th width="100%" colspan="3" class="text-center"><h1>Setup for {ticker}: 
