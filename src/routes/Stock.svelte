@@ -33,7 +33,9 @@
   let friend_output={};
   export let params = {}
 
-  //const moods = ["Bear","😫","😫","😫","😫","😫","😫","😫","😫","😫","😫","😫","😫","😫","😫","😫","😫","😫","😫","😫","😫","😫","😥","😫","😫","😥","😥","😥","😥","😥","😥","😥","😥","😥","😥","😥","😥","😥","😥","😥","😥","😥","😥","😥","😥","😥","😥","😐","😐","😐""😐","😐","😐""😐","😐","😐""😐","😐","😐""😐","😐","😐""😐","😐","😐","Hold","😀","😀","😀","😀","😀","😀","😀","😀","😀","😀","😀","😀","😀","😀","😀","😀","😀","😀","Meh","😀","😁","😁","😁","😀","😁","😁","😁","😀","😁","😁","😀","😁","😁","😁","😀","😁","😁","😁","Bull"];
+
+  const labels = ["Dump","Sell", "Dunno", "Buy","All-In"];
+  const label = ["Dump", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Sell", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Dunno", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Buy", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "All-In"];
 
   onMount(async () => {
     calculateKelly();
@@ -120,6 +122,7 @@ function getMyRating(user_email){
             else
             {
                 my_kelly = [output.rating];
+
                 console.log(output);
             }
         });
@@ -179,6 +182,7 @@ function shareWith() {
     window.open("https://twitter.com/share?url="+post_url+ticker+"&text="+post_title+ticker+"&hashtags="+ticker);
 }
 function submitRatings(my_ticker,my_ratings) {
+
     let put_url = 'https://www.insuremystock.com/stocks/setratings/'+my_ticker+'/?secret_key=Fat Neo&user='+$userInfo["email"]+'&ratings='+my_ratings;
     fetch(put_url,
     {
@@ -232,34 +236,34 @@ $: twitter_says;
 		  <tr>
 		    <td width="20%" class="text-center"><img href="/" src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairTheCaesarSidePart&accessoriesType=Kurt&hairColor=BrownDark&facialHairType=BeardMajestic&facialHairColor=BrownDark&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Angry&mouthType=Serious&skinColor=Pale'
 					    width="50"/><br><span style="font-size:1.2rem;color:navy;">OptionsData</span></td>
-		    <td width="60%"><RangeSlider float pips all='label' disabled={true} bind:values={gain_chance}  pipstep={50} min={0} max={100} /></td>
-		    <td width="20%" class="text-center myrating" >{gain_chance}%</td>
+		    <td width="80%"><RangeSlider float pips all='label' disabled={true} bind:values={gain_chance}  formatter={ v => label[v] } pipstep={25} min={0} max={99} /></td>
+
 		  </tr>
 
            <tr>
 		     <td width="20%" class="text-center" ><img href="/" src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairTheCaesarSidePart&accessoriesType=Kurt&hairColor=Blonde&facialHairType=BeardMajestic&facialHairColor=Blonde&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Angry&mouthType=Serious&skinColor=Pale'
  					    width="50"/><br><span style="font-size:1.2rem;color:navy;">TwitterData</span></td>
-		     <td width="60%"><RangeSlider float pips all='label' disabled={true}  bind:values={twitter_says}  pipstep={50} min={0} max={100} /></td>
-		     <td width="20%" class="text-center myrating" >{twitter_says}%</td>
+		     <td width="80%"><RangeSlider float pips all='label' disabled={true}  bind:values={twitter_says}  formatter={ v => label[v] } pipstep={25} min={0} max={99} /></td>
+
 		   </tr>
            <tr>
 		     <td class="text-center" width="20%" ><img href="/" src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairTheCaesarSidePart&accessoriesType=Kurt&hairColor=PastelPink&facialHairType=BeardMajestic&facialHairColor=Red&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Angry&mouthType=Serious&skinColor=Pale'
  					    width="50"/><br><span style="font-size:1.2rem;color:navy;">RedditData</span></td>
-		     <td width="60%"><RangeSlider float pips all='label' disabled={true}  bind:values={wsb_says}  pipstep={50} min={0} max={100} /></td>
-		     <td width="20%" class="text-center myrating" >{wsb_says}%</td>
+		     <td width="80%"><RangeSlider float pips all='label' disabled={true}  bind:values={wsb_says}  formatter={ v => label[v] } pipstep={25} min={0} max={99} /></td>
+
 		   </tr>
 		   {#if $isAuthenticated}
 			     <tr>
 				<a class="text-center" href="/#/user/{$userInfo["email"]}"><td width="20%" ><img src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Prescription02&hairColor=BrownDark&facialHairType=Blank&clotheType=GraphicShirt&clotheColor=Red&graphicType=Diamond&eyeType=Surprised&eyebrowType=RaisedExcited&mouthType=Twinkle&skinColor=Light'
 							width="50" /><br> <span style="font-size:1.2rem;color:navy;"> MyView</span> </td></a>
 
-				<td width="60%"><RangeSlider float pips all='label'  bind:values={my_kelly}  pipstep={50} min={0} max={100} /></td>
-				<td width="20%" class="text-center myrating" >{my_kelly}%</td>
+				<td width="80%"><RangeSlider float pips all='label'  bind:values={my_kelly}  formatter={ v => label[v] }  step={25}  min={0} max={99} /></td>
+
 			     </tr>
                  <tr>
       		     <a class="text-center" href="/#/user/{ticker}/me"><td width="20%" ><img src='pals.png' width="50"/><br><span style="font-size:1.2rem;color:navy;"> MyPals </span></td></a>
-      		     <td width="60%"><RangeSlider float pips all='label' disabled={true}  bind:values={friend_kelly}  pipstep={50} min={0} max={100} /></td>
-      		     <td width="20%" class="text-center myrating" >{friend_kelly}%</td>
+      		     <td width="80%"><RangeSlider float pips all='label' disabled={true}  bind:values={friend_kelly}  formatter={ v => label[v] } pipstep={25} min={0} max={99} /></td>
+
       		   </tr>
          {:else}
          <tr>
@@ -280,7 +284,7 @@ $: twitter_says;
 		<table>
 			<tr>
 			    <td width="50%"><button class="text-white text-center"  style="background:#c10aa9; margin-left:10%; border-radius: 20rem;" on:click={submitRatings(ticker,my_kelly[0])}>Save</td>
-			    <td width="50%"><button class="text-white pull-right" style="background:#c10aa9; margin-right:10%;border-radius: 20rem;" on:click={updateClipboard(my_kelly)[0]}>Copy-Trade</button></td>
+			    <td width="50%"><button class="text-white pull-right" style="background:#c10aa9; margin-right:0%;border-radius: 20rem;" on:click={updateClipboard(my_kelly)[0]}>Copy-Trade</button></td>
 			</tr>
 		</table>
 
