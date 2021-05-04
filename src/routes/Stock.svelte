@@ -211,7 +211,7 @@ $: twitter_says;
 	<table>
 		<thead>
 		  <tr>
-			  <th width="100%" colspan="3" class="text-center"><h1>Chance {ticker} goes up</h1></th>
+			  <th width="100%" colspan="3" class="text-center"><h1>Setup for {ticker}: STRONG/WEAK BUY/SELL NOW/LATER</h1></th>
 		  </tr>
 		</thead>
 		  <tr>
