@@ -223,7 +223,10 @@ $: twitter_says;
 	<table>
 		<thead>
 		  <tr>
-			  <th width="100%" colspan="3" class="text-center"><h1>Setup for {ticker}: {strong_or_weak} {buy_or_sell} {now_or_later}</h1></th>
+			  <th width="100%" colspan="3" class="text-center"><h1>Setup for {ticker}: 
+				  {Math.abs(twitter_says-50) > 20 ? "STRONG" : "WEAK"} 
+				  {gain_chance > 50 ? "BUY" : "SELL"} 
+				  {Math.abs(gain_chance-50) > 3 ? "NOW" : "LATER"}</h1></th>
 		  </tr>
 		</thead>
 		  <tr>
