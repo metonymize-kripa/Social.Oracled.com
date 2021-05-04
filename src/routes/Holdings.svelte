@@ -184,7 +184,7 @@ let rand2 =  [Math.round(Math.random() * (96 - 33) + 33)];
 
     {#each user_ratings as {symbol,rating,timestamp,px_at_save,px_now,friend}}
         <div class="col-4">
-            <SimpleUserCard my_email={friend}  my_rating={rating} my_accuracy={Math.round(Math.random() * (96 - 33) + 33)} my_freshness={Math.round(CalcFreshness(timestamp))}/>
+            <SimpleUserCard my_email={friend}  my_rating={rating} my_accuracy={2*(px_now-px_at_save)/Math.abs(px_now-px_at_save)*(rating-50)} my_freshness={Math.round(CalcFreshness(timestamp))}/>
         </div>
     {/each}
     </div>

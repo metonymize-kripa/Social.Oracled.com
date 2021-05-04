@@ -159,7 +159,7 @@ function CalcFreshness(my_ts){
 
       {#each user_ratings as {symbol,rating,timestamp,px_at_save,px_now}}
           <div class="col-4">
-              <SimpleTickerCard my_ticker={symbol}  my_rating={rating} my_accuracy={Math.round(Math.random() * (96 - 33) + 33)} my_freshness={Math.round(CalcFreshness(timestamp))}/>
+              <SimpleTickerCard my_ticker={symbol}  my_rating={rating} my_accuracy={2*(px_now-px_at_save)/Math.abs(px_now-px_at_save)*(rating-50)} my_freshness={Math.round(CalcFreshness(timestamp))}/>
           </div>
       {/each}
       </div>
