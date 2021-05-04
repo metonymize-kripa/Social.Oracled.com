@@ -224,7 +224,7 @@ $: twitter_says;
 		<thead>
 		  <tr>
 			  <th width="100%" colspan="3" class="text-center"><h1>Setup for {ticker}: 
-				  {Math.abs(wsb_says-50) > 2 ? "STRONG" : "WEAK"} 
+				  {(wsb_says-50) > 2 ? "STRONG" : "WEAK"} 
 				  {gain_chance > 50 ? "BUY" : "SELL"} 
 				  {Math.abs(gain_chance-50) > 3 ? "NOW" : "LATER"}</h1></th>
 		  </tr>
