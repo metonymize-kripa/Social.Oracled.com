@@ -204,7 +204,7 @@ let post_title =  encodeURIComponent("Here's the upshot for ");
 	
 function updateActions() {
 	now_or_later = Math.abs(gain_chance-50) > 3 ? "NOW" : "LATER";
-	strong_or_weak = Math.abs(twitter_says-50) > 20 ? "STRONG" : "WEAK";
+	strong_or_weak = Math.abs(wsb_says-50) > 3 ? "STRONG" : "WEAK";
 	buy_or_sell = gain_chance > 50 ? "BUY" : "SELL";
 }
 	
@@ -224,7 +224,7 @@ $: twitter_says;
 		<thead>
 		  <tr>
 			  <th width="100%" colspan="3" class="text-center"><h1>Setup for {ticker}: 
-				  {Math.abs(twitter_says-50) > 20 ? "STRONG" : "WEAK"} 
+				  {Math.abs(wsb_says-50) > 2 ? "STRONG" : "WEAK"} 
 				  {gain_chance > 50 ? "BUY" : "SELL"} 
 				  {Math.abs(gain_chance-50) > 3 ? "NOW" : "LATER"}</h1></th>
 		  </tr>
