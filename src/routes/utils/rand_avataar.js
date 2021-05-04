@@ -147,8 +147,20 @@ const mapAttribOfSecurityToAvataar = {
 	"volatility": ["mouthType"],
 	"return": ["eyebrowType","eyeType"]
 }
+
+const mapHappyOneToFiveToMouthType = {
+	1:"Concerned",
+	2:"Disbelief",
+        3:"Default",
+        4:"Smile",
+        5:"Twinkle"}
  
- export function createRandomAvataar(){
+ export function createRandomAvataar(happy_percent=-1){
+	 var my_happy = "Smile"; 
+	 var my_happy_percent = (happy_percent>100) ? 5 : Math.round(happy_percent/20);
+	  
+	 my_happy = (my_happy_percent < 0) ? _.sample(avataar_inputs["mouthType"]) : mapHappyOneToFiveToMouthType[my_happy_percent];
+
 	 return 'https://avataaars.io/?'+
 		 'avatarStyle='+_.sample(avataar_inputs["avatarStyle"])+
 		 '&topType='+_.sample(avataar_inputs["topType"])+
@@ -158,6 +170,6 @@ const mapAttribOfSecurityToAvataar = {
 		 '&clotheType='+_.sample(avataar_inputs["clotheType"])+
 		 '&eyeType='+_.sample(avataar_inputs["eyeType"])+
 		 '&eyebrowType='+_.sample(avataar_inputs["eyebrowType"])+
-		 '&mouthType='+_.sample(avataar_inputs["mouthType"])+
+		 '&mouthType='+my_happy+
 		 '&skinColor='+_.sample(avataar_inputs["skinColor"])
  }
