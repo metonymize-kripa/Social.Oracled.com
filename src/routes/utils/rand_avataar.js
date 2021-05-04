@@ -172,3 +172,8 @@ const mapHappyOneToFiveToMouthType = {
 		 '&mouthType='+my_happy+
 		 '&skinColor='+_.sample(avataar_inputs["skinColor"])
  }
+
+export function createRandomBotAvataar(){
+	// Source: https://avatars.dicebear.com/styles/bottts
+	return 'https://avatars.dicebear.com/api/bottts/'+_.sample(_.range(1,100))+':seed.svg'
+}

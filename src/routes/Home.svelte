@@ -42,7 +42,8 @@
   });
   	const sourceData = ["Twitter", "WallStreetBets", "Options Market", "Yahoo Finance", "Your Friends"];
     const sourceAction = ["goes up", "goes down", "stays flat", "reaches the moon", "crashes and burns"];
-	let tickerData = ["LBRDK","IAC","TWTR","SE","MELI","PYPL","PTON","CHNG","CVNA","MU","PINS","DIS","WFC","C","GDDY","CZR","UBER","ALXN","EXPE","BAC","JPM","NOW","MVIS","MNMD","GME","AMD","TSLA","SPY","MSFT","AMC","PLTR","AAPL","OCGN","VIAC","BB","VXRT","NIO","RKT","PINS","GOOG","NNDM","CLOV","GSAT","COIN","FB","UPS"];
+	//let tickerData = ["LBRDK","IAC","TWTR","SE","MELI","PYPL","PTON","CHNG","CVNA","MU","PINS","DIS","WFC","C","GDDY","CZR","UBER","ALXN","EXPE","BAC","JPM","NOW","MVIS","MNMD","GME","AMD","TSLA","SPY","MSFT","AMC","PLTR","AAPL","OCGN","VIAC","BB","VXRT","NIO","RKT","PINS","GOOG","NNDM","CLOV","GSAT","COIN","FB","UPS"];
+	let tickerData = ["BTC-USD","ETH-USD","UNI-USD","BAT-USD","DOGE-USD","LTC-USD","TWTR","MELI","PTON","DIS","UBER","JPM","GME","AMD","TSLA","SPY","MSFT","AMC","PLTR","AAPL","GOOG","COIN","FB","UPS"];
 
 	function beaconSample(beacon,sampler) {
 		updatePlaceholderTicker();
