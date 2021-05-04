@@ -3,6 +3,7 @@ export let my_ticker="SPY";
 export let my_rating=49;
 export let my_freshness=44;
 export let my_accuracy=42;
+import {createRandomAvataar} from './rand_avataar.js';
 
 
 let cardColor="MintCream";
