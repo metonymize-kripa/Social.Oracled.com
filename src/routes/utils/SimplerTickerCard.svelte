@@ -75,10 +75,9 @@ function handleClick(){
 	<div style="display:flex;border-bottom: 1px solid #aaa; margin-bottom:0;">
 		<div style="width:40%;"> <img src={createRandomBotAvataar()} /></div><div style="width:50%;" ><h2 style="text-align:right;margin:1rem 0 0 0 ;">{my_rating}%</h2></div>
 	</div>
-
-		<!-- 
-<div><h2 style="text-align:center">{my_rating}%</h2></div> 
--->
+	<!-- 
+	<div><h2 style="text-align:center">{my_rating}%</h2></div> 
+	-->
 
 	<div style="display:flex;align-items: center;justify-content:center;">
 		<div  style="width:50%">
