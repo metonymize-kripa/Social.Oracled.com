@@ -103,7 +103,7 @@ function calcAccuracy(px_now,px_at_save,rating){
         let factor = 1;
         if (px_now != px_at_save)
             factor = (px_now-px_at_save)/Math.abs(px_now-px_at_save);
-        return 2*factor*(rating-50);
+        return (100+2*factor*(rating-50))/2;
 }
 </script>
 
