@@ -6,12 +6,11 @@
 
 <script>
   import { onMount } from "svelte";
-  import {createRandomAvataar} from './utils/rand_avataar.js';
   import {push, pop, replace} from 'svelte-spa-router'
   import SimpleUserCard from './utils/SimpleUserCard.svelte';
-  import NavBar from './utils/NavBar.svelte';
-    import RangeSlider from "svelte-range-slider-pips";
-    import {
+  import {calcFreshness,calcAccuracy } from './utils/common_functions.js';
+  import RangeSlider from "svelte-range-slider-pips";
+  import {
 	  Auth0LoginButton,
 	  Auth0LogoutButton,
 	  authError,
@@ -25,6 +24,7 @@
     user_class,
     is_home
   } from './utils/navbar.js';
+
   $is_home = false;
   $overview_class = '';
   $rating_class = 'active';
@@ -76,67 +76,20 @@ function getPalsList() {
         });
 }
 
-  let user_array = ['FatTony','Pappe','Kripa','Pani', 'Harsha','Brad','Sunil','Deba'];
-
   export let params = {}
 
   let user = params.name;
   let ticker = params.symbol.toUpperCase();
   $nav_ticker = ticker;
-  function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
 
-    // While there remain elements to shuffle...
-    while (0 !== currentIndex) {
-
-      // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-
-      // And swap it with the current element.
-      temporaryValue = array[currentIndex];
-      array[currentIndex] = array[randomIndex];
-      array[randomIndex] = temporaryValue;
-    }
-    return array;
-  }
-
-  function CalcFreshness(my_ts){
-      let n = new Date();
-      let diff = n - Date.parse(my_ts);
-      let hrs_elapsed =  diff/(1000*60*60);
-      console.log(my_ts);
-      let freshness = 0;
-
-      if (hrs_elapsed < 100)
-          freshness = 100 - hrs_elapsed;
-
-      return Math.min(freshness,100);
-  }
-//$: params.name && params.symbol && getGainChance();
 $: params.name && params.symbol  && getPalsList();
 
-let arrow = ['⬆','⬇'];
-let rand_list=[];
-for (var i=0;i<40;i++)
-    rand_list.push([Math.round(Math.random() * (96 - 33) + 33)]);
-
-let rand1 =  [Math.round(Math.random() * (96 - 33) + 33)];
-let rand2 =  [Math.round(Math.random() * (96 - 33) + 33)];
-
-function calcAccuracy(px_now,px_at_save,rating){
-        let factor = 1;
-        if (px_now != px_at_save)
-            factor = (px_now-px_at_save)/Math.abs(px_now-px_at_save);
-        return (100+2*factor*(rating-50))/2;
-}
 
 </script>
 
     <div class ="row">
     <table style="margin-bottom:3rem;">
 		<thead>
-
        {#if $isAuthenticated}
   		  <tr>
   			  <th width="100%"  class="text-center"><h1>{ticker} 💎council (chance of up move)</h1></th>
@@ -155,7 +108,7 @@ function calcAccuracy(px_now,px_at_save,rating){
 
     {#each user_ratings as {symbol,rating,timestamp,px_at_save,px_now,friend}}
         <div class="col-4">
-            <SimpleUserCard my_email={friend}  my_rating={rating} my_accuracy={calcAccuracy(px_now,px_at_save,rating)} my_freshness={Math.round(CalcFreshness(timestamp))}/>
+            <SimpleUserCard my_email={friend}  my_rating={rating} my_accuracy={calcAccuracy(px_now,px_at_save,rating)} my_freshness={Math.round(calcFreshness(timestamp))}/>
         </div>
     {/each}
     </div>
