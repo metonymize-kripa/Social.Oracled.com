@@ -101,6 +101,7 @@ function calculateKelly() {
         getMyRating($userInfo["email"]);
         getTwitterRating("$"+ticker);
         getWSBRating(ticker);
+	updateActions();
         //console.log(trating);
         //twitter_says = [Math.round((getTwitterRating("$"+ticker)+1)/0.02)];
 }
@@ -196,10 +197,16 @@ function calculateGains(kelly,varx)
 }
 let post_url = encodeURIComponent("https://upshot.oracled.com/#/stock/")
 let post_title =  encodeURIComponent("Here's the upshot for ");
+
+	let now_or_later = "";
+	let strong_or_weak = "";
+	let buy_or_sell = "";
 	
-	let now_or_later = Math.abs(gain_chance-50) > 3 ? "NOW" : "LATER";
-	let strong_or_weak = Math.abs(twitter_says-50) > 20 ? "STRONG" : "WEAK";
-	let buy_or_sell = gain_chance > 50 ? "BUY" : "SELL";
+function updateActions() {
+	now_or_later = Math.abs(gain_chance-50) > 3 ? "NOW" : "LATER";
+	strong_or_weak = Math.abs(twitter_says-50) > 20 ? "STRONG" : "WEAK";
+	buy_or_sell = gain_chance > 50 ? "BUY" : "SELL";
+}
 	
 $: twitter_says;
 </script>
