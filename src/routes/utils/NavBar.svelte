@@ -1,20 +1,16 @@
 <script>
-export let overview="";
-export let rating="";
-export let user="";
-export let ticker="SPY";
-export let home = false;
 import {
-    Auth0Context,
+  nav_ticker,
+  overview_class,
+  rating_class,
+  user_class,
+  is_home
+} from './navbar.js';
+
+import {
     Auth0LoginButton,
     Auth0LogoutButton,
-    authError,
-    authToken,
-    idToken,
     isAuthenticated,
-    isLoading,
-    login,
-    logout,
     userInfo,
   } from '@dopry/svelte-auth0';
 </script>
@@ -35,31 +31,28 @@ a:hover{
 background:#f0efff;
 }
 </style>
-
-<Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
     <nav class="nav">
       <div class="nav-left">
         <div class="tabs">
-        {#if !home}
-          <a class="brand" href="/">💎</a>
-           {/if}
-          <a class='{overview}' href="/#/stock/{ticker}">Overview</a>
+        {#if !$is_home}
+          <a class="brand" href="/#">💎</a>
+        {/if}
+          <a class='{$overview_class}' href="/#/stock/{$nav_ticker}">Overview</a>
           {#if $isAuthenticated}
-            <a  class='{user}' href="/#/user/{$userInfo["email"]}">MyList</a>
-            <a class='{rating}' href="/#/user/{ticker}/{$userInfo["nickname"]}">Ratings</a>
+            <a  class='{$user_class}' href="/#/user/{$userInfo["email"]}">MyList</a>
+            <a class='{$rating_class}' href="/#/user/{$nav_ticker}/{$userInfo["nickname"]}">Ratings</a>
          {:else}
-            <a  class='{user}' href="/#/user/harmeet@oracled.com">MyList</a>
-            <a class='{rating}' href="/#/user/TSLA/harmeet@oracled.com">Ratings</a>
-            {#if home}
-            <Auth0LoginButton class="button text-center error">Login</Auth0LoginButton>
-            {/if}
+            <a  class='{$user_class}' href="/#/user/harmeet@oracled.com">MyList</a>
+            <a class='{$rating_class}' href="/#/user/TSLA/harmeet@oracled.com">Ratings</a>
+
          {/if}
         </div>
       </div>
       <div class="nav-right">
         {#if $isAuthenticated}
             <a class="hide-xs" style="color:#cd00ff">Welcome {$userInfo["nickname"]}</a>
+         {:else}
+            <Auth0LoginButton class="button text-center error">Login</Auth0LoginButton>
         {/if}
       </div>
     </nav>
-</Auth0Context>

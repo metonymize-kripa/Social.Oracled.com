@@ -7,32 +7,37 @@
 <script>
   import { onMount } from "svelte";
   import Avatar from "svelte-avatar";
-  import NavBar from './utils/NavBar.svelte';
   import RangeSlider from "svelte-range-slider-pips";
   import {
-	  Auth0Context,
 	  Auth0LoginButton,
 	  Auth0LogoutButton,
 	  authError,
-	  authToken,
-	  idToken,
 	  isAuthenticated,
-	  isLoading,
-	  login,
-	  logout,
 	  userInfo,
 	} from '@dopry/svelte-auth0';
+  import {
+    nav_ticker,
+    overview_class,
+    rating_class,
+    user_class,
+    is_home
+  } from './utils/navbar.js';
+  $is_home = false;
+  $overview_class = 'active';
+  $rating_class = '';
+  $user_class = '';
+
+
 
   let api_output ={};
   let friend_output={};
   export let params = {}
 
-  //const moods = ["Bear","😫","😫","😫","😫","😫","😫","😫","😫","😫","😫","😫","😫","😫","😫","😫","😫","😫","😫","😫","😫","😫","😥","😫","😫","😥","😥","😥","😥","😥","😥","😥","😥","😥","😥","😥","😥","😥","😥","😥","😥","😥","😥","😥","😥","😥","😥","😐","😐","😐""😐","😐","😐""😐","😐","😐""😐","😐","😐""😐","😐","😐""😐","😐","😐","Hold","😀","😀","😀","😀","😀","😀","😀","😀","😀","😀","😀","😀","😀","😀","😀","😀","😀","😀","Meh","😀","😁","😁","😁","😀","😁","😁","😁","😀","😁","😁","😀","😁","😁","😁","😀","😁","😁","😁","Bull"];
+
+  const labels = ["Dump","Sell", "Dunno", "Buy","All-In"];
+  const label = ["Dump", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Sell", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Dunno", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "Buy", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "All-In"];
 
   onMount(async () => {
-    //const res = await fetch("/api/date");
-    //const newDate = await res.text();
-    //date = newDate;
     calculateKelly();
   });
 
@@ -46,6 +51,7 @@ let friend_kelly = [0];
 let gain_chance=[0];
 
 let ticker = params.symbol;
+$nav_ticker = ticker;
 
 
 $: params.symbol && calculateKelly();
@@ -97,6 +103,7 @@ function calculateKelly() {
         getMyRating($userInfo["email"]);
         getTwitterRating("$"+ticker);
         getWSBRating(ticker);
+	updateActions();
         //console.log(trating);
         //twitter_says = [Math.round((getTwitterRating("$"+ticker)+1)/0.02)];
 }
@@ -115,6 +122,7 @@ function getMyRating(user_email){
             else
             {
                 my_kelly = [output.rating];
+
                 console.log(output);
             }
         });
@@ -174,6 +182,7 @@ function shareWith() {
     window.open("https://twitter.com/share?url="+post_url+ticker+"&text="+post_title+ticker+"&hashtags="+ticker);
 }
 function submitRatings(my_ticker,my_ratings) {
+
     let put_url = 'https://www.insuremystock.com/stocks/setratings/'+my_ticker+'/?secret_key=Fat Neo&user='+$userInfo["email"]+'&ratings='+my_ratings;
     fetch(put_url,
     {
@@ -192,31 +201,21 @@ function calculateGains(kelly,varx)
 }
 let post_url = encodeURIComponent("https://upshot.oracled.com/#/stock/")
 let post_title =  encodeURIComponent("Here's the upshot for ");
+
+	let now_or_later = "";
+	let strong_or_weak = "";
+	let buy_or_sell = "";
+
+function updateActions() {
+	now_or_later = Math.abs(gain_chance-50) > 3 ? "NOW" : "LATER";
+	strong_or_weak = Math.abs(wsb_says-50) > 3 ? "STRONG" : "WEAK";
+	buy_or_sell = gain_chance > 50 ? "BUY" : "SELL";
+}
+
 $: twitter_says;
 </script>
 
 <style>
-	body {
-	    max-width:90rem;
-	    margin:0 auto;
-	    padding:2rem;
-	}
-	.card{
-	    margin:1rem auto;
-	}
-	:global(.rangeSlider){
-	    background-color:#e909ec !important;
-	}
-	:global(.rangeSlider.disabled){
-	    background-color:#fe92ff !important;
-	}
-	:global(.rangeSlider.disabled .rangeNub ){
-	     background-color:#6500c1 !important;
-	}
-	:global(.rangeSlider .rangeNub ){
-	     background-color:#68328a !important;
-	}
-
   .myrating{
   font-size:4rem;
   color:#00f;
@@ -224,48 +223,56 @@ $: twitter_says;
   }
 </style>
 
-<NavBar overview="active" ticker={ticker}/>
-<body>
-
-
 	<div class="row ">
 	<table>
 		<thead>
 		  <tr>
-			  <th width="100%" colspan="3" class="text-center"><h1>Chance {ticker} goes up</h1></th>
+			 {#if $isAuthenticated}
+				  <th style="color:#00f;"width="100%" colspan="3" class="text-center"><h1>Setup for {ticker}:
+					  {( (wsb_says > 52) && (gain_chance > 53) )? "STRONG" : "WEAK"}
+					  {((friend_kelly+my_kelly)/2-50) > 5 ? "BUY" : "SELL"}
+            </h1></th>
+					 <!-- {Math.abs(gain_chance-50) > 3 ? "NOW" : "LATER"}</h1></th> -->
+			 {:else}
+				  <th style="color:#00f;" width="100%" colspan="3" class="text-center"><h1>Setup for {ticker}:
+					  {(wsb_says-50) > 2 ? "STRONG" : "WEAK"}
+					  {gain_chance > 50 ? "BUY" : "SELL"}
+            </h1></th>
+					 <!--  {Math.abs(gain_chance-50) > 3 ? "NOW" : "LATER"}</h1></th> -->
+			  {/if}
 		  </tr>
 		</thead>
 		  <tr>
 		    <td width="20%" class="text-center"><img href="/" src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairTheCaesarSidePart&accessoriesType=Kurt&hairColor=BrownDark&facialHairType=BeardMajestic&facialHairColor=BrownDark&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Angry&mouthType=Serious&skinColor=Pale'
 					    width="50"/><br><span style="font-size:1.2rem;color:navy;">OptionsData</span></td>
-		    <td width="60%"><RangeSlider float pips all='label' disabled={true} bind:values={gain_chance}  pipstep={50} min={0} max={100} /></td>
-		    <td width="20%" class="text-center myrating" >{gain_chance}%</td>
+		    <td width="80%"><RangeSlider float pips all='label' disabled={true} bind:values={gain_chance}   pipstep={25} min={0} max={100} /></td>
+
 		  </tr>
 
            <tr>
 		     <td width="20%" class="text-center" ><img href="/" src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairTheCaesarSidePart&accessoriesType=Kurt&hairColor=Blonde&facialHairType=BeardMajestic&facialHairColor=Blonde&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Angry&mouthType=Serious&skinColor=Pale'
  					    width="50"/><br><span style="font-size:1.2rem;color:navy;">TwitterData</span></td>
-		     <td width="60%"><RangeSlider float pips all='label' disabled={true}  bind:values={twitter_says}  pipstep={50} min={0} max={100} /></td>
-		     <td width="20%" class="text-center myrating" >{twitter_says}%</td>
+		     <td width="80%"><RangeSlider float pips all='label' disabled={true}  bind:values={twitter_says}  pipstep={25} min={0} max={100} /></td>
+
 		   </tr>
            <tr>
 		     <td class="text-center" width="20%" ><img href="/" src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairTheCaesarSidePart&accessoriesType=Kurt&hairColor=PastelPink&facialHairType=BeardMajestic&facialHairColor=Red&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Angry&mouthType=Serious&skinColor=Pale'
  					    width="50"/><br><span style="font-size:1.2rem;color:navy;">RedditData</span></td>
-		     <td width="60%"><RangeSlider float pips all='label' disabled={true}  bind:values={wsb_says}  pipstep={50} min={0} max={100} /></td>
-		     <td width="20%" class="text-center myrating" >{wsb_says}%</td>
+		     <td width="80%"><RangeSlider float pips all='label' disabled={true}  bind:values={wsb_says}  pipstep={25} min={0} max={100} /></td>
+
 		   </tr>
 		   {#if $isAuthenticated}
 			     <tr>
 				<a class="text-center" href="/#/user/{$userInfo["email"]}"><td width="20%" ><img src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Prescription02&hairColor=BrownDark&facialHairType=Blank&clotheType=GraphicShirt&clotheColor=Red&graphicType=Diamond&eyeType=Surprised&eyebrowType=RaisedExcited&mouthType=Twinkle&skinColor=Light'
 							width="50" /><br> <span style="font-size:1.2rem;color:navy;"> MyView</span> </td></a>
 
-				<td width="60%"><RangeSlider float pips all='label'  bind:values={my_kelly}  pipstep={50} min={0} max={100} /></td>
-				<td width="20%" class="text-center myrating" >{my_kelly}%</td>
+				<td width="80%"><RangeSlider float pips all='label'  bind:values={my_kelly}  pipstep={2.5} step={10} min={0} max={100} /></td>
+
 			     </tr>
                  <tr>
       		     <a class="text-center" href="/#/user/{ticker}/me"><td width="20%" ><img src='pals.png' width="50"/><br><span style="font-size:1.2rem;color:navy;"> MyPals </span></td></a>
-      		     <td width="60%"><RangeSlider float pips all='label' disabled={true}  bind:values={friend_kelly}  pipstep={50} min={0} max={100} /></td>
-      		     <td width="20%" class="text-center myrating" >{friend_kelly}%</td>
+      		     <td width="80%"><RangeSlider float pips all='label' disabled={true}  bind:values={friend_kelly}  pipstep={25} min={0} max={100} /></td>
+
       		   </tr>
          {:else}
          <tr>
@@ -273,9 +280,9 @@ $: twitter_says;
           </tr>
           <tr>
           <td colspan="3" width="80%">
-             <Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
+
                 <Auth0LoginButton style="margin:0 3rem;" class="button text-center is-full-width text-center error">Login</Auth0LoginButton>
-             </Auth0Context>
+
              </td>
              </tr>
 		  {/if}
@@ -286,10 +293,8 @@ $: twitter_says;
 		<table>
 			<tr>
 			    <td width="50%"><button class="text-white text-center"  style="background:#c10aa9; margin-left:10%; border-radius: 20rem;" on:click={submitRatings(ticker,my_kelly[0])}>Save</td>
-			    <td width="50%"><button class="text-white pull-right" style="background:#c10aa9; margin-right:10%;border-radius: 20rem;" on:click={updateClipboard(my_kelly)[0]}>Copy-Trade</button></td>
+			    <td width="50%"><button class="text-white pull-right" style="background:#c10aa9; margin-right:0%;border-radius: 20rem;" on:click={updateClipboard(my_kelly)[0]}>Copy-Trade</button></td>
 			</tr>
 		</table>
 
 	</div>
-
-</body>

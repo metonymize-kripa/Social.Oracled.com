@@ -67,7 +67,7 @@ function handleClick(){
 <article on:click={handleClick} class="contact-card" style="background:{cardColor};">
 <h2 style="margin-bottom:0;color:#e218c8;">{my_email.split('@')[0]}</h2>
 	<div style="display:flex;border-bottom: 1px solid #aaa; margin-bottom:0;">
-		<div style="width:40%;"> <img src={createRandomAvataar()} /></div><div style="width:50%;" ><h1 style="text-align:right;margin:1rem 0 0 0 ;">{my_rating}%</h1></div>
+		<div style="width:40%;"> <img src={createRandomAvataar(my_rating)} /></div><div style="width:50%;" ><h1 style="text-align:right;margin:1rem 0 0 0 ;">{my_rating}%</h1></div>
 	</div>
 	<!-- <div class="row"><h2>{my_name}</h2></div> -->
 	<div style="display:flex;align-items: center;justify-content:center;">
