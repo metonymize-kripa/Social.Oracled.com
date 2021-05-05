@@ -229,8 +229,16 @@ $: twitter_says;
 		  <tr>
 			 {#if $isAuthenticated}
 				  <th style="color:#00f;"width="100%" colspan="3" class="text-center"><h1>Setup for {ticker}:
-					  {( (wsb_says > 52) && (gain_chance > 53) )? "STRONG" : "WEAK"}
-					  {((friend_kelly+my_kelly)/2-50) > 5 ? "BUY" : "SELL"}
+                    {#if ((friend_kelly[0]+my_kelly[0])/2)-50 > 5}
+
+                    <span style="background:green;font-weight:600;color:white;padding:0.5rem;">
+					  {( (wsb_says > 52) && (gain_chance > 53) )? "STRONG" : "WEAK"} BUY
+					 </span>
+                     {:else}
+                     <span style="background:#ec1c1c;font-weight:600;color:white;padding:0.5rem">
+                       {( (wsb_says > 52) && (gain_chance > 53) )? "STRONG" : "WEAK"} SELL
+                      </span>
+                     {/if}
             			  </h1>
 					  (Blending chance of up moves below)
 			  	  </th>
