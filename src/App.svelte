@@ -33,7 +33,6 @@
   }
   </style>
 <Auth0Context domain="dev-gh9on756.us.auth0.com" client_id="lDh9u5tdu1Kk5CkXtZjmjjmUKuGARk0v">
-<h1> DEV BRANCH </h1>
 <NavBar/>
 <body>
 	<Router {routes}/>
