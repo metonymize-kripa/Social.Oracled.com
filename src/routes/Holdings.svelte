@@ -8,6 +8,7 @@
   import { onMount } from "svelte";
   import {push, pop, replace} from 'svelte-spa-router'
   import SimpleUserCard from './utils/SimpleUserCard.svelte';
+  import StockWidget from './utils/StockWidget.svelte';
   import {calcFreshness,calcAccuracy } from './utils/common_functions.js';
   import RangeSlider from "svelte-range-slider-pips";
   import {
@@ -84,8 +85,19 @@ function getPalsList() {
 
 $: params.name && params.symbol  && getPalsList();
 
-
 </script>
+<style>
+.contact-card {
+    max-width: 450px;
+    border: 1px solid #aaa;
+    box-shadow: 11px 9px 7px 2px rgb(0 0 0 / 10%);;
+    padding: 1em;
+}
+.contact-card:hover{
+    transform: scale(1.1);
+    cursor:pointer;
+}
+</style>
 
     <div class ="row">
     <table style="margin-bottom:3rem;">
@@ -106,7 +118,8 @@ $: params.name && params.symbol  && getPalsList();
 		</thead>
     </table>
 
-    {#each user_ratings as {symbol,rating,timestamp,px_at_save,px_now,friend}}
+<!--    <div class="col-4"><StockWidget  my_ticker={ticker} /></div> -->
+    {#each user_ratings as {symbol,rating,timestamp,px_at_save,px_now,friend},i}
         <div class="col-4">
             <SimpleUserCard my_email={friend}  my_rating={rating} my_accuracy={calcAccuracy(px_now,px_at_save,rating)} my_freshness={Math.round(calcFreshness(timestamp))}/>
         </div>
