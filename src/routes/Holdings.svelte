@@ -8,7 +8,7 @@
   import { onMount } from "svelte";
   import {push, pop, replace} from 'svelte-spa-router'
   import SimpleUserCard from './utils/SimpleUserCard.svelte';
-  import StockWidget from './utils/StockWidget.svelte';
+  //import StockWidget from './utils/StockWidget.svelte';
   import {calcFreshness,calcAccuracy } from './utils/common_functions.js';
   import RangeSlider from "svelte-range-slider-pips";
   import {
@@ -34,6 +34,8 @@
 let gain_chance=[0];
 let err_val="";
 let user_ratings = [];
+
+let show_ratings_input = false;
 function getGainChance() {
 
     gain_chance = [0];
@@ -70,10 +72,15 @@ function getPalsList() {
           //for (var i=0;i<api_output.user_list.length;i++)
           //      user_ratings.push({'symbol':api_output.user_list[i].symbol,'my_rating':[api_output.user_list[i].rating]});
             user_ratings = api_output.user_list;
+            show_ratings_input = true;
+            for (var i = 0; i<user_ratings.length;i++)
+            {
+              if (user_ratings[i].friend == $userInfo["email"])
+                    show_ratings_input = false;
+            }
             }
 
             console.log(user_ratings);
-
         });
 }
 
@@ -83,8 +90,11 @@ function getPalsList() {
   let ticker = params.symbol.toUpperCase();
   $nav_ticker = ticker;
 
-$: params.name && params.symbol  && getPalsList();
+$: params.name && params.symbol  && getPalsList() ;
 
+function handleClick(){
+	window.location.href = "/#/stock/"+ticker;
+}
 </script>
 <style>
 .contact-card {
@@ -92,6 +102,9 @@ $: params.name && params.symbol  && getPalsList();
     border: 1px solid #aaa;
     box-shadow: 11px 9px 7px 2px rgb(0 0 0 / 10%);;
     padding: 1em;
+    background:#ffb5ff;
+    text-align: center;
+    font-size: 1.75rem;
 }
 .contact-card:hover{
     transform: scale(1.1);
@@ -119,6 +132,9 @@ $: params.name && params.symbol  && getPalsList();
     </table>
 
 <!--    <div class="col-4"><StockWidget  my_ticker={ticker} /></div> -->
+  {#if show_ratings_input}
+    <div class="col-4 contact-card" on:click={handleClick} ><h1>Click here to update your rating</h1></div>
+  {/if}
     {#each user_ratings as {symbol,rating,timestamp,px_at_save,px_now,friend},i}
         <div class="col-4">
             <SimpleUserCard my_email={friend}  my_rating={rating} my_accuracy={calcAccuracy(px_now,px_at_save,rating)} my_freshness={Math.round(calcFreshness(timestamp))}/>

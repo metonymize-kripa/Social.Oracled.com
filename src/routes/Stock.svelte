@@ -228,15 +228,17 @@ $: twitter_says;
 		<thead>
 		  <tr>
 			 {#if $isAuthenticated}
-				  <th width="100%" colspan="3" class="text-center"><h1>Up-move chance setup for {ticker}:
-					  {(wsb_says-50) > 2 ? "STRONG" : "WEAK"}
+				  <th style="color:#00f;"width="100%" colspan="3" class="text-center"><h1>Setup for {ticker}:
+					  {( (wsb_says > 52) && (gain_chance > 53) )? "STRONG" : "WEAK"}
 					  {((friend_kelly+my_kelly)/2-50) > 5 ? "BUY" : "SELL"}
-					  {Math.abs(gain_chance-50) > 3 ? "NOW" : "LATER"}</h1></th>
+            </h1></th>
+					 <!-- {Math.abs(gain_chance-50) > 3 ? "NOW" : "LATER"}</h1></th> -->
 			 {:else}
-				  <th width="100%" colspan="3" class="text-center"><h1>Up-move chance setup for {ticker}:
+				  <th style="color:#00f;" width="100%" colspan="3" class="text-center"><h1>Setup for {ticker}:
 					  {(wsb_says-50) > 2 ? "STRONG" : "WEAK"}
 					  {gain_chance > 50 ? "BUY" : "SELL"}
-					  {Math.abs(gain_chance-50) > 3 ? "NOW" : "LATER"}</h1></th>
+            </h1></th>
+					 <!--  {Math.abs(gain_chance-50) > 3 ? "NOW" : "LATER"}</h1></th> -->
 			  {/if}
 		  </tr>
 		</thead>
