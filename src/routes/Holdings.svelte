@@ -133,7 +133,7 @@ function handleClick(){
 
 <!--    <div class="col-4"><StockWidget  my_ticker={ticker} /></div> -->
   {#if show_ratings_input}
-    <div class="col-4 contact-card" on:click={handleClick} ><h1>Click here to enter your rating</h1></div>
+    <div class="col-4 contact-card" on:click={handleClick} ><h1>Click here to update your rating</h1></div>
   {/if}
     {#each user_ratings as {symbol,rating,timestamp,px_at_save,px_now,friend},i}
         <div class="col-4">
