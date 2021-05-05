@@ -232,7 +232,6 @@ $: twitter_says;
 					  {( (wsb_says > 52) && (gain_chance > 53) )? "STRONG" : "WEAK"}
 					  {((friend_kelly+my_kelly)/2-50) > 5 ? "BUY" : "SELL"}
             			  </h1>
-					   <br>
 					  (Blending chance of up moves below)
 			  	  </th>
 					 <!-- {Math.abs(gain_chance-50) > 3 ? "NOW" : "LATER"}</h1></th> -->
@@ -241,7 +240,6 @@ $: twitter_says;
 					  {(wsb_says-50) > 2 ? "STRONG" : "WEAK"}
 					  {gain_chance > 50 ? "BUY" : "SELL"}
 				</h1>
-					   <br>
 					  (Blending chance of up moves below)
 			  	  </th>
 					 <!--  {Math.abs(gain_chance-50) > 3 ? "NOW" : "LATER"}</h1></th> -->
