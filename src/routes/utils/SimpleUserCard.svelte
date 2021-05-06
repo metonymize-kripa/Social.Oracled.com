@@ -3,7 +3,8 @@ export let my_email="harmeet@oracled.com";
 export let my_rating=49;
 export let my_freshness=44;
 export let my_accuracy=42;
-import {createRandomAvataar} from './rand_avataar.js';
+export let avatar_dict = {};
+import {createMyAvataar, createRandomAvataar} from './rand_avataar.js';
 
 let cardColor="MintCream";
 
@@ -20,6 +21,16 @@ else {
 }
 function handleClick(){
 	window.location.href = "/#/user/"+my_email;
+}
+
+function myavatar(){
+	console.log(avatar_dict);
+	if (avatar_dict === null)
+		return createRandomAvataar();
+	else{
+		avatar_dict = JSON.parse(avatar_dict);
+		return createMyAvataar(avatar_dict.skinColor, avatar_dict.topType, avatar_dict.hairColor, avatar_dict.facialHairType);
+	}
 }
 </script>
 <style>
@@ -67,7 +78,7 @@ function handleClick(){
 <article on:click={handleClick} class="contact-card" style="background:{cardColor};">
 <h2 style="margin-bottom:0;color:#e218c8;">{my_email.split('@')[0]}</h2>
 	<div style="display:flex;border-bottom: 1px solid #aaa; margin-bottom:0;">
-		<div style="width:40%;"> <img src={createRandomAvataar(my_rating)} /></div><div style="width:50%;" ><h1 style="text-align:right;margin:1rem 0 0 0 ;">{my_rating}%</h1></div>
+		<div style="width:40%;"> <img src='{myavatar()}' /></div><div style="width:50%;" ><h1 style="text-align:right;margin:1rem 0 0 0 ;">{my_rating}%</h1></div>
 	</div>
 	<!-- <div class="row"><h2>{my_name}</h2></div> -->
 	<div style="display:flex;align-items: center;justify-content:center;">

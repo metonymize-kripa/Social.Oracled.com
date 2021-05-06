@@ -20,12 +20,14 @@
     overview_class,
     rating_class,
     user_class,
-    is_home
+    is_home,
+    settings_class
   } from './utils/navbar.js';
   $is_home = false;
   $overview_class = 'active';
   $rating_class = '';
   $user_class = '';
+  $settings_class = '';
 
 
 

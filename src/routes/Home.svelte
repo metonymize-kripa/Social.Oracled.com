@@ -13,6 +13,7 @@
     overview_class,
     rating_class,
     user_class,
+    settings_class,
     is_home
   } from './utils/navbar.js';
   $is_home = true;

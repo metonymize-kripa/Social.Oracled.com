@@ -4,6 +4,7 @@ import {
   overview_class,
   rating_class,
   user_class,
+  settings_class,
   is_home
 } from './navbar.js';
 
@@ -41,6 +42,7 @@ background:#f0efff;
           {#if $isAuthenticated}
             <a  class='{$user_class}' href="/#/user/{$userInfo["email"]}">MyList</a>
             <a class='{$rating_class}' href="/#/user/{$nav_ticker}/{$userInfo["nickname"]}">Ratings</a>
+            <a  class='{$settings_class}' href="/#/settings/{$userInfo["email"]}">Settings</a>
          {:else}
             <a  class='{$user_class}' href="/#/user/harmeet@oracled.com">MyList</a>
             <a class='{$rating_class}' href="/#/user/TSLA/harmeet@oracled.com">Ratings</a>
