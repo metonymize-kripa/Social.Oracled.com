@@ -23,6 +23,7 @@
     overview_class,
     rating_class,
     user_class,
+    settings_class,
     is_home
   } from './utils/navbar.js';
 
@@ -30,6 +31,7 @@
   $overview_class = '';
   $rating_class = 'active';
   $user_class = '';
+  $settings_class = '';
 
 let gain_chance=[0];
 let err_val="";
@@ -135,9 +137,9 @@ function handleClick(){
   {#if show_ratings_input}
     <div class="col-4 contact-card" on:click={handleClick} ><h1>Click here to update your rating</h1></div>
   {/if}
-    {#each user_ratings as {symbol,rating,timestamp,px_at_save,px_now,friend},i}
+    {#each user_ratings as {symbol,rating,timestamp,px_at_save,px_now,friend,avatar},i}
         <div class="col-4">
-            <SimpleUserCard my_email={friend}  my_rating={rating} my_accuracy={calcAccuracy(px_now,px_at_save,rating)} my_freshness={Math.round(calcFreshness(timestamp))}/>
+            <SimpleUserCard my_email={friend}  my_rating={rating}  avatar_dict={avatar} my_accuracy={calcAccuracy(px_now,px_at_save,rating)} my_freshness={Math.round(calcFreshness(timestamp))}/>
         </div>
     {/each}
     </div>

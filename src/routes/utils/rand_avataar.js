@@ -4,7 +4,7 @@ export function makeString() {
   return "Test String returned"
 }
 
-const avataar_inputs = {
+export const avataar_inputs = {
     "avatarStyle": [
         "Circle",
         "Transparent"
@@ -138,7 +138,7 @@ const avataar_inputs = {
         "Black"
     ]
 }
-  
+
 const mapAttribOfSecurityToAvataar = {
 	"country": ["skinColor","hairColor"],
 	"market": ["avatarStyle","clotheType"],
@@ -154,9 +154,9 @@ const mapHappyOneToFiveToMouthType = {
         3:"Default",
         4:"Smile",
         5:"Twinkle"}
- 
+
  export function createRandomAvataar(happy_percent=40){
-	 var my_happy = "Smile"; 
+	 var my_happy = "Smile";
 	 var my_happy_percent = (happy_percent>100) ? 5 : Math.round(happy_percent/20);
 	 my_happy = (my_happy_percent < 0) ? _.sample(avataar_inputs["mouthType"]) : mapHappyOneToFiveToMouthType[my_happy_percent];
 
@@ -172,6 +172,27 @@ const mapHappyOneToFiveToMouthType = {
 		 '&mouthType='+my_happy+
 		 '&skinColor='+_.sample(avataar_inputs["skinColor"])
  }
+
+export function createMyAvataar(skinColor, topType, hairColor, facialHairType){
+  return 'https://avataaars.io/?'+
+    'avatarStyle=Circle'+
+    '&topType='+topType+
+    '&accessoriesType=Blank'+
+    '&hairColor='+hairColor+
+    '&facialHairType='+facialHairType+
+    '&clotheType=ShirtCrewNeck'+
+    '&eyeType=Default'+
+    '&eyebrowType=Default'+
+    '&mouthType=Default'+
+    '&skinColor='+skinColor
+}
+
+/*
+export function saveMyAvatar(skinColor, topType, hairColor, facialHairType){
+  let avatar_to_save = createMyAvataar(skinColor, topType, hairColor, facialHairType);
+
+}
+*/
 
 export function createRandomBotAvataar(){
 	// Source: https://avatars.dicebear.com/styles/bottts

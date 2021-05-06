@@ -23,11 +23,13 @@
     overview_class,
     rating_class,
     user_class,
+    settings_class,
     is_home
   } from './utils/navbar.js';
   $is_home = false;
   $overview_class = '';
   $rating_class = '';
+  $settings_class = '';
   $user_class = 'active';
 
   let new_user= 'FatTony';
