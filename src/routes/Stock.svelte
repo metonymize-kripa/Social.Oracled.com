@@ -7,6 +7,8 @@
 <script>
   import { onMount } from "svelte";
   import Avatar from "svelte-avatar";
+
+  import {createRandomAvataar, createMyAvataar} from './utils/rand_avataar.js';
   import RangeSlider from "svelte-range-slider-pips";
   import {
 	  Auth0LoginButton,
@@ -54,6 +56,7 @@ let gain_chance=[0];
 
 let ticker = params.symbol;
 $nav_ticker = ticker;
+let  my_avatar = createRandomAvataar();
 
 
 $: params.symbol && calculateKelly();
@@ -94,7 +97,6 @@ function calculateKelly() {
             .then(d =>
             {
                 friend_output = JSON.parse(d);
-                console.log(friend_output);
                 if ('error' in friend_output)
                     err_val="error";
                 else
@@ -124,8 +126,6 @@ function getMyRating(user_email){
             else
             {
                 my_kelly = [output.rating];
-
-                console.log(output);
             }
         });
 }
@@ -144,7 +144,6 @@ function getTwitterRating(symbol){
             else
             {
                 twitter_rating = output.twitter_index;
-                console.log(output);
                 twitter_says = [Math.round((twitter_rating+100)/2)];
             }
         });
@@ -164,12 +163,28 @@ function getWSBRating(symbol){
             else
             {
                 wsb_rating = output.skill_output;
-                console.log(output);
                 wsb_says = [Math.round(wsb_rating*100+50)];
             }
         });
 }
+function getAvataar(){
+  let get_url = "https://www.insuremystock.com/user/avatar/?secret_key=Fat Neo&user_email="+$userInfo["email"];
+  fetch(get_url)
+      .then(d => d.text())
+      .then(d =>
+      {
+          var api_output = JSON.parse(d);
 
+          if ('error' in api_output)
+              err_val =  "error";
+          else
+          {
+            //api_output = JSON.parse(api_output.avatar);
+            api_output = JSON.parse(api_output.avatar.replace(/'/g,"\""));
+            my_avatar = createMyAvataar(api_output.skinColor, api_output.topType,api_output.hairColor,  api_output.facialHairType);
+          }
+      });
+}
 function updateClipboard(newClip) {
     submitRatings(ticker,my_kelly[0])
   navigator.clipboard.writeText(newClip).then(function() {
@@ -179,7 +194,6 @@ function updateClipboard(newClip) {
   });
 }
 function shareWith() {
-    console.log(ticker);
     submitRatings(ticker,my_kelly[0]);
     window.open("https://twitter.com/share?url="+post_url+ticker+"&text="+post_title+ticker+"&hashtags="+ticker);
 }
@@ -214,7 +228,8 @@ function updateActions() {
 	buy_or_sell = gain_chance > 50 ? "BUY" : "SELL";
 }
 
-$: twitter_says;
+$: twitter_says && $userInfo;
+getAvataar();
 </script>
 
 <style>
@@ -277,7 +292,7 @@ $: twitter_says;
 		   </tr>
 		   {#if $isAuthenticated}
 			     <tr>
-				<a class="text-center" href="/#/user/{$userInfo["email"]}"><td width="20%" ><img src='https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortWaved&accessoriesType=Prescription02&hairColor=BrownDark&facialHairType=Blank&clotheType=GraphicShirt&clotheColor=Red&graphicType=Diamond&eyeType=Surprised&eyebrowType=RaisedExcited&mouthType=Twinkle&skinColor=Light'
+				<a class="text-center" href="/#/user/{$userInfo["email"]}"><td width="20%" ><img src={my_avatar}
 							width="50" /><br> <span style="font-size:1.2rem;color:navy;"> MyView</span> </td></a>
 
 				<td width="80%"><RangeSlider float pips all='label'  bind:values={my_kelly}  pipstep={2.5} step={10} min={0} max={100} /></td>
