@@ -187,6 +187,29 @@ export function createMyAvataar(skinColor, topType, hairColor, facialHairType){
     '&skinColor='+skinColor
 }
 
+export function getMyAvataar(user_email){
+  let get_url = "https://www.insuremystock.com/user/avatar/?secret_key=Fat Neo&user_email="+user_email;
+  var ret_val="";
+
+  fetch(get_url)
+      .then(d => d.text())
+      .then(d =>
+      {
+          var api_output = JSON.parse(d);
+
+          if ('error' in api_output)
+              err_val =  "error";
+          else
+          {
+            api_output = JSON.parse(api_output.avatar.replace(/'/g,"\""));
+            //api_output = (JSON.parse(api_output.avatar));
+            //console.log(createMyAvataar(api_output.skinColor, api_output.topType, api_output.hairColor, api_output.facialHairType));
+            ret_val =  createMyAvataar(api_output.skinColor, api_output.topType, api_output.hairColor, api_output.facialHairType)
+          }
+      });
+      return ret_val;
+}
+
 /*
 export function saveMyAvatar(skinColor, topType, hairColor, facialHairType){
   let avatar_to_save = createMyAvataar(skinColor, topType, hairColor, facialHairType);

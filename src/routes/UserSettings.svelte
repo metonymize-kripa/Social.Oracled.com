@@ -43,8 +43,7 @@
 
   function saveMyAvatar(skinColor, topType, hairColor, facialHairType){
     //let dict_to_save = "{'skinColor';'"+skinColor+"','hairColor':'"+hairColor+"','facialHairType':'"+facialHairType+"','topType':'"+topType+"'}";
-    let dict_to_save = {'skinColor':skinColor,'hairColor':hairColor,'facialHairType':facialHairType,'topType':topType}
-    alert(JSON.stringify(dict_to_save));
+    let dict_to_save = {"skinColor":skinColor,"hairColor":hairColor,"facialHairType":facialHairType,"topType":topType}
     let data ={"user_email":$userInfo["email"],"avatar":JSON.stringify(dict_to_save),"key":"Fat Neo"};
     let post_url = 'https://www.insuremystock.com/user/update_avatar/';
     fetch(post_url,
@@ -61,7 +60,6 @@
   }
   function getAvataar(){
     let get_url = "https://www.insuremystock.com/user/avatar/?secret_key=Fat Neo&user_email="+$userInfo["email"];
-    console.log(get_url);
     fetch(get_url)
         .then(d => d.text())
         .then(d =>
@@ -72,7 +70,8 @@
                 err_val =  "error";
             else
             {
-              console.log(api_output.skinColor);
+              //api_output = JSON.parse(api_output.avatar);
+              api_output = JSON.parse(api_output.avatar.replace(/'/g,"\""));
               selected_skin = api_output.skinColor;
               selected_top = api_output.topType;
               selected_hair = api_output.hairColor;
@@ -84,9 +83,8 @@
   onMount(async () => {
     getAvataar();
     let get_url = "https://www.insuremystock.com/user/avatar/?secret_key=Fat Neo&user_email="+$userInfo["email"];
-    console.log(get_url);
   });
-
+$: $userInfo;
 </script>
   <div class ="row">
 
