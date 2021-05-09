@@ -62,6 +62,7 @@
 $: params.name  && getUsersList();
 
 
+
 </script>
   <div class ="row">
   <table style="margin-bottom:3rem;">
@@ -84,8 +85,10 @@ $: params.name  && getUsersList();
   </table>
 
   {#each user_ratings as {symbol,rating,timestamp,px_at_save,px_now}}
+  {#if Math.round(calcFreshness(timestamp)) > 5}
       <div class="col-4">
           <SimpleTickerCard my_ticker={symbol}  my_rating={rating} my_accuracy={calcAccuracy(px_now,px_at_save,rating)} my_freshness={Math.round(calcFreshness(timestamp))}/>
       </div>
+  {/if}
   {/each}
   </div>

@@ -8,8 +8,8 @@
   import { onMount } from "svelte";
   import {push, pop, replace} from 'svelte-spa-router'
   import SimpleUserCard from './utils/SimpleUserCard.svelte';
-  //import StockWidget from './utils/StockWidget.svelte';
-  import {calcFreshness,calcAccuracy } from './utils/common_functions.js';
+  import StockWidget from './utils/StockWidget.svelte';
+  import {calcFreshness,calcAccuracy, convertbmk } from './utils/common_functions.js';
   import RangeSlider from "svelte-range-slider-pips";
   import {
 	  Auth0LoginButton,
@@ -91,12 +91,38 @@ function getPalsList() {
   let user = params.name;
   let ticker = params.symbol.toUpperCase();
   $nav_ticker = ticker;
+  let range_data ={};
+  let cardcolor="MintCream";
 
 $: params.name && params.symbol  && getPalsList() ;
+
+onMount(async () => {
+    fetch("https://www.insuremystock.com/options/range/"+ticker)
+        .then(d => d.text())
+        .then(d =>
+        {
+            var api_output = JSON.parse(d);
+            if ('error' in api_output)
+                err_val =  "error";
+            else
+            {
+                console.log(api_output);
+                range_data = api_output;
+                if (range_data.prob_up>0.52)
+                    cardcolor="#e0ffe2";
+                else if (range_data.prob_up<0.48)
+                    cardcolor="#fbe1e1";
+                else
+                    cardcolor="#f0efff";
+            }
+        });
+});
 
 function handleClick(){
 	window.location.href = "/#/stock/"+ticker;
 }
+
+
 </script>
 <style>
 .contact-card {
@@ -104,13 +130,23 @@ function handleClick(){
     border: 1px solid #aaa;
     box-shadow: 11px 9px 7px 2px rgb(0 0 0 / 10%);;
     padding: 1em;
-    background:#ffb5ff;
+
     text-align: center;
     font-size: 1.75rem;
 }
 .contact-card:hover{
     transform: scale(1.1);
     cursor:pointer;
+}
+h1{
+    color:#00f;
+}
+h2{
+    color: rgb(226, 24, 200);
+    font-size:2.5rem;
+}
+h3{
+    color: #009285;
 }
 </style>
 
@@ -133,9 +169,22 @@ function handleClick(){
 		</thead>
     </table>
 
-<!--    <div class="col-4"><StockWidget  my_ticker={ticker} /></div> -->
+    <div class="col-4 contact-card"><StockWidget  my_ticker={ticker} /></div>
+    {#if err_val != "error"}
+        <div class="col-4 contact-card" style="background:{cardcolor}">
+            <h2>Next Week Range</h2>
+            <h1>${Math.round(range_data.low_range)} - ${Math.round(range_data.high_range)}</h1>
+            <h3>Option IVol: {Math.round(range_data.ivol*100)}%
+        </div>
+        <div class="col-4 contact-card" style="background:{cardcolor}">
+            <h2>Stock Volume ({Math.round(range_data.volume_pct)}%)</h2>
+            <h1>{convertbmk(range_data.today_volume)}</h1>
+            <h3>Past Avg:{convertbmk(range_data.avg_10d_volume)}</h3>
+        </div>
+    {/if}
+
   {#if show_ratings_input}
-    <div class="col-4 contact-card" on:click={handleClick} ><h1>Click here to update your rating</h1></div>
+    <div class="col-4 contact-card" style="background:#ffb5ff;" on:click={handleClick} ><h1>Click here to update your rating</h1></div>
   {/if}
     {#each user_ratings as {symbol,rating,timestamp,px_at_save,px_now,friend,avatar},i}
         <div class="col-4">

@@ -61,9 +61,8 @@ background:#f0efff;
     <nav class="nav">
       <div class="nav-left">
         <div class="tabs">
-        {#if !$is_home}
+
           <a class="brand" href="/#">💎</a>
-        {/if}
           <a class='{$overview_class}' href="/#/stock/{$nav_ticker}">Overview</a>
           {#if $isAuthenticated}
             <a  class='{$user_class}' href="/#/user/{$userInfo["email"]}">MyList</a>
@@ -77,7 +76,7 @@ background:#f0efff;
       </div>
       <div class="nav-right">
         {#if $isAuthenticated}
-            <a class="hide-xs" href="/#/settings/{$userInfo["email"]}" style="color:#cd00ff"><img src={my_avatar}	width="50" /></a>
+            <a href="/#/settings/{$userInfo["email"]}" style="color:#cd00ff"><img src={my_avatar}	width="50" /></a>
          {:else}
             <Auth0LoginButton class="button text-center error">Login</Auth0LoginButton>
         {/if}
