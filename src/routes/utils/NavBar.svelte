@@ -48,7 +48,9 @@ $: my_avatar && $userInfo;
 }
 .tabs>a{
 border:none;
+padding:0.2rem 1rem;
 }
+
 
 a:hover{
  color:#c10aa9;
@@ -71,7 +73,7 @@ background:#f0efff;
             <a class='{$rating_class}' href="/#/user/TSLA/harmeet@oracled.com">Ratings</a>
          {/if}
          {#if $isAuthenticated}
-            <a class='{$settings_class}' href="/#/settings/{$userInfo["email"]}" style="color:#cd00ff"><img src={my_avatar}	width="50" /></a>
+            <a class='{$settings_class}' href="/#/settings/{$userInfo["email"]}" style="color:#cd00ff"><img alt src={my_avatar}	/></a>
          {:else}
             <Auth0LoginButton class="button text-center error">Login</Auth0LoginButton>
         {/if}
