@@ -61,7 +61,6 @@ background:#f0efff;
     <nav class="nav">
       <div class="nav-left">
         <div class="tabs">
-
           <a class="brand" href="/#">💎</a>
           <a class='{$overview_class}' href="/#/stock/{$nav_ticker}">Overview</a>
           {#if $isAuthenticated}
@@ -70,15 +69,12 @@ background:#f0efff;
          {:else}
             <a  class='{$user_class}' href="/#/user/harmeet@oracled.com">MyList</a>
             <a class='{$rating_class}' href="/#/user/TSLA/harmeet@oracled.com">Ratings</a>
-
          {/if}
-        </div>
-      </div>
-      <div class="nav-right">
-        {#if $isAuthenticated}
-            <a href="/#/settings/{$userInfo["email"]}" style="color:#cd00ff"><img src={my_avatar}	width="50" /></a>
+         {#if $isAuthenticated}
+            <a class='{$settings_class}' href="/#/settings/{$userInfo["email"]}" style="color:#cd00ff"><img src={my_avatar}	width="50" /></a>
          {:else}
             <Auth0LoginButton class="button text-center error">Login</Auth0LoginButton>
         {/if}
+        </div>
       </div>
     </nav>

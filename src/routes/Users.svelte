@@ -61,7 +61,10 @@
 
 $: params.name  && getUsersList();
 
-
+let showhidden = false;
+function toggleCards(){
+    showhidden=true;
+}
 
 </script>
   <div class ="row">
@@ -84,11 +87,24 @@ $: params.name  && getUsersList();
     </thead>
   </table>
 
-  {#each user_ratings as {symbol,rating,timestamp,px_at_save,px_now}}
-  {#if Math.round(calcFreshness(timestamp)) > 5}
+  {#each user_ratings as {id,symbol,rating,timestamp,px_at_save,px_now, is_hidden}}
+    {#if !is_hidden}
       <div class="col-4">
-          <SimpleTickerCard my_ticker={symbol}  my_rating={rating} my_accuracy={calcAccuracy(px_now,px_at_save,rating)} my_freshness={Math.round(calcFreshness(timestamp))}/>
+          <SimpleTickerCard rating_id={id} my_ticker={symbol}  my_rating={rating} is_hidden={is_hidden} my_accuracy={calcAccuracy(px_now,px_at_save,rating)} user_email={$userInfo['email']} my_freshness={Math.round(calcFreshness(timestamp))}/>
       </div>
-  {/if}
+    {/if}
   {/each}
-  </div>
+   </div>
+
+   <button class="text-white is-center text-center " on:click={()=>toggleCards()} style="background:#c10aa9; margin:0 auto 2rem auto; border-radius: 20rem; width:50%;"> Show Hidden Cards</button>
+   {#if showhidden}
+   <div class ="row">
+      {#each user_ratings as {id,symbol,rating,timestamp,px_at_save,px_now, is_hidden}}
+        {#if is_hidden}
+          <div class="col-4">
+              <SimpleTickerCard rating_id={id} my_ticker={symbol}  my_rating={rating} is_hidden={is_hidden} my_accuracy={calcAccuracy(px_now,px_at_save,rating)} user_email={$userInfo['email']} my_freshness={Math.round(calcFreshness(timestamp))}/>
+          </div>
+        {/if}
+      {/each}
+    </div>
+    {/if}

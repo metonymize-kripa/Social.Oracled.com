@@ -1,6 +1,6 @@
 <svelte:head>
   <title>Friends of the Oracle</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css">
   <link rel="stylesheet" href="https://unpkg.com/chota@latest">
 </svelte:head>
 
@@ -169,7 +169,7 @@ h3{
 		</thead>
     </table>
 
-    <div class="col-4 contact-card"><StockWidget  my_ticker={ticker} /></div>
+    <!-- <div class="col-4 contact-card"><StockWidget  my_ticker={ticker} /></div> -->
     {#if err_val != "error"}
         <div class="col-4 contact-card" style="background:{cardcolor}">
             <h2>Next Week Range</h2>
